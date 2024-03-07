@@ -20,6 +20,7 @@ public class GamePlayState : State
 
         // Activate canva elems
         _controller.UI.playParentObj.SetActive(true);
+        _controller.UI.overlayCanvas.SetActive(true);
         _controller.playerController.Launch();
     }
 
@@ -27,9 +28,17 @@ public class GamePlayState : State
     {
         base.Update();
 
+        float currPlayerPoss = _controller.playerController.GetCurrentHeight(_controller.playerController.player.transform.position.y);
+        _controller.UI.heightTxt.text = "Height: " + currPlayerPoss.ToString("F2");
+
         // check if obj is falling
         if(_controller.playerController.Falling()) {
             Debug.Log("Obj is falling");
+            // stop cam movement
+            // trigger lose state
+            _stateMachine.ChangeState(_stateMachine.LoseState);
+        } else {
+
         }
     }
 

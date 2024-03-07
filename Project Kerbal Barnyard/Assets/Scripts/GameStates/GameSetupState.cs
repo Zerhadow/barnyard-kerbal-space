@@ -27,7 +27,7 @@ public class GameSetupState : State
         }
 
         // Activate canva elems
-        _controller.player.SetActive(false);
+        _controller.playerController.player.SetActive(false);
     }
 
     public override void Update()

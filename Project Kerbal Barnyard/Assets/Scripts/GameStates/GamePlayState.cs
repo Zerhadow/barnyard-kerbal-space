@@ -6,7 +6,6 @@ public class GamePlayState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
-    private Rigidbody2D rigidBody2D;
 
     public GamePlayState(GameFSM stateMachine, GameController controller)
     {
@@ -21,9 +20,7 @@ public class GamePlayState : State
 
         // Activate canva elems
         _controller.UI.playParentObj.SetActive(true);
-        rigidBody2D = _controller.player.GetComponent<Rigidbody2D>();
-        rigidBody2D.gravityScale = _controller.gravityScale;
-        MovePlayer(); // make obj go up
+        _controller.playerController.Launch();
     }
 
     public override void Update()
@@ -31,7 +28,7 @@ public class GamePlayState : State
         base.Update();
 
         // check if obj is falling
-        if(Falling()) {
+        if(_controller.playerController.Falling()) {
             Debug.Log("Obj is falling");
         }
     }
@@ -40,15 +37,6 @@ public class GamePlayState : State
         base.Exit();
 
         _controller.UI.playParentObj.SetActive(true);
-        rigidBody2D.gravityScale = 0;
-    }
-
-    public void MovePlayer() {
-        rigidBody2D.AddForce(Vector2.up * _controller.forceMagnitude);
-    }
-
-    private bool Falling() {
-        if(rigidBody2D.velocity.y < 0f) { return true; }
-        else { return false; }
+        _controller.playerController.SetGravityScale(0);
     }
 }

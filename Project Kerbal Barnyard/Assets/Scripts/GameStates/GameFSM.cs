@@ -11,6 +11,7 @@ public class GameFSM : StateMachineMB
     // state instances
     public GameSetupState SetupState { get; private set; }
     public GamePlayState PlayState { get; private set; }
+    public GameBuildState BuildState { get; private set; }
 
     private void Awake() {
         _controller = GetComponent<GameController>();
@@ -18,6 +19,7 @@ public class GameFSM : StateMachineMB
         // create states
         SetupState = new GameSetupState(this, _controller);
         PlayState = new GamePlayState(this, _controller);
+        BuildState = new GameBuildState(this, _controller);
     }
 
     private void Start() {

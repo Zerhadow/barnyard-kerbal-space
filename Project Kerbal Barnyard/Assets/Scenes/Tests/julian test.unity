@@ -1395,11 +1395,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 589180678}
-  forceMagnitude: 10000
-  gravityScale: 1
+  gravityScale: 0.1
   charMass: 10
   totalLoadMass: 5
-  totalThrust: 1000
+  totalThrust: 100
 --- !u!1 &1746376519
 GameObject:
   m_ObjectHideFlags: 0

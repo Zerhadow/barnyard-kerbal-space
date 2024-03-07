@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSetupState : State
+public class GameBuildState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
 
-    public GameSetupState(GameFSM stateMachine, GameController controller)
+    public GameBuildState(GameFSM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
         _controller = controller;
@@ -16,17 +16,10 @@ public class GameSetupState : State
     public override void Enter() {
         base.Enter();
 
-        Debug.Log("STATE: Game Setup");
-
-        // Disables everything on the canvas
-        // Iterate through all child GameObjects
-        foreach (Transform child in _controller.UI.canvas.transform)
-        {
-            // Set each child GameObject to inactive
-            child.gameObject.SetActive(false);
-        }
+        Debug.Log("STATE: Game Build");
 
         // Activate canva elems
+        _controller.UI.buildParentObj.SetActive(true);
     }
 
     public override void Update()
@@ -35,11 +28,15 @@ public class GameSetupState : State
 
         //check for tap input
         if(Input.GetMouseButtonDown(0)) {
-            _stateMachine.ChangeState(_stateMachine.BuildState);
+            // _stateMachine.ChangeState(_stateMachine.LobbyState);
         }
+        
+        // after certain amount of time, trigger intro anim
     }
 
     public override void Exit() {
         base.Exit();
+
+        _controller.UI.buildParentObj.SetActive(false);
     }
 }

@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject player;
     [Header("Movement Stuff")]
-    public float forceMagnitude = 10f;
+    private float forceMagnitude;
     public float gravityScale = 10f;
     private Rigidbody2D rigidBody2D;
     [Header("Physics Calculations")]
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public void Launch() { // initial launch speed
         rigidBody2D.gravityScale = gravityScale;
 
-        CalculateVelocity();
+        forceMagnitude = CalculateVelocity();
 
         rigidBody2D.AddForce(Vector2.up * forceMagnitude);
     }

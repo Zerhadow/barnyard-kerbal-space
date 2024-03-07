@@ -25,9 +25,11 @@ public class GameSetupState : State
             // Set each child GameObject to inactive
             child.gameObject.SetActive(false);
         }
+        
+        _controller.UI.overlayCanvas.SetActive(false);
 
         // Activate canva elems
-        _controller.player.SetActive(false);
+        _controller.playerController.player.SetActive(false);
     }
 
     public override void Update()

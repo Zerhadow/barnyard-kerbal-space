@@ -6,6 +6,7 @@ public class GamePlayState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
+    private Rigidbody2D rigidBody2D;
 
     public GamePlayState(GameFSM stateMachine, GameController controller)
     {
@@ -19,21 +20,35 @@ public class GamePlayState : State
         Debug.Log("STATE: Game Play");
 
         // Activate canva elems
+        _controller.UI.playParentObj.SetActive(true);
+        rigidBody2D = _controller.player.GetComponent<Rigidbody2D>();
+        rigidBody2D.gravityScale = _controller.gravityScale;
+        MovePlayer(); // make obj go up
     }
 
     public override void Update()
     {
         base.Update();
 
-        //check for tap input
-        if(Input.GetMouseButtonDown(0)) {
-            // _stateMachine.ChangeState(_stateMachine.LobbyState);
+        // check if obj is falling
+        if(Falling()) {
+            Debug.Log("Obj is falling");
         }
-        
-        // after certain amount of time, trigger intro anim
     }
 
     public override void Exit() {
         base.Exit();
+
+        _controller.UI.playParentObj.SetActive(true);
+        rigidBody2D.gravityScale = 0;
+    }
+
+    public void MovePlayer() {
+        rigidBody2D.AddForce(Vector2.up * _controller.forceMagnitude);
+    }
+
+    private bool Falling() {
+        if(rigidBody2D.velocity.y < 0f) { return true; }
+        else { return false; }
     }
 }

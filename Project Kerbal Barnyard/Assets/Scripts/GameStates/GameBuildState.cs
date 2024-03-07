@@ -20,6 +20,7 @@ public class GameBuildState : State
 
         // Activate canva elems
         _controller.UI.buildParentObj.SetActive(true);
+        _controller.player.SetActive(true);
     }
 
     public override void Update()

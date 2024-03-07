@@ -1397,6 +1397,9 @@ MonoBehaviour:
   player: {fileID: 589180678}
   forceMagnitude: 10000
   gravityScale: 1
+  charMass: 10
+  totalLoadMass: 5
+  totalThrust: 1000
 --- !u!1 &1746376519
 GameObject:
   m_ObjectHideFlags: 0

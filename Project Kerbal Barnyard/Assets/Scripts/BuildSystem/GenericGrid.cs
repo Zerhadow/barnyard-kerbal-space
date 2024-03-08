@@ -50,8 +50,8 @@ public class GenericGrid<TGridObject>
                     displayArray[x, y] = tileDisplay;*/
                     #endregion
                     Vector3 centerOffset = new Vector3(cellSize * 0.5f, 0.025f, cellSize * 0.5f);
-                    debugTextArray[x, y] = Utility.CreateWorldText(gridArray[x, y]?.ToString(),
-                        cellSize, GetWorldPosition(x, y) + centerOffset, Quaternion.Euler(90, 0, 0));
+                    /*debugTextArray[x, y] = Utility.CreateWorldText(gridArray[x, y]?.ToString(),
+                        cellSize, GetWorldPosition(x, y) + centerOffset, Quaternion.Euler(90, 0, 0));*/
 
                     //draw visuals
                     Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);

@@ -172,6 +172,7 @@ MonoBehaviour:
   buildParentObj: {fileID: 1746376519}
   playParentObj: {fileID: 704181068}
   heightTxt: {fileID: 1429390952}
+  speedTxt: {fileID: 0}
 --- !u!1 &465045920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1400,7 @@ MonoBehaviour:
   charMass: 10
   totalLoadMass: 5
   totalThrust: 100
+  winHeight: 0
 --- !u!1 &1746376519
 GameObject:
   m_ObjectHideFlags: 0

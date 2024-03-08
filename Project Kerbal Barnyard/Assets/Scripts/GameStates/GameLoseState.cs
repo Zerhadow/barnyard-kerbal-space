@@ -17,7 +17,7 @@ public class GameLoseState : State
     public override void Enter() {
         base.Enter();
 
-        Debug.Log("STATE: Game Win");
+        Debug.Log("STATE: Game Lose");
 
         // Activate canva elems
     }

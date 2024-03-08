@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public int totalLoadMass;
     private int totalMass;
     public int totalThrust;
+    [Header("Win Conditions")]
+    public float winHeight;
 
 
     private void Awake() {
@@ -51,5 +53,9 @@ public class PlayerController : MonoBehaviour
 
     public float GetCurrentHeight(float currPoss) {
         return currPoss - startingY;
+    }
+
+    public float GetCurrentSpeed() {
+        return rigidBody2D.velocity.y;
     }
 }

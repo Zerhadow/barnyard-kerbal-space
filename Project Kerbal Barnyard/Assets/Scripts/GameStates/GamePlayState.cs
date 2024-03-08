@@ -30,6 +30,7 @@ public class GamePlayState : State
 
         float currPlayerPoss = _controller.playerController.GetCurrentHeight(_controller.playerController.player.transform.position.y);
         _controller.UI.heightTxt.text = "Height: " + currPlayerPoss.ToString("F2");
+        _controller.UI.speedTxt.text = "Speed: " + _controller.playerController.GetCurrentSpeed().ToString("F2");
 
         // check if obj is falling
         if(_controller.playerController.Falling()) {
@@ -37,8 +38,10 @@ public class GamePlayState : State
             // stop cam movement
             // trigger lose state
             _stateMachine.ChangeState(_stateMachine.LoseState);
-        } else {
+        }
 
+        if(currPlayerPoss >= _controller.playerController.winHeight) {
+            _stateMachine.ChangeState(_stateMachine.WinState);
         }
     }
 

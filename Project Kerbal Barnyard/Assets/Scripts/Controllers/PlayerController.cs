@@ -52,4 +52,8 @@ public class PlayerController : MonoBehaviour
     public float GetCurrentHeight(float currPoss) {
         return currPoss - startingY;
     }
+
+    public float GetCurrentSpeed() {
+        return rigidBody2D.velocity.y;
+    }
 }

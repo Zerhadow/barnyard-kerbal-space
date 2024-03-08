@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     [Header("Play Dependencies")]
     public GameObject playParentObj;
     public TMP_Text heightTxt;
+    public TMP_Text speedTxt;
 
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();

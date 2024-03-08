@@ -38,8 +38,10 @@ public class GamePlayState : State
             // stop cam movement
             // trigger lose state
             _stateMachine.ChangeState(_stateMachine.LoseState);
-        } else {
+        }
 
+        if(currPlayerPoss >= _controller.playerController.winHeight) {
+            _stateMachine.ChangeState(_stateMachine.WinState);
         }
     }
 

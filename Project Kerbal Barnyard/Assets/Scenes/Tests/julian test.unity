@@ -1535,6 +1535,7 @@ MonoBehaviour:
   charMass: 10
   totalLoadMass: 5
   totalThrust: 100
+  winHeight: 1000
 --- !u!1 &1746376519
 GameObject:
   m_ObjectHideFlags: 0

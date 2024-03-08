@@ -24,6 +24,12 @@ public class GameWinState : State
     public override void Update()
     {
         base.Update();
+
+        // either click on screen or button
+        if(Input.GetMouseButtonDown(0)) {
+            // _stateMachine.ChangeState(_stateMachine.BuildState);
+            // scene change
+        }
     }
 
     public override void Exit() {

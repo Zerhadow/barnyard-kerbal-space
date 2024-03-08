@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public int totalLoadMass;
     private int totalMass;
     public int totalThrust;
+    [Header("Win Conditions")]
+    public float winHeight;
 
 
     private void Awake() {

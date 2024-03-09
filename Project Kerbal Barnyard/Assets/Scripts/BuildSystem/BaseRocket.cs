@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Utility : MonoBehaviour
+public class BaseRocket : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

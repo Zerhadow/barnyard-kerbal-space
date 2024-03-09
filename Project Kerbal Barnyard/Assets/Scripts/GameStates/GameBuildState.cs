@@ -21,6 +21,7 @@ public class GameBuildState : State
         // Activate canva elems
         _controller.UI.buildParentObj.SetActive(true);
         _controller.playerController.player.SetActive(true);
+        //enable grid
         _controller.buildController.EnableGridMask(true);
     }
 
@@ -41,7 +42,10 @@ public class GameBuildState : State
 
         // deactivate canva elems
         _controller.UI.buildParentObj.SetActive(false);
-        _controller.buildController.EnableGridMask(true);
+        //disable grid
+        _controller.buildController.EnableGridMask(false);
+        //follow camera
+        _controller.cameraController.EnableDisableCameraFollow(true);
 
     }
 }

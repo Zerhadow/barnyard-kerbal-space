@@ -73,4 +73,8 @@ public static class Utility
 
         return hit;
     }
+    public static Vector3 GetWorldMousePosition()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 }

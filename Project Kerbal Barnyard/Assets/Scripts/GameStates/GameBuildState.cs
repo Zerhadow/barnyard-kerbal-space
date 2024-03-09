@@ -21,6 +21,7 @@ public class GameBuildState : State
         // Activate canva elems
         _controller.UI.buildParentObj.SetActive(true);
         _controller.playerController.player.SetActive(true);
+        _controller.buildController.EnableGridMask(true);
     }
 
     public override void Update()
@@ -38,6 +39,9 @@ public class GameBuildState : State
     public override void Exit() {
         base.Exit();
 
+        // deactivate canva elems
         _controller.UI.buildParentObj.SetActive(false);
+        _controller.buildController.EnableGridMask(true);
+
     }
 }

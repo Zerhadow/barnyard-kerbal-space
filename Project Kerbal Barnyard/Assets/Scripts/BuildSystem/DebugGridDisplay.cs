@@ -6,6 +6,9 @@ using UnityEngine;
 [ExecuteAlways]
 public class DebugGridDisplay : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField] private bool _debugEnabled = true;
+
     BuildController _controller;
 
     private int _savedWidth;
@@ -49,7 +52,7 @@ public class DebugGridDisplay : MonoBehaviour
 
         if (_controller.SimplifiedGrid != null)
         {
-            _controller.SimplifiedGrid.RefreshGridDisplay();
+            if(_debugEnabled) _controller.SimplifiedGrid.RefreshGridDisplay();
         }
 
     }
@@ -61,6 +64,6 @@ public class DebugGridDisplay : MonoBehaviour
             _controller.SimplifiedGrid.ResizeGrid(_controller.width, _controller.height, _controller.cellSize, _controller.startPosition);
         }
 
-        Debug.LogWarning("ReconstructingGrid");
+        if(_debugEnabled) Debug.LogWarning("ReconstructingGrid");
     }
 }

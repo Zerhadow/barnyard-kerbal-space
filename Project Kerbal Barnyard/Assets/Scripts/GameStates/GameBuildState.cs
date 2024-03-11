@@ -18,6 +18,9 @@ public class GameBuildState : State
 
         Debug.Log("STATE: Game Build");
 
+        //enable build controller
+        _controller.buildController.gameObject.SetActive(true);
+
         // Activate canva elems
         _controller.UI.buildParentObj.SetActive(true);
         _controller.playerController.player.SetActive(true);
@@ -46,6 +49,9 @@ public class GameBuildState : State
         _controller.buildController.EnableGridMask(false);
         //follow camera
         _controller.cameraController.EnableDisableCameraFollow(true);
+
+        //disable build controller
+        _controller.buildController.gameObject.SetActive(false);
 
     }
 }

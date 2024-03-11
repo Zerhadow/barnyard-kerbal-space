@@ -8,7 +8,7 @@ public class RocketPart : MonoBehaviour
 }
 public class GridTile
 {
-    private GenericGrid<GridTile> grid;
+    private SimplifiedGrid grid;
 
     public int x { get; private set; }
     public int y { get; private set; }
@@ -17,7 +17,7 @@ public class GridTile
 
     public int _value;
 
-    public GridTile(GenericGrid<GridTile> grid, int x, int y)
+    public GridTile(SimplifiedGrid grid, int x, int y)
     {
         _value = 0;
         this.grid = grid;
@@ -25,6 +25,17 @@ public class GridTile
         this.y = y;
 
         isOccupied = false;
+    }
+
+    public void ToggleIsOccupied(bool isOccupied)
+    {
+        this.isOccupied = isOccupied;
+        grid.OnGridTileChanged?.Invoke(this);
+    }
+    public override string ToString()
+    {
+        //return base.ToString();
+        return isOccupied.ToString();
     }
 }
 public class PartData

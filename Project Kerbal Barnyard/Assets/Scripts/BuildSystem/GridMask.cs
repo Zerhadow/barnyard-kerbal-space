@@ -13,8 +13,7 @@ public class GridMask : MonoBehaviour
     private void Update()
     {
         //follow mouse
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
+        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         transform.position = mousePosition;
     }
 }

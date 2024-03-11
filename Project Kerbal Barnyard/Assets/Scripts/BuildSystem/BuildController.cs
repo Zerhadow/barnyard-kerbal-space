@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 // using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
@@ -18,23 +19,91 @@ public class BuildController : MonoBehaviour
 
     [Header("Grid Helpers")]
     [SerializeField] private GameObject _grid;
+    [SerializeField] private TextMeshProUGUI _coordDisplay;
+
+    [Header("Debug")]
+    public bool debug = false;
+
+    private Camera _mainCamera;
 
     private void Awake()
     {
         _gameController = GetComponentInParent<GameController>();
+        _mainCamera = Camera.main;
     }
     private void Start()
     {
         EnableGridMask(false);
+
+        //disable build controller
+        gameObject.SetActive(false);
     }
     private void Update()
     {
+        #region Position Info
+        //breakdown the information related to the mouse position and the grid
+        Vector2 rawWorldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2Int gridXYPosition = SimplifiedGrid.GetXY(rawWorldPosition);
+        Vector2 tilePosition = SimplifiedGrid.GetWorldPosition(gridXYPosition);
+        Vector2 tileCenter = tilePosition + new Vector2(cellSize * 0.5f, cellSize * 0.5f);
+        #endregion
 
+        #region Debug
+        if (debug)
+        {
+            if (_coordDisplay != null)
+            {
+                if(_coordDisplay.transform.position != (Vector3)tileCenter) _coordDisplay.transform.position = tileCenter;
+                if(_coordDisplay.text != gridXYPosition.ToString()) _coordDisplay.text = gridXYPosition.ToString();
+            }
+        }
+        #endregion
+
+        //check for tap input
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.LogFormat("[BC] coords: {0}", gridXYPosition);
+
+            //add gridtile to dictionary
+            if(!SimplifiedGrid.GridTiles.ContainsKey(gridXYPosition))
+            {
+                GridTile gridTile = new GridTile(SimplifiedGrid, gridXYPosition.x, gridXYPosition.y);
+                gridTile.ToggleIsOccupied(true);
+
+                SimplifiedGrid.GridTiles.Add(gridXYPosition, gridTile);
+            }
+            //or toggle isOccupied
+            if (SimplifiedGrid.GridTiles.ContainsKey(gridXYPosition))
+            {
+                SimplifiedGrid.GridTiles[gridXYPosition].ToggleIsOccupied(!SimplifiedGrid.GridTiles[gridXYPosition].isOccupied);
+            }
+        }
     }
 
     public void EnableGridMask(bool enable)
     {
         if(_grid != null) _grid.SetActive(enable);
     }
-    
+
+
+    private void OnDrawGizmos()
+    {
+        if(SimplifiedGrid != null)
+        {
+            foreach (var tileData in SimplifiedGrid.GridTiles)
+            {
+                if (tileData.Value.isOccupied)
+                {
+                    //get center pos
+                    Vector2 worldPos = SimplifiedGrid.GetWorldPosition(tileData.Key);
+                    Vector2 center = worldPos + (Vector2.one * cellSize * 0.5f);
+
+                    //draw gizmo
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawCube(center, Vector3.one * cellSize * 0.5f);
+                }
+            }
+        }
+        
+    }
 }

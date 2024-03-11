@@ -51,7 +51,8 @@ public class PlayerController : MonoBehaviour
         rigidBody2D.gravityScale = num;
     }
 
-    public float GetCurrentHeight(float currPoss) {
+    public float GetCurrentHeight() {
+        float currPoss = player.transform.position.y;
         return currPoss - startingY;
     }
 

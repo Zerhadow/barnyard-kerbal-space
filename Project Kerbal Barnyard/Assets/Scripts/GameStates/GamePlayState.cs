@@ -28,7 +28,7 @@ public class GamePlayState : State
     {
         base.Update();
 
-        float currPlayerPoss = _controller.playerController.GetCurrentHeight(_controller.playerController.player.transform.position.y);
+        float currPlayerPoss = _controller.playerController.GetCurrentHeight();
         _controller.UI.heightTxt.text = "Height: " + currPlayerPoss.ToString("F2");
         _controller.UI.speedTxt.text = "Speed: " + _controller.playerController.GetCurrentSpeed().ToString("F2");
 

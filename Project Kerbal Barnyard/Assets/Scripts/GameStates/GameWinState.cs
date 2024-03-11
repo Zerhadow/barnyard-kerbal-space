@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameWinState : State
 {
@@ -19,6 +20,7 @@ public class GameWinState : State
         Debug.Log("STATE: Game Win");
 
         // Activate canva elems
+        _controller.UI.winOverlay.SetActive(true);
     }
 
     public override void Update()
@@ -27,12 +29,14 @@ public class GameWinState : State
 
         // either click on screen or button
         if(Input.GetMouseButtonDown(0)) {
-            // _stateMachine.ChangeState(_stateMachine.BuildState);
-            // scene change
+            // go to credit scene
+            SceneManager.LoadScene("Main Menu");
         }
     }
 
     public override void Exit() {
         base.Exit();
+
+        _controller.UI.winOverlay.SetActive(false);
     }
 }

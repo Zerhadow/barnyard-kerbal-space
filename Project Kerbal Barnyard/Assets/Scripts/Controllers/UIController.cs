@@ -5,9 +5,13 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
+    private GameFSM _stateMachine;
+    [Header("Canvas Dependencies")]
     public GameObject canvas;
     public GameObject overlayCanvas;
-    private GameFSM _stateMachine;
+    public List<GameObject> canvasObj = new List<GameObject>();
+    public GameObject winOverlay;
+    public GameObject resultsOverlay;
 
     [Header("Build Dependencies")]
     public GameObject buildParentObj;

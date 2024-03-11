@@ -14,6 +14,7 @@ public class GameFSM : StateMachineMB
     public GameBuildState BuildState { get; private set; }
     public GameWinState WinState { get; private set; }
     public GameLoseState LoseState { get; private set; }
+    public GamePauseState PauseState { get; private set; }
 
     private void Awake() {
         _controller = GetComponent<GameController>();
@@ -24,6 +25,7 @@ public class GameFSM : StateMachineMB
         BuildState = new GameBuildState(this, _controller);
         WinState = new GameWinState(this, _controller);
         LoseState = new GameLoseState(this, _controller);
+        PauseState = new GamePauseState(this, _controller);
     }
 
     private void Start() {

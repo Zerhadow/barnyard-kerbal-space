@@ -20,14 +20,23 @@ public class GameLoseState : State
         Debug.Log("STATE: Game Lose");
 
         // Activate canva elems
+        _controller.UI.resultsOverlay.SetActive(true);
     }
 
     public override void Update()
     {
         base.Update();
+
+        // either click on screen or button
+        if(Input.GetMouseButtonDown(0)) {
+            // go back to build state
+            _stateMachine.ChangeState(_stateMachine.BuildState);
+        }
     }
 
     public override void Exit() {
         base.Exit();
+
+        _controller.UI.resultsOverlay.SetActive(false);
     }
 }

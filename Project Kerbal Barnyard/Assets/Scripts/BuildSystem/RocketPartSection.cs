@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class RocketPartSection : MonoBehaviour
 {
-    [Header("Connectors")]
+    /*[Header("Connectors")]
     public bool connectUp;
     public bool connectRight;
     public bool connectDown;
-    public bool connectLeft;
+    public bool connectLeft;*/
 
     public Vector2Int SectionOffset { get; private set; }
     public RocketPart ParentPart {  get; private set; }
 
-    [Header("Status")]
-    [SerializeField]
-    private bool _isConnected = false;
-    [SerializeField]
+    //[Header("Status")]
     private bool _isOccupied = false;
+    
+    //[SerializeField] private bool _isOccupied = false;
 
     //private List<Collider2D> connectors = new List<Collider2D>();
 
@@ -31,7 +30,7 @@ public class RocketPartSection : MonoBehaviour
         //populate connectors list
         //connectors = new List<Collider2D>(GetComponentsInChildren<Collider2D>());
     }
-    public bool GetOccupiedStatus(SimplifiedGrid grid)
+    /*public bool GetOccupiedStatus(SimplifiedGrid grid)
     {
         Vector2Int xy = grid.GetXY(transform.position);
 
@@ -43,17 +42,17 @@ public class RocketPartSection : MonoBehaviour
         {
             return false;
         }
-    }
-    public bool GetConnectedStatus()
+    }*/
+    public bool GetOccupiedStatus()
     {
-        return _isConnected;
+        return _isOccupied;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
-        _isConnected = true;
+        _isOccupied = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _isConnected = false;
-    }
+        _isOccupied = false;
+    }*/
 }

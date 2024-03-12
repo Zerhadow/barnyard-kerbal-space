@@ -77,7 +77,7 @@ public class BuildController : MonoBehaviour
         #endregion
     }
 
-    [SerializeField] private Transform _selectedPart;
+    
 
     #region Grid Actions
     public void OccupyPartTiles()
@@ -90,11 +90,17 @@ public class BuildController : MonoBehaviour
     }
     #endregion
 
+
+    //[SerializeField] private Transform _selectedPart;
+    [SerializeField] private RocketPart _selectedPart;
+    [SerializeField] private Vector2 _previousPosition;
+
     #region Click Actions
     public void MouseDownAction(Vector2Int xy, Vector2 tileCenter)
     {
+        #region Debug Only
         //add gridtile to dictionary
-        if (!SimplifiedGrid.GridTiles.ContainsKey(xy))
+        /*if (!SimplifiedGrid.GridTiles.ContainsKey(xy))
         {
             GridTile gridTile = new GridTile(SimplifiedGrid, xy.x, xy.y);
             gridTile.ToggleIsOccupied(true);
@@ -105,10 +111,24 @@ public class BuildController : MonoBehaviour
         if (SimplifiedGrid.GridTiles.ContainsKey(xy))
         {
             SimplifiedGrid.GridTiles[xy].ToggleIsOccupied(!SimplifiedGrid.GridTiles[xy].isOccupied);
-        }
+        }*/
+        #endregion
 
         /// if no piece, pickup piece
         ///
+
+        //raycast check if selecting a tile
+        RaycastHit2D hit = Utility.GetMouseHit2D();
+        if(hit != null)
+        {
+            RocketPart rocketPart = hit.collider.GetComponent<RocketPart>();
+            if (rocketPart != null)
+            {
+                _previousPosition = rocketPart.transform.position;
+                _selectedPart = rocketPart;
+            }
+        }
+        
 
     }
     public void MouseHoldAction(Vector2Int xy, Vector2 tileCenter)
@@ -116,13 +136,30 @@ public class BuildController : MonoBehaviour
         /// if piece is picked up, move it around with mouse based on grid position
         ///
 
-        _selectedPart.transform.position = tileCenter;
+        if(_selectedPart != null )
+        {
+            _selectedPart.transform.position = tileCenter;
+        }
     }
     public void MouseUpAction(Vector2Int xy, Vector2 tileCenter)
     {
         /// if piece is picked up, check if it can be placed and place it on grid
         ///     only if not on top of other piece and if next to placed piece
         /// 
+        if(_selectedPart != null )
+        {
+            if (_selectedPart.isValidPlacement == true)
+            {
+                //can be dropped
+                _selectedPart = null;
+            }
+            else
+            {
+                //shouldn't be dropped
+                _selectedPart.transform.position = _previousPosition;
+                _selectedPart = null;
+            }
+        }
     }
     #endregion
 

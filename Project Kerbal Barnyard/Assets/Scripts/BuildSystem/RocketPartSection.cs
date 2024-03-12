@@ -16,7 +16,7 @@ public class RocketPartSection : MonoBehaviour
     [Header("Status")]
     [SerializeField]
     private bool _isConnected = false;
-
+    [SerializeField]
     private bool _isOccupied = false;
 
     //private List<Collider2D> connectors = new List<Collider2D>();
@@ -31,11 +31,6 @@ public class RocketPartSection : MonoBehaviour
         //populate connectors list
         //connectors = new List<Collider2D>(GetComponentsInChildren<Collider2D>());
     }
-
-    public void SetConnectedStatus(bool connected)
-    {
-        _isConnected = connected;
-    }
     public bool GetOccupiedStatus(SimplifiedGrid grid)
     {
         Vector2Int xy = grid.GetXY(transform.position);
@@ -49,25 +44,10 @@ public class RocketPartSection : MonoBehaviour
             return false;
         }
     }
-    public bool GetIsValidSection()
+    public bool GetConnectedStatus()
     {
-        /// check if this part can be placed
-        ///     check if connected to another part
-        ///     check if not overlapping with another part
-        /// if valid => update parent to show it can be placed
-
-        if(_isConnected == false && _isOccupied == true)
-            return false;
-        else
-            return true;
+        return _isConnected;
     }
-
-    /*private void OnTriggerStay2D(Collider2D collision)
-    {
-        //called by all child collider objects
-
-        _isConnected = true;
-    }*/
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _isConnected = true;

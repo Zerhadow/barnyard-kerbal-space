@@ -60,6 +60,7 @@ public class BuildController : MonoBehaviour
         #endregion
 
 
+        #region Input
         //check for input
         if (Input.GetMouseButtonDown(0))
         {
@@ -73,7 +74,21 @@ public class BuildController : MonoBehaviour
         {
             MouseUpAction(gridXYPosition, tileCenter);
         }
+        #endregion
     }
+
+    [SerializeField] private Transform _selectedPart;
+
+    #region Grid Actions
+    public void OccupyPartTiles()
+    {
+
+    }
+    public void UnoccupyPartTiles()
+    {
+
+    }
+    #endregion
 
     #region Click Actions
     public void MouseDownAction(Vector2Int xy, Vector2 tileCenter)
@@ -100,6 +115,8 @@ public class BuildController : MonoBehaviour
     {
         /// if piece is picked up, move it around with mouse based on grid position
         ///
+
+        _selectedPart.transform.position = tileCenter;
     }
     public void MouseUpAction(Vector2Int xy, Vector2 tileCenter)
     {
@@ -108,6 +125,7 @@ public class BuildController : MonoBehaviour
         /// 
     }
     #endregion
+
 
     public void EnableGridMask(bool enable)
     {

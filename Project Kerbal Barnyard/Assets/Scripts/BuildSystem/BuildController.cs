@@ -37,11 +37,10 @@ public class BuildController : MonoBehaviour
         //setup grid
         SimplifiedGrid = new SimplifiedGrid(width, height, cellSize, startPosition);
 
-
-        EnableGridMask(false);
-
-        //disable build controller
-        gameObject.SetActive(false);
+        //disable stuff
+        EnableGridMask(false); //grid
+        gameObject.SetActive(false); //controller
+        _gameController.UI.partsShop.SetActive(false); // parts shop UI
     }
     private void Update()
     {
@@ -189,6 +188,7 @@ public class BuildController : MonoBehaviour
     }
     #endregion
 
+    #region UI Stuff
     public void SpawnPart(RocketPart partPrefab)
     {
         StartCoroutine(DelaySpawnPart(partPrefab));
@@ -204,11 +204,13 @@ public class BuildController : MonoBehaviour
             rocketPart.transform.position = new Vector3(0, -435, 0);
         }
     }
-
     public void EnableGridMask(bool enable)
     {
-        if(_grid != null) _grid.SetActive(enable);
+        if (_grid != null) _grid.SetActive(enable);
     }
+    #endregion
+
+
 
 
     /*private void OnDrawGizmos()

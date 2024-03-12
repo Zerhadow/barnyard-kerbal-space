@@ -34,6 +34,7 @@ public class RocketPart : MonoBehaviour
     private void Start()
     {
         isValidPlacement = true;
+        Debug.Log("[RocketPart] Start");
     }
     private void OnEnable()
     {

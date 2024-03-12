@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     public List<GameObject> canvasObj = new List<GameObject>();
     public GameObject winOverlay;
     public GameObject resultsOverlay;
+    public GameObject partsShop;
 
     [Header("Build Dependencies")]
     public GameObject buildParentObj;

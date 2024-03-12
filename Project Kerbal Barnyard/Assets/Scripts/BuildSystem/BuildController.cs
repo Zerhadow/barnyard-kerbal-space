@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 // using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
@@ -33,6 +34,10 @@ public class BuildController : MonoBehaviour
     }
     private void Start()
     {
+        //setup grid
+        SimplifiedGrid = new SimplifiedGrid(width, height, cellSize, startPosition);
+
+
         EnableGridMask(false);
 
         //disable build controller
@@ -75,6 +80,11 @@ public class BuildController : MonoBehaviour
             MouseUpAction(gridXYPosition, tileCenter);
         }
         #endregion
+
+        if (_selectedPart != null)
+        {
+            _selectedPart.transform.position = tileCenter;
+        }
     }
 
     
@@ -117,22 +127,27 @@ public class BuildController : MonoBehaviour
         /// if no piece, pickup piece
         ///
 
-        //raycast check if selecting a tile
-        /*RaycastHit2D hit = Utility.GetMouseHit2D();
-        if(hit != null)
+        if(_selectedPart == null)
         {
-            if (hit.collider.TryGetComponent<RocketPart>(out var rocketPart))
+            //raycast check if selecting a tile
+            RaycastHit2D hit = Utility.GetMouseHit2D();
+            if (hit)
             {
-                _previousPosition = rocketPart.transform.position;
-                _selectedPart = rocketPart;
+                if (hit.collider.TryGetComponent(out RocketPart rocketPart))
+                {
+                    _previousPosition = rocketPart.transform.position;
+                    _selectedPart = rocketPart;
+                }
             }
-        }*/
-        
-        Utility.GetMouseHit2D().collider.TryGetComponent(out RocketPart rocketPart);
-        if (rocketPart != null)
+            else
+            {
+                _selectedPart = null;
+                _previousPosition = Vector2.zero;
+            }
+        }
+        else
         {
-            _previousPosition = rocketPart.transform.position;
-            _selectedPart = rocketPart;
+            MouseUpAction(xy, tileCenter);
         }
 
     }
@@ -141,10 +156,10 @@ public class BuildController : MonoBehaviour
         /// if piece is picked up, move it around with mouse based on grid position
         ///
 
-        if(_selectedPart != null )
+        /*if(_selectedPart != null)
         {
             _selectedPart.transform.position = tileCenter;
-        }
+        }*/
     }
     public void MouseUpAction(Vector2Int xy, Vector2 tileCenter)
     {
@@ -161,13 +176,34 @@ public class BuildController : MonoBehaviour
             else
             {
                 //shouldn't be dropped
-                _selectedPart.transform.position = _previousPosition;
+                if(_previousPosition != Vector2.zero)
+                    _selectedPart.transform.position = _previousPosition;
+                else
+                    _selectedPart.gameObject.SetActive(false);
+
                 _selectedPart = null;
             }
+
+            _previousPosition = Vector2.zero;
         }
     }
     #endregion
 
+    public void SpawnPart(RocketPart partPrefab)
+    {
+        StartCoroutine(DelaySpawnPart(partPrefab));
+    }
+    IEnumerator DelaySpawnPart(RocketPart partPrefab)
+    {
+        yield return new WaitForNextFrameUnit();
+
+        if (_selectedPart == null)
+        {
+            RocketPart rocketPart = Instantiate(partPrefab, null);
+            _selectedPart = rocketPart;
+            rocketPart.transform.position = new Vector3(0, -435, 0);
+        }
+    }
 
     public void EnableGridMask(bool enable)
     {

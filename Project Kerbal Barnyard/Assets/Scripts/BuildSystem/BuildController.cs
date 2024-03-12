@@ -59,26 +59,55 @@ public class BuildController : MonoBehaviour
         }
         #endregion
 
-        //check for tap input
+
+        //check for input
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.LogFormat("[BC] coords: {0}", gridXYPosition);
-
-            //add gridtile to dictionary
-            if(!SimplifiedGrid.GridTiles.ContainsKey(gridXYPosition))
-            {
-                GridTile gridTile = new GridTile(SimplifiedGrid, gridXYPosition.x, gridXYPosition.y);
-                gridTile.ToggleIsOccupied(true);
-
-                SimplifiedGrid.GridTiles.Add(gridXYPosition, gridTile);
-            }
-            //or toggle isOccupied
-            if (SimplifiedGrid.GridTiles.ContainsKey(gridXYPosition))
-            {
-                SimplifiedGrid.GridTiles[gridXYPosition].ToggleIsOccupied(!SimplifiedGrid.GridTiles[gridXYPosition].isOccupied);
-            }
+            MouseDownAction(gridXYPosition, tileCenter);
+        }
+        if (Input.GetMouseButton(0))
+        {
+            MouseHoldAction(gridXYPosition, tileCenter);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            MouseUpAction(gridXYPosition, tileCenter);
         }
     }
+
+    #region Click Actions
+    public void MouseDownAction(Vector2Int xy, Vector2 tileCenter)
+    {
+        //add gridtile to dictionary
+        if (!SimplifiedGrid.GridTiles.ContainsKey(xy))
+        {
+            GridTile gridTile = new GridTile(SimplifiedGrid, xy.x, xy.y);
+            gridTile.ToggleIsOccupied(true);
+
+            SimplifiedGrid.GridTiles.Add(xy, gridTile);
+        }
+        //or toggle isOccupied
+        if (SimplifiedGrid.GridTiles.ContainsKey(xy))
+        {
+            SimplifiedGrid.GridTiles[xy].ToggleIsOccupied(!SimplifiedGrid.GridTiles[xy].isOccupied);
+        }
+
+        /// if no piece, pickup piece
+        ///
+
+    }
+    public void MouseHoldAction(Vector2Int xy, Vector2 tileCenter)
+    {
+        /// if piece is picked up, move it around with mouse based on grid position
+        ///
+    }
+    public void MouseUpAction(Vector2Int xy, Vector2 tileCenter)
+    {
+        /// if piece is picked up, check if it can be placed and place it on grid
+        ///     only if not on top of other piece and if next to placed piece
+        /// 
+    }
+    #endregion
 
     public void EnableGridMask(bool enable)
     {
@@ -86,7 +115,7 @@ public class BuildController : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         if(SimplifiedGrid != null)
         {
@@ -103,7 +132,6 @@ public class BuildController : MonoBehaviour
                     Gizmos.DrawCube(center, Vector3.one * cellSize * 0.5f);
                 }
             }
-        }
-        
-    }
+        } 
+    }*/
 }

@@ -1110,6 +1110,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 167735217276473219, guid: 177e6df254a7f73439929139818000fe, type: 3}
   m_PrefabInstance: {fileID: 1687904451}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &623570496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623570497}
+  m_Layer: 0
+  m_Name: PartsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623570497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623570496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1441145337}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &632973225 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 167735217276473219, guid: 177e6df254a7f73439929139818000fe, type: 3}
@@ -3726,6 +3757,7 @@ Transform:
   m_Children:
   - {fileID: 1571282714}
   - {fileID: 1429172314}
+  - {fileID: 623570497}
   m_Father: {fileID: 2000571525}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1441145338

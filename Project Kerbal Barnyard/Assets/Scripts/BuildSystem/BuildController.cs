@@ -118,17 +118,22 @@ public class BuildController : MonoBehaviour
         ///
 
         //raycast check if selecting a tile
-        RaycastHit2D hit = Utility.GetMouseHit2D();
+        /*RaycastHit2D hit = Utility.GetMouseHit2D();
         if(hit != null)
         {
-            RocketPart rocketPart = hit.collider.GetComponent<RocketPart>();
-            if (rocketPart != null)
+            if (hit.collider.TryGetComponent<RocketPart>(out var rocketPart))
             {
                 _previousPosition = rocketPart.transform.position;
                 _selectedPart = rocketPart;
             }
-        }
+        }*/
         
+        Utility.GetMouseHit2D().collider.TryGetComponent(out RocketPart rocketPart);
+        if (rocketPart != null)
+        {
+            _previousPosition = rocketPart.transform.position;
+            _selectedPart = rocketPart;
+        }
 
     }
     public void MouseHoldAction(Vector2Int xy, Vector2 tileCenter)

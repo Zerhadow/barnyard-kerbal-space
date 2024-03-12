@@ -10,6 +10,9 @@ public class BuildController : MonoBehaviour
 {
     private GameController _gameController;
 
+    [Header("Dependencies")]
+    public GameObject partParent;
+
     [Header("Grid Dimensions")]
     public int width = 10;
     public int height = 10;
@@ -69,14 +72,10 @@ public class BuildController : MonoBehaviour
         {
             MouseDownAction(gridXYPosition, tileCenter);
         }
-        /*if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(1))
         {
-            MouseHoldAction(gridXYPosition, tileCenter);
+            RightClickAction(gridXYPosition, tileCenter);
         }
-        if (Input.GetMouseButtonUp(0))
-        {
-            MouseUpAction(gridXYPosition, tileCenter);
-        }*/
         #endregion
 
         //always move selected part with mouse
@@ -162,7 +161,6 @@ public class BuildController : MonoBehaviour
         ///     only if not on top of other piece and if next to placed piece
         /// 
 
-        Debug.LogWarning("Next to part: " + _selectedPart.CheckIfNextToPart());
 
         if(_selectedPart != null )
         {
@@ -174,10 +172,10 @@ public class BuildController : MonoBehaviour
             else
             {
                 //shouldn't be dropped
-                if(_previousPosition != Vector2.zero)
+                if (_previousPosition != Vector2.zero)
                     _selectedPart.transform.position = _previousPosition;
                 else
-                    _selectedPart.gameObject.SetActive(false);
+                    RemovePart(_selectedPart); //destroy maybe
 
                 _selectedPart = null;
             }
@@ -185,7 +183,26 @@ public class BuildController : MonoBehaviour
             _previousPosition = Vector2.zero;
         }
 
+        RocketPart.OnPartMoved?.Invoke();
+    }
+    public void RightClickAction(Vector2Int xy, Vector2 tileCenter)
+    {
+        if(_selectedPart != null )
+        {
+            RemovePart(_selectedPart);
+        }
 
+        MouseUpAction(xy, tileCenter);
+    }
+    #endregion
+
+    #region Rocket Part Actions
+    private void RemovePart(RocketPart rocketPart)
+    {
+        /// TODO Decide how to handle removing rocket parts
+        /// 
+
+        _selectedPart.gameObject.SetActive(false);
     }
     #endregion
 
@@ -200,7 +217,7 @@ public class BuildController : MonoBehaviour
 
         if (_selectedPart == null)
         {
-            RocketPart rocketPart = Instantiate(partPrefab, null);
+            RocketPart rocketPart = Instantiate(partPrefab, partParent.transform);
             _selectedPart = rocketPart;
             rocketPart.transform.position = new Vector3(0, -435, 0);
         }

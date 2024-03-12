@@ -12,6 +12,8 @@ public class RocketPart : MonoBehaviour
     public int weight;
     public int thrust;
     public int durability;
+    public PartType partType;
+
     [Header("Grid Interaction")]
     [Tooltip("Determines if the part can be placed/added to the ship.")]
     public bool isValidPlacement = true;
@@ -24,7 +26,7 @@ public class RocketPart : MonoBehaviour
     private BuildController _bController;
     //private List<RocketPartSection> sections;
 
-    public Action OnPartMoved;
+    public static Action OnPartMoved = delegate { };
 
     #region Monobehavior
     private void Awake()
@@ -36,49 +38,32 @@ public class RocketPart : MonoBehaviour
         isValidPlacement = true;
         Debug.Log("[RocketPart] Start");
     }
+    private void OnEnable()
+    {
+        OnPartMoved += CheckIfNextToPart;
+    }
+    private void OnDisable()
+    {
+        OnPartMoved -= CheckIfNextToPart;
+    }
     #endregion
 
     #region Custom Functions
-    public bool CheckIfNextToPart()
+    public void CheckIfNextToPart()
     {
+        bool isAdjacent = false;
         foreach(var offset in borderOffsets)
         {
             //physics overlap checks surrounding tiles
             Collider2D collider = Physics2D.OverlapCircle((Vector2)transform.position + offset, 0.35f);
             if (collider != null)
             {
-                isNextToPart = true;
+                isAdjacent = true;
 
-                RocketPart part = collider.GetComponent<RocketPart>();
-                if (part != null)
-                {
-                    part.CheckIfNextToPart(part);
-                }
+                break;
             }
         }
-
-        return isNextToPart;
-    }
-    public bool CheckIfNextToPart(RocketPart rocketPart)
-    {
-        foreach (var offset in borderOffsets)
-        {
-            //physics overlap checks surrounding tiles
-            Collider2D collider = Physics2D.OverlapCircle((Vector2)transform.position + offset, 0.35f);
-            if (collider != null)
-            {
-                isNextToPart = true;
-
-                RocketPart part = collider.GetComponent<RocketPart>();
-                if (part != null && part != rocketPart)
-                {
-                    part.CheckIfNextToPart(part);
-                }
-
-            }
-        }
-
-        return isNextToPart;
+        isNextToPart = isAdjacent;
     }
     public List<RocketPart> GetAdjacentParts()
     {
@@ -126,4 +111,6 @@ public class RocketPart : MonoBehaviour
         }
     }
 }
+
+public enum PartType { Character, Thruster, Body, Misc}
 

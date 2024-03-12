@@ -63,30 +63,28 @@ public class BuildController : MonoBehaviour
         }
         #endregion
 
-
         #region Input
         //check for input
         if (Input.GetMouseButtonDown(0))
         {
             MouseDownAction(gridXYPosition, tileCenter);
         }
-        if (Input.GetMouseButton(0))
+        /*if (Input.GetMouseButton(0))
         {
             MouseHoldAction(gridXYPosition, tileCenter);
         }
         if (Input.GetMouseButtonUp(0))
         {
             MouseUpAction(gridXYPosition, tileCenter);
-        }
+        }*/
         #endregion
 
+        //always move selected part with mouse
         if (_selectedPart != null)
         {
             _selectedPart.transform.position = tileCenter;
         }
     }
-
-    
 
     #region Grid Actions
     public void OccupyPartTiles()
@@ -100,11 +98,12 @@ public class BuildController : MonoBehaviour
     #endregion
 
 
+
+    #region Click Actions
     //[SerializeField] private Transform _selectedPart;
     [SerializeField] private RocketPart _selectedPart;
     [SerializeField] private Vector2 _previousPosition;
 
-    #region Click Actions
     public void MouseDownAction(Vector2Int xy, Vector2 tileCenter)
     {
         #region Debug Only
@@ -155,16 +154,16 @@ public class BuildController : MonoBehaviour
         /// if piece is picked up, move it around with mouse based on grid position
         ///
 
-        /*if(_selectedPart != null)
-        {
-            _selectedPart.transform.position = tileCenter;
-        }*/
+        /// not needed anymore
     }
     public void MouseUpAction(Vector2Int xy, Vector2 tileCenter)
     {
         /// if piece is picked up, check if it can be placed and place it on grid
         ///     only if not on top of other piece and if next to placed piece
         /// 
+
+        Debug.LogWarning("Next to part: " + _selectedPart.CheckIfNextToPart());
+
         if(_selectedPart != null )
         {
             if (_selectedPart.isValidPlacement == true)
@@ -185,6 +184,8 @@ public class BuildController : MonoBehaviour
 
             _previousPosition = Vector2.zero;
         }
+
+
     }
     #endregion
 

@@ -12,57 +12,98 @@ public class RocketPart : MonoBehaviour
     public int weight;
     public int thrust;
     public int durability;
-    [Space]
+    [Header("Grid Interaction")]
     [Tooltip("Determines if the part can be placed/added to the ship.")]
     public bool isValidPlacement = true;
     public bool isAttachedToRocket = false;
+    public bool isNextToPart = false;
+    [Space]
+    [Tooltip("List of adjacent coordinates to check for other rocket parts.")]
+    public List<Vector2Int> borderOffsets = new List<Vector2Int>();
 
     private BuildController _bController;
     //private List<RocketPartSection> sections;
 
     public Action OnPartMoved;
 
+    #region Monobehavior
     private void Awake()
     {
         _bController = FindObjectOfType<BuildController>();
-
-        /*if(sections == null || sections.Count == 0)
-        {
-            sections = new List<RocketPartSection>(GetComponentsInChildren<RocketPartSection>());
-        }*/
     }
     private void Start()
     {
         isValidPlacement = true;
         Debug.Log("[RocketPart] Start");
     }
-    private void OnEnable()
-    {
-        //OnPartMoved += CheckStatus;
-    }
-    private void OnDisable()
-    {
-        //OnPartMoved -= CheckStatus;
-    }
+    #endregion
 
-    //call this everytime part moves position
-    /*public void CheckStatus()
+    #region Custom Functions
+    public bool CheckIfNextToPart()
     {
-        /// first reset isValid 
-        /// next check sections
-        ///     if any return false then cant place
-        ///     
-
-        isValidPlacement = true;
-
-        foreach (var section in sections)
+        foreach(var offset in borderOffsets)
         {
-            //isValidPlacement = section.GetIsValidSection();
-            if(section.GetOccupiedStatus() == true) isValidPlacement = false;
-            //if(section.GetOccupiedStatus(_bController.SimplifiedGrid) == true) isValidPlacement = false;
-        }
-    }*/
+            //physics overlap checks surrounding tiles
+            Collider2D collider = Physics2D.OverlapCircle((Vector2)transform.position + offset, 0.35f);
+            if (collider != null)
+            {
+                isNextToPart = true;
 
+                RocketPart part = collider.GetComponent<RocketPart>();
+                if (part != null)
+                {
+                    part.CheckIfNextToPart(part);
+                }
+            }
+        }
+
+        return isNextToPart;
+    }
+    public bool CheckIfNextToPart(RocketPart rocketPart)
+    {
+        foreach (var offset in borderOffsets)
+        {
+            //physics overlap checks surrounding tiles
+            Collider2D collider = Physics2D.OverlapCircle((Vector2)transform.position + offset, 0.35f);
+            if (collider != null)
+            {
+                isNextToPart = true;
+
+                RocketPart part = collider.GetComponent<RocketPart>();
+                if (part != null && part != rocketPart)
+                {
+                    part.CheckIfNextToPart(part);
+                }
+
+            }
+        }
+
+        return isNextToPart;
+    }
+    public List<RocketPart> GetAdjacentParts()
+    {
+        List<RocketPart> parts = new List<RocketPart>();
+
+        foreach (var offset in borderOffsets)
+        {
+            //physics overlap checks surrounding tiles
+            Collider2D collider = Physics2D.OverlapCircle((Vector2)transform.position + offset, 0.35f);
+            if (collider != null)
+            {
+                //get rocket part
+                RocketPart part = collider.GetComponent<RocketPart>();
+                if(part != null)
+                {
+                    parts.Add(part);
+                }
+            }
+        }
+
+        return parts;
+    }
+    #endregion
+
+    #region Triggers
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isValidPlacement = false;
@@ -70,6 +111,19 @@ public class RocketPart : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isValidPlacement = true;
+    }
+    #endregion
+
+    private void OnDrawGizmos()
+    {
+        if(borderOffsets.Count > 0)
+        {
+            foreach(var offset in borderOffsets)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere((Vector2)transform.position + offset, 0.35f);
+            }
+        }
     }
 }
 

@@ -68,6 +68,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: RP_1x1
       objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[2].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[2].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[3].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[3].y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[4].x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

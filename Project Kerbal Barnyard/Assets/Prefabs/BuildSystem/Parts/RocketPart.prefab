@@ -166,7 +166,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3be946c784d1a4a9e86fd179e13443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 0
+  thrust: 0
+  durability: 0
   isValidPlacement: 0
+  isAttachedToRocket: 0
+  isNextToPart: 0
+  borderOffsets:
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 1, y: 1}
+  - {x: 2, y: 0}
+  - {x: 1, y: -1}
+  - {x: 0, y: -1}
 --- !u!114 &303811440353584328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +194,7 @@ MonoBehaviour:
   _partImage: {fileID: 6343916960783709698}
   _validColor: {r: 0, g: 1, b: 0, a: 0.5019608}
   _invalidColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+  _adjacentColor: {r: 0, g: 0, b: 1, a: 0.5019608}
 --- !u!50 &7552008460405219355
 Rigidbody2D:
   serializedVersion: 4

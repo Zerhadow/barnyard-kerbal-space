@@ -937,7 +937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Failed
+  m_text: Good Job
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7777e902f61eb5f4b8ec0fb0d5d12d02, type: 2}
   m_sharedMaterial: {fileID: 1278446357696814003, guid: 7777e902f61eb5f4b8ec0fb0d5d12d02, type: 2}

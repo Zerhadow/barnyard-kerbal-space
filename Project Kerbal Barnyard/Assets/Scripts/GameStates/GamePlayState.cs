@@ -18,8 +18,6 @@ public class GamePlayState : State
 
         Debug.Log("STATE: Game Play");
 
-        
-
         // Activate canva elems
         _controller.UI.playParentObj.SetActive(true);
         _controller.UI.overlayCanvas.SetActive(true);

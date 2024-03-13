@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     }
     
     public void Launch() { // initial launch speed
-        rigidBody2D.gravityScale = gravityScale;
+        rigidBody2D.gravityScale = gravityScale; // starting gravity
 
         forceMagnitude = CalculateVelocity();
 

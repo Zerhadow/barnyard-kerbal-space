@@ -38,8 +38,6 @@ public class GameBuildState : State
         if(Input.GetMouseButtonDown(0)) {
             // _stateMachine.ChangeState(_stateMachine.LobbyState);
         }
-        
-        // after certain amount of time, trigger intro anim
     }
 
     public override void Exit() {

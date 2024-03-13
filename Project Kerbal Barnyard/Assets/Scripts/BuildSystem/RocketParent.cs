@@ -5,6 +5,11 @@ using UnityEngine;
 public class RocketParent : MonoBehaviour
 {
     public List<RocketPart> RocketParts { get; private set; }
+    [Header("Physics Calculations")]
+    public float charWeight;
+    public int totalLoadMass;
+    private int totalMass;
+    public int totalThrust;
 
     private void Awake()
     {
@@ -40,5 +45,15 @@ public class RocketParent : MonoBehaviour
         {
             Debug.LogWarning("Rocket does not contain this part.");
         }
+    }
+
+    public float CalculateVelocity() { // F = ma - mg
+        float fGrav = charWeight * 9.81f; // force of char
+        float fBoosters = totalLoadMass * totalThrust;
+
+        float fNet = fBoosters - fGrav;
+        Debug.Log("fNet: " + fNet);
+
+        return fNet;
     }
 }

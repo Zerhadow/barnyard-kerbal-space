@@ -22,8 +22,6 @@ public class GamePlayState : State
         _controller.UI.playParentObj.SetActive(true);
         _controller.UI.overlayCanvas.SetActive(true);
         _controller.playerController.Launch();
-
-        
     }
 
     public override void Update()

@@ -7,17 +7,18 @@ public class UIController : MonoBehaviour
 {
     private GameFSM _stateMachine;
     [Header("Canvas Dependencies")]
-    public GameObject canvas;
+    //public GameObject canvas;
     public GameObject overlayCanvas;
     public List<GameObject> canvasObj = new List<GameObject>();
     public GameObject winOverlay;
     public GameObject resultsOverlay;
-    public GameObject partsShop;
 
     [Header("Build Dependencies")]
-    public GameObject buildParentObj;
+    public GameObject launchCanvas;
+    public GameObject partsShopCanvas;
+
     [Header("Play Dependencies")]
-    public GameObject playParentObj;
+    //public GameObject playParentObj;
     public TMP_Text heightTxt;
     public TMP_Text speedTxt;
 

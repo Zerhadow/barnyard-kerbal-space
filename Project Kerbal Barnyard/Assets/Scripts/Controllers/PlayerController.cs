@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject player;
+    public RocketParent shipInfo;
+    public GameObject parentObj;
     [Header("Movement Stuff")]
     private float forceMagnitude;
     public float gravityScale = 10f;
     private Rigidbody2D rigidBody2D;
     [Header("Physics Calculations")]
     private float startingY;
-    public int charMass;
     public int totalLoadMass;
     private int totalMass;
     public int totalThrust;
@@ -20,26 +20,16 @@ public class PlayerController : MonoBehaviour
 
 
     private void Awake() {
-        rigidBody2D = player.GetComponent<Rigidbody2D>();
-        startingY = player.transform.position.y;
+        rigidBody2D = parentObj.GetComponent<Rigidbody2D>();
+        startingY = parentObj.transform.position.y;
     }
     
     public void Launch() { // initial launch speed
-        rigidBody2D.gravityScale = gravityScale;
+        rigidBody2D.gravityScale = gravityScale; // starting gravity
 
-        forceMagnitude = CalculateVelocity();
+        forceMagnitude = shipInfo.CalculateVelocity();
 
         rigidBody2D.AddForce(Vector2.up * forceMagnitude);
-    }
-
-    private float CalculateVelocity() { // F = ma - mg
-        float fGrav = charMass * 9.81f; // force of char
-        float fBoosters = totalLoadMass * totalThrust;
-
-        float fNet = fBoosters - fGrav;
-        Debug.Log("fNet: " + fNet);
-
-        return fNet;
     }
 
     public bool Falling() {
@@ -52,11 +42,20 @@ public class PlayerController : MonoBehaviour
     }
 
     public float GetCurrentHeight() {
-        float currPoss = player.transform.position.y;
+        float currPoss = parentObj.transform.position.y;
         return currPoss - startingY;
     }
 
     public float GetCurrentSpeed() {
         return rigidBody2D.velocity.y;
+    }
+
+    public void MoveParts(float currHeight) {
+        // move red sq to where the char part is
+
+        // move transform of Rocket Parts with red sq
+        Vector3 newPos = transform.position;
+        newPos.y = currHeight;
+        parentObj.transform.position = newPos;
     }
 }

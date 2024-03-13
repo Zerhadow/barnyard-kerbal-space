@@ -19,16 +19,19 @@ public class RocketPartDebug : MonoBehaviour
     {
         if(rocketPart == null) rocketPart = GetComponent<RocketPart>();
 
-        if(rocketPart.isValidPlacement == true)
+        if(rocketPart != null) 
         {
-            if(rocketPart.isNextToPart == true && _partImage.color != _adjacentColor)
-                _partImage.color = _adjacentColor;
-            if(rocketPart.isNextToPart == false && _partImage.color != _validColor)
-                _partImage.color = _validColor;
-        }
+            if(rocketPart.isValidPlacement == true)
+            {
+                if(rocketPart.isNextToPart == true && _partImage.color != _adjacentColor)
+                    _partImage.color = _adjacentColor;
+                if(rocketPart.isNextToPart == false && _partImage.color != _validColor)
+                    _partImage.color = _validColor;
+            }
 
-        //if(rocketPart.isValidPlacement == true && _partImage.color != _validColor) _partImage.color = _validColor;
-        if(rocketPart.isValidPlacement == false && _partImage.color != _invalidColor)
-            _partImage.color = _invalidColor;
+            //if(rocketPart.isValidPlacement == true && _partImage.color != _validColor) _partImage.color = _validColor;
+            if(rocketPart.isValidPlacement == false && _partImage.color != _invalidColor)
+                _partImage.color = _invalidColor;
+        }
     }
 }

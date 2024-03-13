@@ -18,14 +18,9 @@ public class GamePlayState : State
 
         Debug.Log("STATE: Game Play");
 
-        
-
         // Activate canva elems
-        _controller.UI.playParentObj.SetActive(true);
         _controller.UI.overlayCanvas.SetActive(true);
         _controller.playerController.Launch();
-
-        
     }
 
     public override void Update()
@@ -33,6 +28,8 @@ public class GamePlayState : State
         base.Update();
 
         float currPlayerPoss = _controller.playerController.GetCurrentHeight();
+        // have ship transform follow player
+        _controller.playerController.MoveParts(currPlayerPoss);
         _controller.UI.heightTxt.text = "Height: " + currPlayerPoss.ToString("F2");
         _controller.UI.speedTxt.text = "Speed: " + _controller.playerController.GetCurrentSpeed().ToString("F2");
 
@@ -52,7 +49,7 @@ public class GamePlayState : State
     public override void Exit() {
         base.Exit();
 
-        _controller.UI.playParentObj.SetActive(true);
+        //_controller.UI.playParentObj.SetActive(true);
         _controller.playerController.SetGravityScale(0);
     }
 }

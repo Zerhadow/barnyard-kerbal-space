@@ -49,7 +49,7 @@ public class GamePlayState : State
     public override void Exit() {
         base.Exit();
 
-        _controller.UI.playParentObj.SetActive(true);
+        //_controller.UI.playParentObj.SetActive(true);
         _controller.playerController.SetGravityScale(0);
     }
 }

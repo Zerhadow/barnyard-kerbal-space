@@ -26,7 +26,7 @@ public class BuildController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _coordDisplay;
 
     [Header("Debug")]
-    public bool debug = false;
+    public bool debugMode = false;
 
     private Camera _mainCamera;
 
@@ -43,7 +43,7 @@ public class BuildController : MonoBehaviour
         //disable stuff
         EnableGridMask(false); //grid
         gameObject.SetActive(false); //controller
-        _gameController.UI.partsShop.SetActive(false); // parts shop UI
+        _gameController.UI.partsShopCanvas.SetActive(false); // parts shop UI
     }
     private void Update()
     {
@@ -56,7 +56,7 @@ public class BuildController : MonoBehaviour
         #endregion
 
         #region Debug
-        if (debug)
+        if (debugMode)
         {
             if (_coordDisplay != null)
             {

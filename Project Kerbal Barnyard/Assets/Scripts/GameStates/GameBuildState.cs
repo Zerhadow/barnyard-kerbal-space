@@ -22,8 +22,8 @@ public class GameBuildState : State
         _controller.buildController.gameObject.SetActive(true);
 
         // Activate canva elems
-        _controller.UI.buildParentObj.SetActive(true);
-        _controller.UI.partsShop.SetActive(true);
+        _controller.UI.launchCanvas.SetActive(true);
+        _controller.UI.partsShopCanvas.SetActive(true);
         //_controller.playerController.player.SetActive(true);
 
         //enable grid
@@ -44,8 +44,8 @@ public class GameBuildState : State
         base.Exit();
 
         // deactivate canva elems
-        _controller.UI.buildParentObj.SetActive(false);
-        _controller.UI.partsShop.SetActive(true);
+        _controller.UI.launchCanvas.SetActive(false);
+        _controller.UI.partsShopCanvas.SetActive(false);
 
         //disable grid
         _controller.buildController.EnableGridMask(false);

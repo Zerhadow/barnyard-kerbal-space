@@ -29,7 +29,7 @@ public class GameSetupState : State
         _controller.UI.overlayCanvas.SetActive(false);
 
         // Activate canva elems
-        _controller.playerController.player.SetActive(false);
+        // _controller.playerController.player.SetActive(false);
     }
 
     public override void Update()

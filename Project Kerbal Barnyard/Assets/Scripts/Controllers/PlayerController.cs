@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject player;
     public RocketParent shipInfo;
     public GameObject parentObj;
     [Header("Movement Stuff")]
@@ -21,8 +20,8 @@ public class PlayerController : MonoBehaviour
 
 
     private void Awake() {
-        rigidBody2D = player.GetComponent<Rigidbody2D>();
-        startingY = player.transform.position.y;
+        rigidBody2D = parentObj.GetComponent<Rigidbody2D>();
+        startingY = parentObj.transform.position.y;
     }
     
     public void Launch() { // initial launch speed
@@ -43,7 +42,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public float GetCurrentHeight() {
-        float currPoss = player.transform.position.y;
+        float currPoss = parentObj.transform.position.y;
         return currPoss - startingY;
     }
 

@@ -11,7 +11,7 @@ public class BuildController : MonoBehaviour
     private GameController _gameController;
 
     [Header("Dependencies")]
-    public GameObject partParent;
+    public RocketParent partParent;
 
     [Header("Grid Dimensions")]
     public int width = 10;
@@ -202,14 +202,25 @@ public class BuildController : MonoBehaviour
         /// TODO Decide how to handle removing rocket parts
         /// 
 
-        _selectedPart.gameObject.SetActive(false);
+        partParent.RemovePartFromRocket(rocketPart);
     }
     #endregion
 
     #region UI Stuff
     public void SpawnPart(RocketPart partPrefab)
     {
-        StartCoroutine(DelaySpawnPart(partPrefab));
+        // if(partParent.RocketParts.Count == 0) { // check if it's the first part
+        //     StartCoroutine(DelaySpawnPart(partPrefab));
+        // } 
+
+        if(partPrefab.partType == PartType.Character) {
+            bool check = partParent.CheckIfRocketHasCharacter();
+            if(!check) { // if true, don't allow playing part
+                StartCoroutine(DelaySpawnPart(partPrefab));
+            }
+        } else {
+            StartCoroutine(DelaySpawnPart(partPrefab));
+        }
     }
     IEnumerator DelaySpawnPart(RocketPart partPrefab)
     {
@@ -220,6 +231,7 @@ public class BuildController : MonoBehaviour
             RocketPart rocketPart = Instantiate(partPrefab, partParent.transform);
             _selectedPart = rocketPart;
             rocketPart.transform.position = new Vector3(0, -435, 0);
+            partParent.TryAddPartToRocket(_selectedPart);
         }
     }
     public void EnableGridMask(bool enable)

@@ -27,35 +27,47 @@ public class RocketParent : MonoBehaviour
     /// </summary>
     /// <param name="part"></param>
     /// <returns></returns>
-    public bool TryAddPartToRocket(RocketPart part)
+    public void TryAddPartToRocket(RocketPart part)
     {
-        if (RocketParts.Contains(part))
-        {
-            Debug.LogWarning("Part is already on the rocket.");
-            return false;
-        }
-        else
-        {
-            RocketParts.Add(part);
+                    RocketParts.Add(part);
 
             OnRocketModified?.Invoke();
+        
+        // if (RocketParts.Contains(part))
+        // {
+        //     Debug.LogWarning("Part is already on the rocket.");
+        //     return false;
+        // }
+        // else
+        // {
+        //     RocketParts.Add(part);
 
-            return true;
-        }
+        //     OnRocketModified?.Invoke();
+
+        //     return true;
+        // }
 
     }
     public void RemovePartFromRocket(RocketPart part)
     {
-        if(RocketParts.Contains(part))
-        {
-            RocketParts.Remove(part);
+        RocketParts.Remove(part);
+        Destroy(part.gameObject);
 
-            OnRocketModified?.Invoke();
-        }
-        else
-        {
-            Debug.LogWarning("Rocket does not contain this part.");
-        }
+        OnRocketModified?.Invoke();
+
+        Debug.Log(RocketParts.Count);
+        
+        // if(RocketParts.Contains(part))
+        // {
+        //     RocketParts.Remove(part);
+        //     Destroy(part.gameObject);
+
+        //     OnRocketModified?.Invoke();
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("Rocket does not contain this part.");
+        // }
 
     }
     public bool CheckIfRocketHasCharacter()

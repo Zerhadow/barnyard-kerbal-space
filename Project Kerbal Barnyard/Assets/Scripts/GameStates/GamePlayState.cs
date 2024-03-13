@@ -29,6 +29,8 @@ public class GamePlayState : State
         base.Update();
 
         float currPlayerPoss = _controller.playerController.GetCurrentHeight();
+        // have ship transform follow player
+        _controller.playerController.MoveParts(currPlayerPoss);
         _controller.UI.heightTxt.text = "Height: " + currPlayerPoss.ToString("F2");
         _controller.UI.speedTxt.text = "Speed: " + _controller.playerController.GetCurrentSpeed().ToString("F2");
 

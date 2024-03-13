@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject player;
     public RocketParent shipInfo;
+    public GameObject parentObj;
     [Header("Movement Stuff")]
     private float forceMagnitude;
     public float gravityScale = 10f;
@@ -30,8 +31,6 @@ public class PlayerController : MonoBehaviour
         forceMagnitude = shipInfo.CalculateVelocity();
 
         rigidBody2D.AddForce(Vector2.up * forceMagnitude);
-
-        // have ship transform follow player
     }
 
     public bool Falling() {
@@ -50,5 +49,14 @@ public class PlayerController : MonoBehaviour
 
     public float GetCurrentSpeed() {
         return rigidBody2D.velocity.y;
+    }
+
+    public void MoveParts(float currHeight) {
+        // move red sq to where the char part is
+
+        // move transform of Rocket Parts with red sq
+        Vector3 newPos = transform.position;
+        newPos.y = currHeight;
+        parentObj.transform.position = newPos;
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine;
 public class RocketParent : MonoBehaviour
 {
     public List<RocketPart> RocketParts { get; private set; }
+    public GameObject player;
+
     [Header("Physics Calculations")]
     public float charWeight;
     public int totalLoadMass;

@@ -5006,7 +5006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cc50a3e999a464eb44976d4b889407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partParent: {fileID: 1596561752}
+  partParent: {fileID: 1596561754}
   width: 19
   height: 12
   cellSize: 1
@@ -5615,6 +5615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70d2a814f405c84d99b8bd7c910534f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 589180678}
   charWeight: 10
   totalLoadMass: 5
   totalThrust: 100
@@ -6043,6 +6044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 589180678}
   shipInfo: {fileID: 1596561754}
+  parentObj: {fileID: 1596561752}
   gravityScale: 0.1
   totalLoadMass: 5
   totalThrust: 100

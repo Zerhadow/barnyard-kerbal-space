@@ -38,6 +38,11 @@ public class RocketParent : MonoBehaviour
     public void RemovePartFromRocket(RocketPart part)
     {
         RocketParts.Remove(part);
+
+        //restock
+        part.partPanel.stock++;
+
+        //destroy
         Destroy(part.gameObject);
 
         OnRocketModified?.Invoke();

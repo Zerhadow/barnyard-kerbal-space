@@ -13,6 +13,7 @@ public class RocketPart : MonoBehaviour
     public int thrust;
     public int durability;
     public PartType partType;
+    public PartPanel partPanel;
 
     [Header("Grid Interaction")]
     [Tooltip("Determines if the part can be placed/added to the ship.")]

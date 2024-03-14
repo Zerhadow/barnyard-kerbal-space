@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PartPanel : MonoBehaviour
 {
+    private BuildController _buildController;
+
     [Header("Properties")]
     public int stock = 1;
     public int unlockCost = 10;
@@ -21,7 +24,7 @@ public class PartPanel : MonoBehaviour
 
     private void Awake()
     {
-        
+        _buildController = FindObjectOfType<BuildController>();
     }
     private void Update()
     {
@@ -50,21 +53,45 @@ public class PartPanel : MonoBehaviour
     }
 
     #region Public Functions
-    public void TryUnlock()
+    public void TrySpawnPart()
     {
         if(isUnlocked == false)
         {
+            //unlock if can afford it
             if(CurrencyManager.money >= unlockCost)
             {
                 CurrencyManager.Instance.RemoveMoney(unlockCost);
                 isUnlocked = true;
             }
         }
+        else
+        {
+            if(partPrefab != null)
+            {
+                //spawn part if in stock
+                if (stock >= 1)
+                {
+                    bool spawned = _buildController.SpawnPart(partPrefab, this);
+                    if (spawned)
+                    {
+                        Debug.Log("Spawn part");
+                        stock--;
+                        if (stock < 0) stock = 0;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Part out of stock");
+                }
+            }
+            else
+            {
+                Debug.LogError("Missing part prefab");
+            }
+            
+        }
     }
-    public void TrySpawnPart()
-    {
-
-    }
+    
     #endregion
 
     #region Private visual updates

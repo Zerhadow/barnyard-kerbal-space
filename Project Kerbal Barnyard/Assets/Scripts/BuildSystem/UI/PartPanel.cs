@@ -8,6 +8,7 @@ public class PartPanel : MonoBehaviour
     [Header("Properties")]
     public int stock = 1;
     public int cost = 10;
+    public RocketPart partPrefab;
 
     [Header("Dependencies")]
     [SerializeField] private TextMeshProUGUI _stockText;

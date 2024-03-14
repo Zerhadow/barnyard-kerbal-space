@@ -10,7 +10,7 @@ public class CurrencyManager : MonoBehaviour
     //[Header("Stored Info")]
     [Tooltip("The amount of money the player has.")]
     [field: SerializeField]
-    public int money { get; private set; } = 0;
+    public static int money = 0;
 
     public static Action<int> OnCurrencyChanged = delegate { };
 

@@ -204,24 +204,29 @@ public class BuildController : MonoBehaviour
 
         partParent.RemovePartFromRocket(rocketPart);
     }
-    #endregion
-
-    #region UI Stuff
     public void SpawnPart(RocketPart partPrefab)
     {
         // if(partParent.RocketParts.Count == 0) { // check if it's the first part
         //     StartCoroutine(DelaySpawnPart(partPrefab));
         // } 
 
-        if(partPrefab.partType == PartType.Character) {
+        if (partPrefab.partType == PartType.Character)
+        {
             bool check = partParent.CheckIfRocketHasCharacter();
-            if(!check) { // if true, don't allow playing part
+            if (!check)
+            { // if true, don't allow playing part
                 StartCoroutine(DelaySpawnPart(partPrefab));
             }
-        } else {
+        }
+        else
+        {
             StartCoroutine(DelaySpawnPart(partPrefab));
         }
     }
+    #endregion
+
+    #region UI Stuff
+
     IEnumerator DelaySpawnPart(RocketPart partPrefab)
     {
         yield return new WaitForNextFrameUnit();

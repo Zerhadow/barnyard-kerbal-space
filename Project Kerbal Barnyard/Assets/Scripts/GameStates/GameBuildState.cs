@@ -24,6 +24,7 @@ public class GameBuildState : State
         // Activate canva elems
         _controller.UI.launchCanvas.SetActive(true);
         _controller.UI.partsShopCanvas.SetActive(true);
+        _controller.UI.powerupPanel.SetTargetPosition(_controller.UI.powerupPanel.startOpen);
         //_controller.playerController.player.SetActive(true);
 
         //enable grid

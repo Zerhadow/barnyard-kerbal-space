@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     [Header("Build Dependencies")]
     public GameObject launchCanvas;
     public GameObject partsShopCanvas;
+    public PowerupPanel powerupPanel;
 
     [Header("Play Dependencies")]
     //public GameObject playParentObj;

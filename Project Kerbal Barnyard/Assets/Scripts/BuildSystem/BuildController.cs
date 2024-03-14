@@ -100,7 +100,7 @@ public class BuildController : MonoBehaviour
 
     #region Click Actions
     //[SerializeField] private Transform _selectedPart;
-    [SerializeField] private RocketPart _selectedPart;
+    public RocketPart _selectedPart { get; private set; }
     [SerializeField] private Vector2 _previousPosition;
 
     public void MouseDownAction(Vector2Int xy, Vector2 tileCenter)
@@ -204,41 +204,46 @@ public class BuildController : MonoBehaviour
 
         partParent.RemovePartFromRocket(rocketPart);
     }
-    public void SpawnPart(RocketPart partPrefab)
+    public bool SpawnPart(RocketPart partPrefab, PartPanel partPanel)
     {
-        // if(partParent.RocketParts.Count == 0) { // check if it's the first part
-        //     StartCoroutine(DelaySpawnPart(partPrefab));
-        // } 
 
         if (partPrefab.partType == PartType.Character)
         {
             bool check = partParent.CheckIfRocketHasCharacter();
             if (!check)
-            { // if true, don't allow playing part
-                StartCoroutine(DelaySpawnPart(partPrefab));
+            { 
+                // if true, don't allow playing part
+                StartCoroutine(DelaySpawnPart(partPrefab, partPanel));
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         else
         {
-            StartCoroutine(DelaySpawnPart(partPrefab));
+            StartCoroutine(DelaySpawnPart(partPrefab, partPanel));
+            return true;
         }
     }
-    #endregion
-
-    #region UI Stuff
-
-    IEnumerator DelaySpawnPart(RocketPart partPrefab)
+    IEnumerator DelaySpawnPart(RocketPart partPrefab, PartPanel partPanel)
     {
         yield return new WaitForNextFrameUnit();
 
         if (_selectedPart == null)
         {
             RocketPart rocketPart = Instantiate(partPrefab, partParent.transform);
-            _selectedPart = rocketPart;
             rocketPart.transform.position = new Vector3(0, -435, 0);
+            rocketPart.partPanel = partPanel;
+            _selectedPart = rocketPart;
+
             partParent.TryAddPartToRocket(_selectedPart);
         }
     }
+    #endregion
+
+    #region UI Stuff
     public void EnableGridMask(bool enable)
     {
         if (_grid != null) _grid.SetActive(enable);

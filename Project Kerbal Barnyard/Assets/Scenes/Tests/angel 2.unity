@@ -284,6 +284,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3146000321172690918, guid: 177e6df254a7f73439929139818000fe, type: 3}
+      propertyPath: stock
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146000321172690918, guid: 177e6df254a7f73439929139818000fe, type: 3}
+      propertyPath: partPrefab
+      value: 
+      objectReference: {fileID: 3052980406334256328, guid: d7429c106ff6db24d9be6504a86faa5f, type: 3}
+    - target: {fileID: 7716138002440808572, guid: 177e6df254a7f73439929139818000fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d15dc6a7b1b2894d90d7d9858d75c92, type: 3}
     - target: {fileID: 8310680059025438052, guid: 177e6df254a7f73439929139818000fe, type: 3}
       propertyPath: m_Name
       value: Part Panel (2)
@@ -1154,6 +1166,22 @@ PrefabInstance:
     - target: {fileID: 167735217276473219, guid: 177e6df254a7f73439929139818000fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146000321172690918, guid: 177e6df254a7f73439929139818000fe, type: 3}
+      propertyPath: stock
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146000321172690918, guid: 177e6df254a7f73439929139818000fe, type: 3}
+      propertyPath: partPrefab
+      value: 
+      objectReference: {fileID: 1754113946862966420, guid: 90d7b86e8a39cf34f803e750440d153e, type: 3}
+    - target: {fileID: 7716138002440808572, guid: 177e6df254a7f73439929139818000fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4158dee10f160d64eae1b5691dd6e482, type: 3}
+    - target: {fileID: 7950678346714826200, guid: 177e6df254a7f73439929139818000fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8310680059025438052, guid: 177e6df254a7f73439929139818000fe, type: 3}
       propertyPath: m_Name

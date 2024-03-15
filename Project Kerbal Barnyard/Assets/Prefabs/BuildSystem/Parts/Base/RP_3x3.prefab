@@ -80,6 +80,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RP_3x3
       objectReference: {fileID: 0}
+    - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.size
       value: 12

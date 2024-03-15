@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RocketParent : MonoBehaviour
@@ -50,12 +51,23 @@ public class RocketParent : MonoBehaviour
         Debug.Log(RocketParts.Count);
         
     }
+    
+    #endregion
+
+    #region Rocket checks
+    public void InitializeRocket()
+    {
+        if (RocketParts.Count > 0)
+        {
+
+        }
+    }
     public bool CheckIfRocketHasCharacter()
     {
         bool hasCharacter = false;
         foreach (RocketPart part in RocketParts)
         {
-            if(part.partType == PartType.Character)
+            if (part.partType == PartType.Character)
             {
                 hasCharacter = true;
             }

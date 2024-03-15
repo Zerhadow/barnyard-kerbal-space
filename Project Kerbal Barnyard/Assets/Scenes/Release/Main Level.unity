@@ -2512,7 +2512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stock: 1
   unlockCost: 10
-  partPrefab: {fileID: 0}
+  partPrefab: {fileID: 3189651422725326364, guid: 16fd57ada76e7a54c92652400232083a, type: 3}
   isUnlocked: 0
   _stockText: {fileID: 1823289261}
   _costText: {fileID: 1008110839}
@@ -5716,7 +5716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stock: 1
   unlockCost: 10
-  partPrefab: {fileID: 0}
+  partPrefab: {fileID: 8139569796281837531, guid: 17bee115414d4974cb8e670e6bc1828b, type: 3}
   isUnlocked: 0
   _stockText: {fileID: 1754560343}
   _costText: {fileID: 649151833}
@@ -13111,7 +13111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stock: 1
   unlockCost: 10
-  partPrefab: {fileID: 0}
+  partPrefab: {fileID: 6069760016423244126, guid: 8eace1802ca5dfd4dbbae0f3575668c2, type: 3}
   isUnlocked: 0
   _stockText: {fileID: 2137629236}
   _costText: {fileID: 110167461}
@@ -14840,7 +14840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stock: 1
   unlockCost: 10
-  partPrefab: {fileID: 0}
+  partPrefab: {fileID: 6069760016423244126, guid: 7ac295a281f93e043952f30e97731db7, type: 3}
   isUnlocked: 0
   _stockText: {fileID: 190507914}
   _costText: {fileID: 801283438}

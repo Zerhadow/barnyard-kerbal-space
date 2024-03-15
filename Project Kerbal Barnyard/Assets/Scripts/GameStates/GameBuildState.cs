@@ -29,6 +29,7 @@ public class GameBuildState : State
 
         //enable grid
         _controller.buildController.EnableGridMask(true);
+        _controller.buildController.partParent.EnablePartGridBackgrounds(true);
     }
 
     public override void Update()
@@ -50,6 +51,7 @@ public class GameBuildState : State
 
         //disable grid
         _controller.buildController.EnableGridMask(false);
+        _controller.buildController.partParent.EnablePartGridBackgrounds(false);
 
         //follow camera
         _controller.cameraController.EnableDisableCameraFollow(true);

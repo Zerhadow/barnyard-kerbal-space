@@ -57,12 +57,49 @@ public class RocketParent : MonoBehaviour
     
     #endregion
 
-    #region Rocket checks
+    #region Rocket stuff
+    public void EnablePartGridBackgrounds(bool enable)
+    {
+        foreach (var part in RocketParts)
+        {
+            part.EnableGridBackground(enable);
+        }
+    }
+    public void ResetRocketTransform()
+    {
+
+    }
     public void InitializeRocket()
     {
+
         if (RocketParts.Count > 0)
         {
+            /// loop through each and check if next to character
+            /// start with character part
 
+            RocketPart characterPart = null;
+
+            foreach (RocketPart part in RocketParts)
+            {
+                if(part.partType == PartType.Character)
+                    characterPart = part;
+            }
+
+            foreach (RocketPart part in characterPart.GetAdjacentParts())
+            {
+                part.isAttachedToRocket = true;
+            }
+
+            for (int i = 0; i < RocketParts.Count; i++)
+            {
+                RocketPart iPart = RocketParts[i];
+
+                foreach (RocketPart part in RocketParts)
+                {
+
+                }
+            }
+            
         }
     }
     public bool CheckIfRocketHasCharacter()

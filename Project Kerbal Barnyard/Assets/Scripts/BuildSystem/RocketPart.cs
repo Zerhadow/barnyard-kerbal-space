@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class RocketPart : MonoBehaviour
 {
-    /*[Header("Status")]
-    [SerializeField] private bool _isOccupied = false;*/
+    private RocketPartDebug _rocketPartDebug;
 
     [Header("Stats")]
     public int weight;
@@ -33,6 +32,7 @@ public class RocketPart : MonoBehaviour
     private void Awake()
     {
         _bController = FindObjectOfType<BuildController>();
+        _rocketPartDebug = GetComponent<RocketPartDebug>();
     }
     private void Start()
     {
@@ -50,6 +50,10 @@ public class RocketPart : MonoBehaviour
     #endregion
 
     #region Custom Functions
+    public void EnableGridBackground(bool enable)
+    {
+        _rocketPartDebug.gridImage.gameObject.SetActive(enable);
+    }
     public void CheckIfNextToPart()
     {
         bool isAdjacent = false;

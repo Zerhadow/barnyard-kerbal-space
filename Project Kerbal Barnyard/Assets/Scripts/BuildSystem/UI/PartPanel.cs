@@ -17,6 +17,7 @@ public class PartPanel : MonoBehaviour
     [Header("Dependencies")]
     [SerializeField] private TextMeshProUGUI _stockText;
     [SerializeField] private TextMeshProUGUI _costText;
+    [SerializeField] private GameObject _costImage;
     [SerializeField] private GameObject _lockedImage;
 
     private int _savedStock;
@@ -48,6 +49,13 @@ public class PartPanel : MonoBehaviour
                 _lockedImage.SetActive(false);
             if(isUnlocked == false && _lockedImage.activeInHierarchy == false)
                 _lockedImage.SetActive(true);
+        }
+        if(_costImage != null)
+        {
+            if(isUnlocked == true && _costImage.activeInHierarchy == true)
+                _costImage.SetActive(false);
+            if(isUnlocked == false && _costImage.activeInHierarchy == false)
+                _costImage.SetActive(true);
         }
         #endregion
     }

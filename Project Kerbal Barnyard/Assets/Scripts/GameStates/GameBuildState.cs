@@ -18,11 +18,18 @@ public class GameBuildState : State
 
         Debug.Log("STATE: Game Build");
 
+        //enable build controller
+        _controller.buildController.gameObject.SetActive(true);
+
         // Activate canva elems
-        _controller.UI.buildParentObj.SetActive(true);
-        _controller.playerController.player.SetActive(true);
+        _controller.UI.launchCanvas.SetActive(true);
+        _controller.UI.partsShopCanvas.SetActive(true);
+        _controller.UI.powerupPanel.SetTargetPosition(_controller.UI.powerupPanel.startOpen);
+        //_controller.playerController.player.SetActive(true);
+
         //enable grid
         _controller.buildController.EnableGridMask(true);
+        _controller.buildController.partParent.EnablePartGridBackgrounds(true);
     }
 
     public override void Update()
@@ -33,19 +40,24 @@ public class GameBuildState : State
         if(Input.GetMouseButtonDown(0)) {
             // _stateMachine.ChangeState(_stateMachine.LobbyState);
         }
-        
-        // after certain amount of time, trigger intro anim
     }
 
     public override void Exit() {
         base.Exit();
 
         // deactivate canva elems
-        _controller.UI.buildParentObj.SetActive(false);
+        _controller.UI.launchCanvas.SetActive(false);
+        _controller.UI.partsShopCanvas.SetActive(false);
+
         //disable grid
         _controller.buildController.EnableGridMask(false);
+        _controller.buildController.partParent.EnablePartGridBackgrounds(false);
+
         //follow camera
         _controller.cameraController.EnableDisableCameraFollow(true);
+
+        //disable build controller
+        _controller.buildController.gameObject.SetActive(false);
 
     }
 }

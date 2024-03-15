@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Release/LoadingScene.unity
     guid: c8eb6e2809c599543bb322484861c2f7
   - enabled: 1
-    path: Assets/Scenes/Tests/angel test.unity
-    guid: b999b52a1e8c02d4083d136b73174aea
+    path: Assets/Scenes/Release/Main Level.unity
+    guid: 0e1ca7312120ed345bedd5f14890155e
   m_configObjects: {}

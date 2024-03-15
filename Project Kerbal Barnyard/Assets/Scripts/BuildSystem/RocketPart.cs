@@ -1,107 +1,121 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RocketPart : MonoBehaviour
 {
+    private RocketPartDebug _rocketPartDebug;
 
-}
-public class GridTile
-{
-    private GenericGrid<GridTile> grid;
+    [Header("Stats")]
+    public int weight;
+    public int thrust;
+    public int durability;
+    public PartType partType;
+    public PartPanel partPanel;
 
-    public int x { get; private set; }
-    public int y { get; private set; }
+    [Header("Grid Interaction")]
+    [Tooltip("Determines if the part can be placed/added to the ship.")]
+    public bool isValidPlacement = true;
+    public bool isAttachedToRocket = false;
+    public bool isNextToPart = false;
+    [Space]
+    [Tooltip("List of adjacent coordinates to check for other rocket parts.")]
+    public List<Vector2Int> borderOffsets = new List<Vector2Int>();
 
-    public bool isOccupied { get; private set; }
+    private BuildController _bController;
+    //private List<RocketPartSection> sections;
 
-    public int _value;
+    public static Action OnPartMoved = delegate { };
 
-    public GridTile(GenericGrid<GridTile> grid, int x, int y)
+    #region Monobehavior
+    private void Awake()
     {
-        _value = 0;
-        this.grid = grid;
-        this.x = x;
-        this.y = y;
+        _bController = FindObjectOfType<BuildController>();
+        _rocketPartDebug = GetComponent<RocketPartDebug>();
+    }
+    private void Start()
+    {
+        isValidPlacement = true;
+        Debug.Log("[RocketPart] Start");
+    }
+    private void OnEnable()
+    {
+        OnPartMoved += CheckIfNextToPart;
+    }
+    private void OnDisable()
+    {
+        OnPartMoved -= CheckIfNextToPart;
+    }
+    #endregion
 
-        isOccupied = false;
+    #region Custom Functions
+    public void EnableGridBackground(bool enable)
+    {
+        _rocketPartDebug.gridImage.gameObject.SetActive(enable);
+    }
+    public void CheckIfNextToPart()
+    {
+        bool isAdjacent = false;
+        foreach(var offset in borderOffsets)
+        {
+            //physics overlap checks surrounding tiles
+            Collider2D collider = Physics2D.OverlapCircle((Vector2)transform.position + offset, 0.35f);
+            if (collider != null)
+            {
+                isAdjacent = true;
+
+                break;
+            }
+        }
+        isNextToPart = isAdjacent;
+    }
+    public List<RocketPart> GetAdjacentParts()
+    {
+        List<RocketPart> parts = new List<RocketPart>();
+
+        foreach (var offset in borderOffsets)
+        {
+            //physics overlap checks surrounding tiles
+            Collider2D collider = Physics2D.OverlapCircle((Vector2)transform.position + offset, 0.35f);
+            if (collider != null)
+            {
+                //get rocket part
+                RocketPart part = collider.GetComponent<RocketPart>();
+                if(part != null)
+                {
+                    parts.Add(part);
+                }
+            }
+        }
+
+        return parts;
+    }
+    #endregion
+
+    #region Triggers
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isValidPlacement = false;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isValidPlacement = true;
+    }
+    #endregion
+
+    private void OnDrawGizmos()
+    {
+        if(borderOffsets.Count > 0)
+        {
+            foreach(var offset in borderOffsets)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere((Vector2)transform.position + offset, 0.35f);
+            }
+        }
     }
 }
-public class PartData
-{
-    private GenericGrid<PartData> grid;
 
-    public int x { get; private set; }
-    public int y { get; private set; }
-    public bool isSelected { get; private set; }
+public enum PartType { Character, Thruster, Body, Misc}
 
-    private enum States { Empty, Road, Building }
-    private States currentState;
-
-    public int _value;
-
-    public PartData(GenericGrid<PartData> grid, int x, int y)
-    {
-        _value = 0;
-        this.grid = grid;
-        this.x = x;
-        this.y = y;
-
-        isSelected = false;
-    }
-    public Vector2Int GetXY()
-    {
-        return new Vector2Int(x, y);
-    }
-    public void Select()
-    {
-        isSelected = true;
-
-        RefreshCurrentState();
-        grid.TriggerGridObjectChanged(x, y);
-    }
-    public void Deselect()
-    {
-        isSelected = false;
-
-        RefreshCurrentState();
-        grid.TriggerGridObjectChanged(x, y);
-    }
-    public void MakeRoad()
-    {
-        _value = 2;
-        RefreshCurrentState();
-        grid.TriggerGridObjectChanged(x, y);
-    }
-    public void SetValue(int value)
-    {
-        _value = value;
-        RefreshCurrentState();
-        grid.TriggerGridObjectChanged(x, y);
-    }
-    public void AddValue()
-    {
-        _value++;
-        if (_value > 2)
-            _value = 0;
-
-        RefreshCurrentState();
-        grid.TriggerGridObjectChanged(x, y);
-    }
-    public void ResetValue()
-    {
-        _value = 0;
-
-        RefreshCurrentState();
-        grid.TriggerGridObjectChanged(x, y);
-    }
-    private void RefreshCurrentState()
-    {
-        currentState = (States)_value;
-    }
-    public override string ToString()
-    {
-        string ret = x + "," + y + "\n" + currentState.ToString();
-        return ret;
-    }
-}

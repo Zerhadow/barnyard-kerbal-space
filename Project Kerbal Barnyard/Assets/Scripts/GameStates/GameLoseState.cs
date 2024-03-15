@@ -21,6 +21,13 @@ public class GameLoseState : State
 
         // Activate canva elems
         _controller.UI.resultsOverlay.SetActive(true);
+        _controller.UI.overlayCanvas.SetActive(false);
+
+        float currPlayerPoss = _controller.playerController.GetCurrentHeight();
+        _controller.UI.maxHeight.text += " " + currPlayerPoss.ToString("F2");
+        _controller.UI.maxSpd.text += " " + _controller.playerController.shipInfo.fNet;
+        _controller.UI.numParts.text += " " + _controller.playerController.shipInfo.RocketParts.Count;
+        _controller.UI.maxWeight.text += " " + _controller.playerController.shipInfo.totalLoadMass + " banjos";
     }
 
     public override void Update()
@@ -38,5 +45,14 @@ public class GameLoseState : State
         base.Exit();
 
         _controller.UI.resultsOverlay.SetActive(false);
+        _controller.playerController.shipInfo.ResetLocation();
+        
+        // Reset canvas elems
+        _controller.UI.maxHeight.text = "Height Reached:";
+        _controller.UI.maxSpd.text = "Top Speed:";
+        _controller.UI.numParts.text = "Number of Parts:";
+        _controller.UI.maxWeight.text = "Weight:";
+
+        _controller.playerController.shipInfo.ResetInfo();
     }
 }

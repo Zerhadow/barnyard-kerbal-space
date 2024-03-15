@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SimplifiedGrid
 {
@@ -11,7 +12,13 @@ public class SimplifiedGrid
     private float _cellSize;
     private Vector3 _originPosition;
 
+    public int Width => _width;
+    public int Height => _height;
+    public float CellSize => _cellSize;
+    public Vector3 OriginPosition => _originPosition;
+
     private Dictionary<Vector2Int, GridTile> gridTiles;
+    public Dictionary<Vector2Int, GridTile> GridTiles => gridTiles;
 
     public Action<GridTile> OnGridTileChanged = delegate { };
     public Action OnGridDimensionsChanged = delegate { };
@@ -24,7 +31,16 @@ public class SimplifiedGrid
         _originPosition = originPosition;
         gridTiles = new Dictionary<Vector2Int, GridTile>();
 
-        RefreshGridDisplay();
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Vector2Int xy = new Vector2Int(x, y);
+                gridTiles.Add(xy, new GridTile(this, x, y));
+            }
+        }
+
+        //RefreshGridDisplay();
     }
 
     #region Helpers
@@ -32,13 +48,21 @@ public class SimplifiedGrid
     {
         return new Vector3(x, y, 0) * _cellSize + _originPosition;
     }
+    public Vector3 GetWorldPosition(Vector2Int xy)
+    {
+        return new Vector3(xy.x, xy.y, 0) * _cellSize + _originPosition;
+    }
     public Vector2Int GetXY(Vector3 worldPosition/*out int x, out int y*/)
     {
         Vector2Int coords = new Vector2Int();
         coords.x = Mathf.FloorToInt((worldPosition - _originPosition).x / _cellSize);
-        coords.y = Mathf.FloorToInt((worldPosition - _originPosition).z / _cellSize);
+        coords.y = Mathf.FloorToInt((worldPosition - _originPosition).y / _cellSize);
         return coords;
     }
+    /*public Dictionary<Vector2Int, GridTile> GetTilesDictionary()
+    {
+        return gridTiles;
+    }*/
     #endregion
 
     #region ModifyGrid
@@ -49,7 +73,7 @@ public class SimplifiedGrid
         _cellSize = cellSize;
         _originPosition = originPosition;
 
-        RefreshGridDisplay();
+        //RefreshGridDisplay();
     }
     #endregion
 

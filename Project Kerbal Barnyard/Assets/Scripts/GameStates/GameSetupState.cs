@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameSetupState : State
@@ -20,16 +21,18 @@ public class GameSetupState : State
 
         // Disables everything on the canvas
         // Iterate through all child GameObjects
-        foreach (Transform child in _controller.UI.canvas.transform)
+        /*foreach (Transform child in _controller.UI.canvas.transform)
         {
             // Set each child GameObject to inactive
             child.gameObject.SetActive(false);
-        }
+        }*/
 
         _controller.UI.overlayCanvas.SetActive(false);
+        _controller.UI.launchCanvas.SetActive(false);
+        _controller.UI.partsShopCanvas.SetActive(false);
 
         // Activate canva elems
-        _controller.playerController.player.SetActive(false);
+        // _controller.playerController.player.SetActive(false);
     }
 
     public override void Update()

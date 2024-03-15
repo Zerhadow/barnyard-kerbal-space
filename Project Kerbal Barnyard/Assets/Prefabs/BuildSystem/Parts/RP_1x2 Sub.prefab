@@ -97,6 +97,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: partType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.size
       value: 6
       objectReference: {fileID: 0}

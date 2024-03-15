@@ -13,7 +13,7 @@ public class RocketParent : MonoBehaviour
     public float charWeight;
     public int totalLoadMass;
     private int totalMass;
-    public int totalThrust;
+    private int totalThrust;
     public float fNet;
     
     private Vector3 originalPos;
@@ -116,14 +116,50 @@ public class RocketParent : MonoBehaviour
     }
     #endregion
 
-    public float CalculateVelocity() { // F = ma - mg
-        float fGrav = charWeight * 9.81f; // force of char
+    private void SetCharacterWeight() {
+        foreach (RocketPart part in RocketParts)
+        {
+            if (part.partType == PartType.Character)
+            {
+                charWeight = part.weight;
+            }
+        }
+    }
+
+    private float CalculatefGain() {
+        foreach (RocketPart part in RocketParts)
+        {
+            if (part.partType != PartType.Character)
+            {
+                totalLoadMass += part.weight;
+                totalThrust += part.thrust;
+            }
+        }
+
         float fBoosters = totalLoadMass * totalThrust;
+
+        return fBoosters;
+    }
+    
+    public float CalculateVelocity() { // F = ma - mg
+        SetCharacterWeight(); // updates charWeight
+        float fGrav = charWeight * 9.81f; // force of char
+        float fBoosters = CalculatefGain();
+
+        if(fBoosters == 0) { // player didnt add anything else
+            fBoosters = fGrav + 10f;
+        }
 
         fNet = fBoosters - fGrav;
         Debug.Log("fNet: " + fNet);
 
         return fNet;
+    }
+
+    public void ResetInfo() {
+        charWeight = 0;
+        totalLoadMass = 0;
+        totalThrust = 0;
     }
 
     public void ResetLocation() { // after results screen, send parent obj back to 0,0,0

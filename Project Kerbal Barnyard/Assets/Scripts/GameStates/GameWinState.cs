@@ -51,5 +51,7 @@ public class GameWinState : State
         _controller.UI.maxSpd.text = "Top Speed:";
         _controller.UI.numParts.text = "Number of Parts:";
         _controller.UI.maxWeight.text = "Weight:";
+
+        _controller.playerController.shipInfo.ResetInfo();
     }
 }

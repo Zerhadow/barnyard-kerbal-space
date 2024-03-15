@@ -6619,7 +6619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8823c6ac5f570854b916698a1751dbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stock: 1
+  stock: 5
   unlockCost: 10
   partPrefab: {fileID: 3052980406334256328, guid: d7429c106ff6db24d9be6504a86faa5f, type: 3}
   isUnlocked: 0
@@ -10656,8 +10656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   charWeight: 10
-  totalLoadMass: 5
-  totalThrust: 100
+  totalLoadMass: 0
   fNet: 0
 --- !u!50 &1596561755
 Rigidbody2D:
@@ -11657,9 +11656,7 @@ MonoBehaviour:
   shipInfo: {fileID: 1596561754}
   parentObj: {fileID: 1596561752}
   gravityScale: 0.1
-  totalLoadMass: 5
-  totalThrust: 100
-  winHeight: 100
+  winHeight: 10000
 --- !u!1 &1712698087
 GameObject:
   m_ObjectHideFlags: 0

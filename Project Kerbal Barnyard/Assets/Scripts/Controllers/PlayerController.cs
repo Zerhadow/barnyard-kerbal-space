@@ -12,11 +12,7 @@ public class PlayerController : MonoBehaviour
     public float gravityScale = 10f;
     private Rigidbody2D rigidBody2D;
     
-    [Header("Physics Calculations")]
     private float startingY;
-    public int totalLoadMass;
-    private int totalMass;
-    public int totalThrust;
 
     [Header("Win Conditions")]
     public float winHeight;

@@ -11656,7 +11656,7 @@ MonoBehaviour:
   shipInfo: {fileID: 1596561754}
   parentObj: {fileID: 1596561752}
   gravityScale: 0.1
-  winHeight: 10000
+  winHeight: 2000
 --- !u!1 &1712698087
 GameObject:
   m_ObjectHideFlags: 0

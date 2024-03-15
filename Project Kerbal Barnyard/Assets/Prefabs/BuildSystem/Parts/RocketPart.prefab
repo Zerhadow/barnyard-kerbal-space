@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.9342736, b: 0, a: 0.5019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   thrust: 0
   durability: 0
   partType: 2
+  partPanel: {fileID: 0}
   isValidPlacement: 0
   isAttachedToRocket: 0
   isNextToPart: 0
@@ -193,9 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partImage: {fileID: 6343916960783709698}
-  _validColor: {r: 0, g: 1, b: 0, a: 0.5019608}
-  _invalidColor: {r: 1, g: 0, b: 0, a: 0.5019608}
-  _adjacentColor: {r: 0, g: 0, b: 1, a: 0.5019608}
+  _validColor: {r: 0, g: 1, b: 0, a: 1}
+  _invalidColor: {r: 1, g: 0, b: 0, a: 1}
+  _adjacentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &7552008460405219355
 Rigidbody2D:
   serializedVersion: 4

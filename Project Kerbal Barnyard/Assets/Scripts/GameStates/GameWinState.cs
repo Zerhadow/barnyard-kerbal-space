@@ -21,6 +21,13 @@ public class GameWinState : State
 
         // Activate canva elems
         _controller.UI.winOverlay.SetActive(true);
+        _controller.UI.overlayCanvas.SetActive(false);
+
+        float currPlayerPoss = _controller.playerController.GetCurrentHeight();
+        _controller.UI.maxHeight1.text += " " + currPlayerPoss.ToString("F2");
+        _controller.UI.maxSpd1.text += " " + _controller.playerController.shipInfo.fNet;
+        _controller.UI.numParts1.text += " " + _controller.playerController.shipInfo.RocketParts.Count;
+        _controller.UI.maxWeight1.text += " " + _controller.playerController.shipInfo.totalLoadMass + " banjos";
     }
 
     public override void Update()

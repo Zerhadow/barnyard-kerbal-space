@@ -14059,7 +14059,7 @@ MonoBehaviour:
   totalLoadMass: 5
   totalThrust: 100
   maxSpd: 0
-  winHeight: 30
+  winHeight: 100
 --- !u!1 &1712698087
 GameObject:
   m_ObjectHideFlags: 0

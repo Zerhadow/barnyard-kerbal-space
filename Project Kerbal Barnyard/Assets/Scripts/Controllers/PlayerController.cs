@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
         return rigidBody2D.velocity.y;
     }
 
+    public void ResetVeloctity() {
+        rigidBody2D.velocity = Vector2.zero;
+    }
+
     public void MoveParts(float currHeight) {
         // move red sq to where the char part is
 

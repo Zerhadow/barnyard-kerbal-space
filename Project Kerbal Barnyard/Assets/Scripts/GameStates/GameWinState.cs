@@ -53,5 +53,6 @@ public class GameWinState : State
         _controller.UI.maxWeight.text = "Weight:";
 
         _controller.playerController.shipInfo.ResetInfo();
+        _controller.playerController.ResetVeloctity();
     }
 }

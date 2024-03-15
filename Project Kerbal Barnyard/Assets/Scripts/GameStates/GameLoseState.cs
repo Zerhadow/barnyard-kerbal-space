@@ -46,5 +46,11 @@ public class GameLoseState : State
 
         _controller.UI.resultsOverlay.SetActive(false);
         _controller.playerController.shipInfo.ResetLocation();
+        
+        // Reset canvas elems
+        _controller.UI.maxHeight.text = "Height Reached:";
+        _controller.UI.maxSpd.text = "Top Speed:";
+        _controller.UI.numParts.text = "Number of Parts:";
+        _controller.UI.maxWeight.text = "Weight:";
     }
 }

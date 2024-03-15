@@ -45,5 +45,11 @@ public class GameWinState : State
         base.Exit();
 
         _controller.UI.winOverlay.SetActive(false);
+
+        // Reset canvas elems
+        _controller.UI.maxHeight.text = "Height Reached:";
+        _controller.UI.maxSpd.text = "Top Speed:";
+        _controller.UI.numParts.text = "Number of Parts:";
+        _controller.UI.maxWeight.text = "Weight:";
     }
 }

@@ -1482,9 +1482,9 @@ RectTransform:
   - {fileID: 1824779725}
   m_Father: {fileID: 757175646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 30}
   m_SizeDelta: {x: 180, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302179963
@@ -1616,6 +1616,7 @@ RectTransform:
   - {fileID: 535809519}
   - {fileID: 783539081}
   - {fileID: 1389555637}
+  - {fileID: 757175646}
   m_Father: {fileID: 875743511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1954,7 +1955,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 362355622}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 483578808}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &362355622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,7 +2455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 443936077}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 530602458}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &443936077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,7 +3389,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 546429910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2093708004}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &546429910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3756,7 +3793,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575435121}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1128387646}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &575435121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4992,7 +5041,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757175645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5002,12 +5051,12 @@ RectTransform:
   - {fileID: 1867311206}
   - {fileID: 302179962}
   - {fileID: 1981313075}
-  m_Father: {fileID: 875743511}
+  m_Father: {fileID: 302528767}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: 200, y: 150}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 100, y: 40}
+  m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757175647
 MonoBehaviour:
@@ -5035,7 +5084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6544,7 +6593,6 @@ RectTransform:
   m_Children:
   - {fileID: 254460982}
   - {fileID: 302528767}
-  - {fileID: 757175646}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7102,7 +7150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1021818489
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7663,7 +7711,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1102360653}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1439198738}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1102360653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7787,7 +7847,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1117299595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1884479965}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1117299595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8247,7 +8319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1153399340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10335,7 +10407,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1353332769}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2041705700}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1353332769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11067,7 +11151,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438124508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1537810944}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1438124508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12514,7 +12610,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1584730186}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1379389529}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1584730186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15467,7 +15575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1867311207
@@ -16368,7 +16476,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1924515404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961554839}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1924515404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16642,7 +16762,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1958758003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1991806092}
+        m_TargetAssemblyTypeName: PartPanel, Assembly-CSharp
+        m_MethodName: TrySpawnPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1958758003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16943,9 +17075,9 @@ RectTransform:
   - {fileID: 732977601}
   m_Father: {fileID: 757175646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: 180, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981313076

@@ -1065,4 +1065,5 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 7371185456672059666}
   _costText: {fileID: 6466671425145529092}
+  _costImage: {fileID: 1583421229814111675}
   _lockedImage: {fileID: 1380591689701920071}

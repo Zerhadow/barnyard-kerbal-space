@@ -2378,13 +2378,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8823c6ac5f570854b916698a1751dbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stock: 1
+  stock: 3
   unlockCost: 10
   partPrefab: {fileID: 1754113946862966420, guid: f08fe447169eafc4f877dc772210622e, type: 3}
-  isUnlocked: 0
+  isUnlocked: 1
   _stockText: {fileID: 377747504}
   _costText: {fileID: 575139654}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 1970761784}
   _lockedImage: {fileID: 1151692304}
 --- !u!1 &486007039
 GameObject:
@@ -2517,7 +2517,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 1823289261}
   _costText: {fileID: 1008110839}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 1806587317}
   _lockedImage: {fileID: 1685508759}
 --- !u!1 &535809518
 GameObject:
@@ -5722,7 +5722,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 1754560343}
   _costText: {fileID: 649151833}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 1572789781}
   _lockedImage: {fileID: 1169355727}
 --- !u!1 &1008110837
 GameObject:
@@ -6619,13 +6619,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8823c6ac5f570854b916698a1751dbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stock: 5
+  stock: 3
   unlockCost: 10
   partPrefab: {fileID: 3052980406334256328, guid: d7429c106ff6db24d9be6504a86faa5f, type: 3}
   isUnlocked: 0
   _stockText: {fileID: 1443298648}
   _costText: {fileID: 1143417360}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 591028357}
   _lockedImage: {fileID: 370540153}
 --- !u!114 &1131221564 stripped
 MonoBehaviour:
@@ -9336,13 +9336,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8823c6ac5f570854b916698a1751dbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stock: 1
+  stock: 2
   unlockCost: 10
   partPrefab: {fileID: 3052980406334256328, guid: 5c2c64901839e3b4f9c32b937f35af63, type: 3}
   isUnlocked: 0
   _stockText: {fileID: 1637793476}
   _costText: {fileID: 1125587415}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 1650696287}
   _lockedImage: {fileID: 658538066}
 --- !u!1 &1441145336
 GameObject:
@@ -13023,13 +13023,13 @@ RectTransform:
   - {fileID: 1991806091}
   - {fileID: 1537810943}
   - {fileID: 1379389528}
-  - {fileID: 1128387645}
-  - {fileID: 483578807}
-  - {fileID: 2041705699}
   - {fileID: 961554838}
   - {fileID: 530602457}
-  - {fileID: 1884479964}
   - {fileID: 2093708003}
+  - {fileID: 1884479964}
+  - {fileID: 483578807}
+  - {fileID: 2041705699}
+  - {fileID: 1128387645}
   - {fileID: 1439198737}
   m_Father: {fileID: 1297109305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13119,7 +13119,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 2137629236}
   _costText: {fileID: 110167461}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 1367909523}
   _lockedImage: {fileID: 1331063880}
 --- !u!1001 &1896081777
 PrefabInstance:
@@ -14475,13 +14475,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8823c6ac5f570854b916698a1751dbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stock: 1
+  stock: 2
   unlockCost: 10
   partPrefab: {fileID: 1754113946862966420, guid: 90d7b86e8a39cf34f803e750440d153e, type: 3}
   isUnlocked: 0
   _stockText: {fileID: 1253209076}
   _costText: {fileID: 1670923161}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 2017324711}
   _lockedImage: {fileID: 955081065}
 --- !u!1 &2048570101
 GameObject:
@@ -14851,7 +14851,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 190507914}
   _costText: {fileID: 801283438}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 1426244820}
   _lockedImage: {fileID: 1717794856}
 --- !u!1 &2100494855
 GameObject:

@@ -13,6 +13,7 @@ public class RocketParent : MonoBehaviour
     public int totalLoadMass;
     private int totalMass;
     public int totalThrust;
+    public float fNet;
 
     public Action OnRocketModified = delegate { };
 
@@ -68,7 +69,7 @@ public class RocketParent : MonoBehaviour
         float fGrav = charWeight * 9.81f; // force of char
         float fBoosters = totalLoadMass * totalThrust;
 
-        float fNet = fBoosters - fGrav;
+        fNet = fBoosters - fGrav;
         Debug.Log("fNet: " + fNet);
 
         return fNet;

@@ -23,8 +23,11 @@ public class GameLoseState : State
         _controller.UI.resultsOverlay.SetActive(true);
         _controller.UI.overlayCanvas.SetActive(false);
 
-        // _controller.UI.heightTxt.text = "Height: " + currPlayerPoss.ToString("F2");
-        // _controller.UI.speedTxt.text = "Speed: " + _controller.playerController.GetCurrentSpeed().ToString("F2");
+        float currPlayerPoss = _controller.playerController.GetCurrentHeight();
+        _controller.UI.maxHeight.text += " " + currPlayerPoss.ToString("F2");
+        _controller.UI.maxSpd.text += " " + _controller.playerController.shipInfo.fNet;
+        _controller.UI.numParts.text += " " + _controller.playerController.shipInfo.RocketParts.Count;
+        _controller.UI.maxWeight.text += " " + _controller.playerController.shipInfo.totalLoadMass + " banjos";
     }
 
     public override void Update()

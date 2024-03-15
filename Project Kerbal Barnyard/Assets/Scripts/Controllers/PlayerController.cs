@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public int totalLoadMass;
     private int totalMass;
     public int totalThrust;
+    [Header("Win / Lose Field")]
+    public float maxSpd;
     [Header("Win Conditions")]
     public float winHeight;
 
@@ -48,6 +50,10 @@ public class PlayerController : MonoBehaviour
 
     public float GetCurrentSpeed() {
         return rigidBody2D.velocity.y;
+    }
+
+    public void GetMaxSpeed() {
+        maxSpd = rigidBody2D.velocity.y;
     }
 
     public void MoveParts(float currHeight) {

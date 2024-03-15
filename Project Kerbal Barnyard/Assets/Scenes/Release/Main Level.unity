@@ -8774,7 +8774,7 @@ MonoBehaviour:
   isUnlocked: 1
   _stockText: {fileID: 782523741}
   _costText: {fileID: 764242713}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 1864537808}
   _lockedImage: {fileID: 1156271103}
 --- !u!1 &1384259059
 GameObject:
@@ -10153,7 +10153,7 @@ MonoBehaviour:
   isUnlocked: 1
   _stockText: {fileID: 481449391}
   _costText: {fileID: 1822107073}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 448352745}
   _lockedImage: {fileID: 400460834}
 --- !u!1 &1544697878
 GameObject:
@@ -14204,7 +14204,7 @@ MonoBehaviour:
   isUnlocked: 1
   _stockText: {fileID: 1619812062}
   _costText: {fileID: 32582501}
-  _costImage: {fileID: 0}
+  _costImage: {fileID: 1978627961}
   _lockedImage: {fileID: 2028250407}
 --- !u!1 &2000571524
 GameObject:

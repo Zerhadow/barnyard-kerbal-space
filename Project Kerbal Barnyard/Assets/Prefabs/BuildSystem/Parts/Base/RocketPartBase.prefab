@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69659cb97daf3a14ebfe7b9a0362cf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partImage: {fileID: 6343916960783709698}
+  gridImage: {fileID: 6343916960783709698}
   _validColor: {r: 0, g: 1, b: 0, a: 0.5019608}
   _invalidColor: {r: 1, g: 0, b: 0, a: 0.5019608}
   _adjacentColor: {r: 0, g: 0, b: 1, a: 0.5019608}

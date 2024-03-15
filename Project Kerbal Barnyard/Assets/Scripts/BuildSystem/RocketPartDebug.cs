@@ -6,7 +6,7 @@ public class RocketPartDebug : MonoBehaviour
 {
     private RocketPart rocketPart;
 
-    [SerializeField] private SpriteRenderer _partImage;
+    public SpriteRenderer gridImage;
     [SerializeField] private Color _validColor;
     [SerializeField] private Color _invalidColor;
     [SerializeField] private Color _adjacentColor;
@@ -23,15 +23,15 @@ public class RocketPartDebug : MonoBehaviour
         {
             if(rocketPart.isValidPlacement == true)
             {
-                if(rocketPart.isNextToPart == true && _partImage.color != _adjacentColor)
-                    _partImage.color = _adjacentColor;
-                if(rocketPart.isNextToPart == false && _partImage.color != _validColor)
-                    _partImage.color = _validColor;
+                if(rocketPart.isNextToPart == true && gridImage.color != _adjacentColor)
+                    gridImage.color = _adjacentColor;
+                if(rocketPart.isNextToPart == false && gridImage.color != _validColor)
+                    gridImage.color = _validColor;
             }
 
             //if(rocketPart.isValidPlacement == true && _partImage.color != _validColor) _partImage.color = _validColor;
-            if(rocketPart.isValidPlacement == false && _partImage.color != _invalidColor)
-                _partImage.color = _invalidColor;
+            if(rocketPart.isValidPlacement == false && gridImage.color != _invalidColor)
+                gridImage.color = _invalidColor;
         }
     }
 }

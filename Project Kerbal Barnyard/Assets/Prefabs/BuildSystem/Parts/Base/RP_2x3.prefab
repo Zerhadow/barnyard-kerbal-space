@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RP_2x3
       objectReference: {fileID: 0}
+    - target: {fileID: 6343916960783709698, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: m_Color.a
+      value: 0.12941177
+      objectReference: {fileID: 0}
     - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2

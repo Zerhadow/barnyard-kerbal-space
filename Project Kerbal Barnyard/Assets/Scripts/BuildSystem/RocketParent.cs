@@ -145,11 +145,8 @@ public class RocketParent : MonoBehaviour
     private float CalculatefGain() {
         foreach (RocketPart part in RocketParts)
         {
-            if (part.partType != PartType.Character)
-            {
-                totalLoadMass += part.weight;
-                totalThrust += part.thrust;
-            }
+            totalLoadMass += part.weight;
+            totalThrust += part.thrust;
         }
 
         float fBoosters = totalLoadMass * totalThrust;

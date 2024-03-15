@@ -23,6 +23,18 @@ public class UIController : MonoBehaviour
     public TMP_Text heightTxt;
     public TMP_Text speedTxt;
 
+    [Header("Results Dependencies")]
+    public TMP_Text maxHeight;
+    public TMP_Text maxSpd;
+    public TMP_Text numParts;
+    public TMP_Text maxWeight;
+    
+    [Header("Win Dependencies")]
+    public TMP_Text maxHeight1;
+    public TMP_Text maxSpd1;
+    public TMP_Text numParts1;
+    public TMP_Text maxWeight1;
+
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
     }

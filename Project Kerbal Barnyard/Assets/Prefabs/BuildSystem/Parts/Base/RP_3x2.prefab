@@ -84,21 +84,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: RP_3x2
       objectReference: {fileID: 0}
+    - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.size
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[0].x
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[0].y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[1].x
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[1].y
@@ -106,35 +118,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[2].x
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[2].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
-      propertyPath: borderOffsets.Array.data[3].y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
-      propertyPath: borderOffsets.Array.data[4].x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
-      propertyPath: borderOffsets.Array.data[4].y
-      value: -2
+      propertyPath: borderOffsets.Array.data[3].x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
-      propertyPath: borderOffsets.Array.data[5].x
+      propertyPath: borderOffsets.Array.data[3].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[4].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[4].y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[5].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[5].y
-      value: -2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[6].x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[6].y
@@ -142,27 +158,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[7].x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
-      propertyPath: borderOffsets.Array.data[7].y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
-      propertyPath: borderOffsets.Array.data[8].x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
-      propertyPath: borderOffsets.Array.data[8].y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
-      propertyPath: borderOffsets.Array.data[9].x
+      propertyPath: borderOffsets.Array.data[7].y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[8].x
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[8].y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: borderOffsets.Array.data[9].x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.data[9].y
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

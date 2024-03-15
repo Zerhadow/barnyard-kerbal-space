@@ -45,5 +45,6 @@ public class GameLoseState : State
         base.Exit();
 
         _controller.UI.resultsOverlay.SetActive(false);
+        // _controller
     }
 }

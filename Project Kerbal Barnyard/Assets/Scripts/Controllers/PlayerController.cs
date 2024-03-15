@@ -6,17 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     public RocketParent shipInfo;
     public GameObject parentObj;
+    
     [Header("Movement Stuff")]
     private float forceMagnitude;
     public float gravityScale = 10f;
     private Rigidbody2D rigidBody2D;
+    
     [Header("Physics Calculations")]
     private float startingY;
     public int totalLoadMass;
     private int totalMass;
     public int totalThrust;
-    [Header("Win / Lose Field")]
-    public float maxSpd;
+
     [Header("Win Conditions")]
     public float winHeight;
 
@@ -50,10 +51,6 @@ public class PlayerController : MonoBehaviour
 
     public float GetCurrentSpeed() {
         return rigidBody2D.velocity.y;
-    }
-
-    public void GetMaxSpeed() {
-        maxSpd = rigidBody2D.velocity.y;
     }
 
     public void MoveParts(float currHeight) {

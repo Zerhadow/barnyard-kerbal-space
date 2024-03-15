@@ -14,13 +14,15 @@ public class RocketParent : MonoBehaviour
     private int totalMass;
     public int totalThrust;
     public float fNet;
-
+    
+    private Vector3 originalPos;
     public Action OnRocketModified = delegate { };
 
     private void Awake()
     {
         //TODO If we add a save system will need to get list from save system
         RocketParts = new List<RocketPart>();
+        originalPos = transform.position;
     }
 
 
@@ -73,5 +75,9 @@ public class RocketParent : MonoBehaviour
         Debug.Log("fNet: " + fNet);
 
         return fNet;
+    }
+
+    public void ResetLocation() { // after results screen, send parent obj back to 0,0,0
+        transform.position = originalPos;
     }
 }

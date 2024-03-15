@@ -45,6 +45,9 @@ public class GameBuildState : State
     public override void Exit() {
         base.Exit();
 
+        //initialize rocket
+        _controller.buildController.partParent.InitializeRocket();
+
         // deactivate canva elems
         _controller.UI.launchCanvas.SetActive(false);
         _controller.UI.partsShopCanvas.SetActive(false);

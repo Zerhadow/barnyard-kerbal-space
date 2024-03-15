@@ -23,9 +23,9 @@ public class RocketPartDebug : MonoBehaviour
         {
             if(rocketPart.isValidPlacement == true)
             {
-                if(rocketPart.isNextToPart == true && gridImage.color != _adjacentColor)
+                if(rocketPart.isAttachedToCharacter == true && gridImage.color != _adjacentColor)
                     gridImage.color = _adjacentColor;
-                if(rocketPart.isNextToPart == false && gridImage.color != _validColor)
+                if(rocketPart.isAttachedToCharacter == false && gridImage.color != _validColor)
                     gridImage.color = _validColor;
             }
 

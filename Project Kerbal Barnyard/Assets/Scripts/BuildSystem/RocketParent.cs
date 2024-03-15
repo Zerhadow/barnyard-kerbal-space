@@ -22,14 +22,45 @@ public class RocketParent : MonoBehaviour
         //TODO If we add a save system will need to get list from save system
         RocketParts = new List<RocketPart>();
     }
-
+    private void OnEnable()
+    {
+        RocketPart.OnPartMoved += CheckAttachedParts;
+    }
+    private void OnDisable()
+    {
+        RocketPart.OnPartMoved -= CheckAttachedParts;
+    }
 
     #region Rocket Part 
-    /// <summary>
-    /// Will return false if RocketParts already contains the part.
-    /// </summary>
-    /// <param name="part"></param>
-    /// <returns></returns>
+    public void CheckAttachedParts()
+    {
+        Debug.Log("CheckAttachedParts()");
+
+        /// start with character part
+        /// change all adjacent to attached
+        /// recursive loop it
+        /// 
+
+        RocketPart characterPart = null;
+
+        foreach (var part in RocketParts)
+        {
+            if(part.partType == PartType.Character)
+                characterPart = part;
+        }
+
+        if(characterPart != null) //only check if character exists
+        {
+            foreach (var part in characterPart.GetAdjacentParts())
+            {
+                part.SetAttachedToCharacter();
+            }
+
+            // after set all remaining parts to not attached
+        }
+
+
+    }
     public void TryAddPartToRocket(RocketPart part)
     {
         RocketParts.Add(part);
@@ -62,27 +93,33 @@ public class RocketParent : MonoBehaviour
             part.EnableGridBackground(enable);
         }
     }
-    public void ResetRocketTransform()
-    {
-
-    }
     public void InitializeRocket()
     {
-
         if (RocketParts.Count > 0)
         {
             /// loop through each and check if next to character
             /// start with character part
 
             RocketPart characterPart = null;
+            List<RocketPart> partsToRemove = new List<RocketPart>();
 
             foreach (RocketPart part in RocketParts)
             {
                 if(part.partType == PartType.Character)
                     characterPart = part;
+
+                if (part.isNextToPart == false && part.partType != PartType.Character)
+                {
+                    partsToRemove.Add(part);
+                }
             }
 
-            foreach (RocketPart part in characterPart.GetAdjacentParts())
+            foreach (RocketPart part in partsToRemove)
+            {
+                RemovePartFromRocket(part);
+            }
+
+            /*foreach (RocketPart part in characterPart.GetAdjacentParts())
             {
                 part.isAttachedToRocket = true;
             }
@@ -95,7 +132,7 @@ public class RocketParent : MonoBehaviour
                 {
 
                 }
-            }
+            }*/
             
         }
     }

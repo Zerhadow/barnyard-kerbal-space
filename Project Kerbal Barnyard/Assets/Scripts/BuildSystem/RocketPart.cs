@@ -26,7 +26,8 @@ public class RocketPart : MonoBehaviour
     private BuildController _bController;
     //private List<RocketPartSection> sections;
 
-    public static Action OnPartMoved = delegate { };
+    public static Action OnPartChanged = delegate { };
+    public static Action OnPartAttachmentReset = delegate { };
 
     #region Monobehavior
     private void Awake()
@@ -43,17 +44,17 @@ public class RocketPart : MonoBehaviour
     {
         isValidPlacement = true;
         //Debug.Log("[RocketPart] Start");
-        OnPartMoved?.Invoke();
+        OnPartChanged?.Invoke();
     }
     private void OnEnable()
     {
-        OnPartMoved += CheckIfNextToPart;
-        //OnPartMoved += CheckIfAttachedToCharacter;
+        OnPartChanged += CheckIfNextToPart;
+        OnPartAttachmentReset += ResetAttachment;
     }
     private void OnDisable()
     {
-        OnPartMoved -= CheckIfNextToPart;
-        //OnPartMoved -= CheckIfAttachedToCharacter;
+        OnPartChanged -= CheckIfNextToPart;
+        OnPartAttachmentReset -= ResetAttachment;
     }
     #endregion
 
@@ -78,6 +79,10 @@ public class RocketPart : MonoBehaviour
         }
         isNextToPart = isAdjacent;
     }
+    public void ResetAttachment()
+    {
+        if(partType != PartType.Character) isAttachedToCharacter = false;
+    }
     public void SetAttachedToCharacter()
     {
         if(isAttachedToCharacter == false)
@@ -86,7 +91,7 @@ public class RocketPart : MonoBehaviour
 
             foreach(RocketPart part in GetAdjacentParts())
             {
-                SetAttachedToCharacter();
+                part.SetAttachedToCharacter();
             }
         }
     }

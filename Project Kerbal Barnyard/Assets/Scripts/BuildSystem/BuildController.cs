@@ -147,6 +147,7 @@ public class BuildController : MonoBehaviour
             MouseUpAction(xy, tileCenter);
         }
 
+        RocketPart.OnPartChanged?.Invoke();
     }
     public void MouseHoldAction(Vector2Int xy, Vector2 tileCenter)
     {
@@ -183,7 +184,7 @@ public class BuildController : MonoBehaviour
             _previousPosition = Vector2.zero;
         }
 
-        RocketPart.OnPartMoved?.Invoke();
+        //RocketPart.OnPartChanged?.Invoke();
     }
     public void RightClickAction(Vector2Int xy, Vector2 tileCenter)
     {
@@ -193,6 +194,8 @@ public class BuildController : MonoBehaviour
         }
 
         MouseUpAction(xy, tileCenter);
+
+        RocketPart.OnPartChanged?.Invoke();
     }
     #endregion
 

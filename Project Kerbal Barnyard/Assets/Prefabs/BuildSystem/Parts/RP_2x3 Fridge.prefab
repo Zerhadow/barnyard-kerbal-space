@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6287415997790547103, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: m_Name
-      value: RP_2x3
+      value: RP_2x3 Fridge
       objectReference: {fileID: 0}
     - target: {fileID: 6343916960783709698, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: m_Color.a
@@ -82,16 +82,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8258925537244109521, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8379556246076268997, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 591273985f4c0284a9ff84b72cda9af4, type: 3}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: borderOffsets.Array.size
       value: 10

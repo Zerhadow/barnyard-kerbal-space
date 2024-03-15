@@ -2384,6 +2384,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 377747504}
   _costText: {fileID: 575139654}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 1151692304}
 --- !u!1 &486007039
 GameObject:
@@ -2516,6 +2517,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 1823289261}
   _costText: {fileID: 1008110839}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 1685508759}
 --- !u!1 &535809518
 GameObject:
@@ -5720,6 +5722,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 1754560343}
   _costText: {fileID: 649151833}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 1169355727}
 --- !u!1 &1008110837
 GameObject:
@@ -6622,6 +6625,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 1443298648}
   _costText: {fileID: 1143417360}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 370540153}
 --- !u!114 &1131221564 stripped
 MonoBehaviour:
@@ -8766,10 +8770,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stock: 1
   unlockCost: 10
-  partPrefab: {fileID: 0}
+  partPrefab: {fileID: 3640127126745747183, guid: 224d6cb56e8e65c448ec14f7b24ea9fe, type: 3}
   isUnlocked: 1
   _stockText: {fileID: 782523741}
   _costText: {fileID: 764242713}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 1156271103}
 --- !u!1 &1384259059
 GameObject:
@@ -9337,6 +9342,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 1637793476}
   _costText: {fileID: 1125587415}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 658538066}
 --- !u!1 &1441145336
 GameObject:
@@ -9924,7 +9930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6a4c23a9215333245a14c420cfa2d00d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34d982e28fac0bb468e29849d0c02e45, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10143,10 +10149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stock: 1
   unlockCost: 10
-  partPrefab: {fileID: 0}
+  partPrefab: {fileID: 3640127126745747183, guid: 06554bbcb9bf58347aec4f13af273707, type: 3}
   isUnlocked: 1
   _stockText: {fileID: 481449391}
   _costText: {fileID: 1822107073}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 400460834}
 --- !u!1 &1544697878
 GameObject:
@@ -13115,6 +13122,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 2137629236}
   _costText: {fileID: 110167461}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 1331063880}
 --- !u!1001 &1896081777
 PrefabInstance:
@@ -14199,6 +14207,7 @@ MonoBehaviour:
   isUnlocked: 1
   _stockText: {fileID: 1619812062}
   _costText: {fileID: 32582501}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 2028250407}
 --- !u!1 &2000571524
 GameObject:
@@ -14475,6 +14484,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 1253209076}
   _costText: {fileID: 1670923161}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 955081065}
 --- !u!1 &2048570101
 GameObject:
@@ -14844,6 +14854,7 @@ MonoBehaviour:
   isUnlocked: 0
   _stockText: {fileID: 190507914}
   _costText: {fileID: 801283438}
+  _costImage: {fileID: 0}
   _lockedImage: {fileID: 1717794856}
 --- !u!1 &2100494855
 GameObject:

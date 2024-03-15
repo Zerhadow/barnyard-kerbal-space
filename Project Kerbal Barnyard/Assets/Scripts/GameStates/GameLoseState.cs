@@ -21,6 +21,10 @@ public class GameLoseState : State
 
         // Activate canva elems
         _controller.UI.resultsOverlay.SetActive(true);
+        _controller.UI.overlayCanvas.SetActive(false);
+
+        // _controller.UI.heightTxt.text = "Height: " + currPlayerPoss.ToString("F2");
+        // _controller.UI.speedTxt.text = "Speed: " + _controller.playerController.GetCurrentSpeed().ToString("F2");
     }
 
     public override void Update()

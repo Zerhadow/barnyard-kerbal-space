@@ -32,6 +32,7 @@ public class RocketPart : MonoBehaviour
     private void Awake()
     {
         _bController = FindObjectOfType<BuildController>();
+        _rocketPartDebug = GetComponent<RocketPartDebug>();
     }
     private void Start()
     {

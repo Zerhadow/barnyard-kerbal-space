@@ -11304,7 +11304,7 @@ MonoBehaviour:
   playThemeBuildUp: {fileID: 258992809}
   playTheme1: {fileID: 104701913}
   playTheme2: {fileID: 2085611997}
-  resultSound: {fileID: 0}
+  resultSound: {fileID: 1884590788}
   startSong: 
 --- !u!1 &1477608287
 GameObject:

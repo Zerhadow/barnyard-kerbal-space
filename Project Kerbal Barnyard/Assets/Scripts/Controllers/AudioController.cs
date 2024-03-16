@@ -34,7 +34,7 @@ public class AudioController : MonoBehaviour
     }
     
     public IEnumerator PlayCountDownIntro() {
-        yield return new WaitForSeconds(4.3f);
+        yield return new WaitForSeconds(3.2f);
         playTheme1.Play();
         playerController.Launch(); // forces ship to launch after
     }

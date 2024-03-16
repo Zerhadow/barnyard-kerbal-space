@@ -30,6 +30,9 @@ public class GameBuildState : State
         //enable grid
         _controller.buildController.EnableGridMask(true);
         _controller.buildController.partParent.ToggleBuildMode(true);
+
+        // play music
+        _controller.audioController.buildTheme.Play();
     }
 
     public override void Update()
@@ -61,6 +64,9 @@ public class GameBuildState : State
 
         //disable build controller
         _controller.buildController.gameObject.SetActive(false);
+
+        // stop music
+        _controller.audioController.buildTheme.Stop();
 
     }
 }

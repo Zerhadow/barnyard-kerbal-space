@@ -55,5 +55,9 @@ public class GameLoseState : State
 
         _controller.playerController.shipInfo.ResetInfo();
         _controller.playerController.ResetVeloctity();
+
+        // make sure no music is playing before next try
+        _controller.audioController.playTheme1.Stop();
+        _controller.audioController.playTheme2.Stop();
     }
 }

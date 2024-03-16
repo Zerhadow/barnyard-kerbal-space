@@ -51,15 +51,29 @@ public class RocketPart : MonoBehaviour
     {
         OnPartChanged += CheckIfNextToPart;
         OnPartAttachmentReset += ResetAttachment;
+
+        PlayerController.OnRocketLaunched += EnableVFX;
+        BuildController.OnBuildModeStarted += DisableVFX;
     }
     private void OnDisable()
     {
         OnPartChanged -= CheckIfNextToPart;
         OnPartAttachmentReset -= ResetAttachment;
+
+        PlayerController.OnRocketLaunched -= EnableVFX;
+        BuildController.OnBuildModeStarted -= DisableVFX;
     }
     #endregion
 
     #region Custom Functions
+    public void EnableVFX()
+    {
+
+    }
+    public void DisableVFX()
+    {
+
+    }
     public void EnableGridBackground(bool enable)
     {
         _rocketPartDebug.gridImage.gameObject.SetActive(enable);

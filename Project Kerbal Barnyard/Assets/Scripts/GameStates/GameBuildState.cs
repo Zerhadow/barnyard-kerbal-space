@@ -30,6 +30,9 @@ public class GameBuildState : State
         //enable tutorial on first build
         _controller.UI.tutorialPanel.TryTurorial();
 
+        //disbale vfx for parts
+        BuildController.OnBuildModeStarted?.Invoke();
+
         //enable grid
         _controller.buildController.EnableGridMask(true);
         _controller.buildController.partParent.ToggleBuildMode(true);

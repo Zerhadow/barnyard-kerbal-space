@@ -30,6 +30,7 @@ public class BuildController : MonoBehaviour
     public bool debugMode = false;
 
     public static Action<RocketPart> OnSelectedPartChanged = delegate { };
+    public static Action OnBuildModeStarted = delegate { };
 
     private Camera _mainCamera;
 

@@ -86,6 +86,13 @@ public class RocketParent : MonoBehaviour
         Debug.Log(RocketParts.Count);
         
     }
+    public void ToggleBuildMode(bool isBuildMode)
+    {
+        foreach(var part in RocketParts)
+        {
+            //part.isBuildMode = isBuildMode;
+        }
+    }
     public int GetTotalDurability()
     {
         int durability = 0;

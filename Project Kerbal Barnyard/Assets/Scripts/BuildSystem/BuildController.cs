@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -28,6 +29,8 @@ public class BuildController : MonoBehaviour
     [Header("Debug")]
     public bool debugMode = false;
 
+    public static Action<RocketPart> OnSelectedPartChanged = delegate { };
+
     private Camera _mainCamera;
 
     private void Awake()
@@ -44,6 +47,9 @@ public class BuildController : MonoBehaviour
         EnableGridMask(false); //grid
         gameObject.SetActive(false); //controller
         _gameController.UI.partsShopCanvas.SetActive(false); // parts shop UI
+
+        //trigger actions
+        OnSelectedPartChanged?.Invoke(_selectedPart);
     }
     private void Update()
     {
@@ -134,11 +140,13 @@ public class BuildController : MonoBehaviour
                 {
                     _previousPosition = rocketPart.transform.position;
                     _selectedPart = rocketPart;
+                    OnSelectedPartChanged?.Invoke(_selectedPart);
                 }
             }
             else
             {
                 _selectedPart = null;
+                OnSelectedPartChanged?.Invoke(_selectedPart);
                 _previousPosition = Vector2.zero;
             }
         }
@@ -169,6 +177,7 @@ public class BuildController : MonoBehaviour
             {
                 //can be dropped
                 _selectedPart = null;
+                OnSelectedPartChanged?.Invoke(_selectedPart);
             }
             else
             {
@@ -179,6 +188,7 @@ public class BuildController : MonoBehaviour
                     RemovePart(_selectedPart); //destroy maybe
 
                 _selectedPart = null;
+                OnSelectedPartChanged?.Invoke(_selectedPart);
             }
 
             _previousPosition = Vector2.zero;
@@ -240,6 +250,7 @@ public class BuildController : MonoBehaviour
             rocketPart.transform.position = new Vector3(0, -435, 0);
             rocketPart.partPanel = partPanel;
             _selectedPart = rocketPart;
+            OnSelectedPartChanged?.Invoke(_selectedPart);
 
             partParent.TryAddPartToRocket(_selectedPart);
         }

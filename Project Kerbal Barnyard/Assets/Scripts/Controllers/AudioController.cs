@@ -7,6 +7,7 @@ public class AudioController : MonoBehaviour
     [Header("Tracks")]
     public AudioSource mainMenu;
     public AudioSource buildTheme;
+    public AudioSource playThemeBuildUp;
     public AudioSource playTheme1;
     public AudioSource playTheme2;
 
@@ -23,6 +24,15 @@ public class AudioController : MonoBehaviour
                 // StartCoroutine(StartFade(mainMenu, 2f, 1f));
             }
         }
+    }
+
+    public void PlayCountDownIntroHelper() {
+        StartCoroutine(PlayCountDownIntro());
+    }
+    
+    public IEnumerator PlayCountDownIntro() {
+        playThemeBuildUp.Play();
+        yield return new WaitForSeconds(3f);
     }
 
     public static IEnumerator StartFade(AudioSource music, float duration, float targetVol){

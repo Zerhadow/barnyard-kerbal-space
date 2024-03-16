@@ -22,6 +22,7 @@ public class GamePlayState : State
         _controller.UI.overlayCanvas.SetActive(true);
 
         // countdown
+        _controller.audioController.PlayCountDownIntroHelper();
         
 
         _controller.playerController.Launch();

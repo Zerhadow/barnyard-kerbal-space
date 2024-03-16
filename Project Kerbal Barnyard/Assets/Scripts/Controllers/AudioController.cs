@@ -11,6 +11,7 @@ public class AudioController : MonoBehaviour
     public AudioSource playThemeBuildUp;
     public AudioSource playTheme1;
     public AudioSource playTheme2;
+    public AudioSource resultSound;
 
     // [Header("SFX")]
     // public AudioSource confirm;

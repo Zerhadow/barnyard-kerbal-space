@@ -28,6 +28,8 @@ public class GameLoseState : State
         _controller.UI.maxSpd.text += " " + _controller.playerController.shipInfo.fNet;
         _controller.UI.numParts.text += " " + _controller.playerController.shipInfo.RocketParts.Count;
         _controller.UI.maxWeight.text += " " + _controller.playerController.shipInfo.totalLoadMass + " banjos";
+    
+        _controller.audioController.resultSound.Play();
     }
 
     public override void Update()

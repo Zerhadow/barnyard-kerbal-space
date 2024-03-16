@@ -24,10 +24,7 @@ public class GamePlayState : State
         // countdown
         _controller.audioController.PlayCountDownIntroHelper();
 
-        // _controller.playerController.Launch();
-        
-        // add music
-        // _controller.audioController.playTheme1.Play();
+        // launch now happens in audio controller to sync up with music
     }
 
     public override void Update()
@@ -64,6 +61,7 @@ public class GamePlayState : State
         //_controller.UI.playParentObj.SetActive(true);
         _controller.playerController.SetGravityScale(0);
 
+        _controller.audioController.playTheme1.Stop();
         _controller.audioController.playTheme2.Stop();
     }
 }

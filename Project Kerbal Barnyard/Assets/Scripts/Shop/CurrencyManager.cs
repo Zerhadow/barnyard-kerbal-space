@@ -31,7 +31,7 @@ public class CurrencyManager : MonoBehaviour
         DontDestroyOnLoad(Instance);
 
 
-        SetMoneyAmount(startingAmount);
+        SetMoneyAmount(_startingAmount);
     }
     private void Start()
     {

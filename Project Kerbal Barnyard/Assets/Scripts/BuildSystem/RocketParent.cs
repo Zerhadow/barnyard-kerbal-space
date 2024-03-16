@@ -90,7 +90,7 @@ public class RocketParent : MonoBehaviour
     {
         foreach(var part in RocketParts)
         {
-            //part.isBuildMode = isBuildMode;
+            part.isBuildMode = isBuildMode;
         }
     }
     public int GetTotalDurability()

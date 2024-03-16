@@ -19,6 +19,7 @@ public class RocketPart : MonoBehaviour
     public bool isValidPlacement = true;
     public bool isAttachedToCharacter = false;
     public bool isNextToPart = false;
+    public bool isBuildMode = true;
     [Space]
     [Tooltip("List of adjacent coordinates to check for other rocket parts.")]
     public List<Vector2Int> borderOffsets = new List<Vector2Int>();

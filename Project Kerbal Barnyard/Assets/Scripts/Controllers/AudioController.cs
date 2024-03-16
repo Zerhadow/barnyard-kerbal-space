@@ -4,7 +4,26 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    
+    [Header("Tracks")]
+    public AudioSource mainMenu;
+    public AudioSource buildTheme;
+    public AudioSource playTheme1;
+    public AudioSource playTheme2;
+
+    // [Header("SFX")]
+    // public AudioSource confirm;
+    // public AudioSource deny;
+
+    public string startSong;
+
+    private void Awake() {
+        if(startSong != null) {
+            if (startSong == "Main Menu") {
+                mainMenu.Play();
+                // StartCoroutine(StartFade(mainMenu, 2f, 1f));
+            }
+        }
+    }
 
     public static IEnumerator StartFade(AudioSource music, float duration, float targetVol){
         float currentTime = 0;

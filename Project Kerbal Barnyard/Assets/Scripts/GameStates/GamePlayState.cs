@@ -23,13 +23,11 @@ public class GamePlayState : State
 
         // countdown
         _controller.audioController.PlayCountDownIntroHelper();
-        
 
-        _controller.playerController.Launch();
+        // _controller.playerController.Launch();
         
         // add music
-        _controller.audioController.playTheme1.Play();
-
+        // _controller.audioController.playTheme1.Play();
     }
 
     public override void Update()

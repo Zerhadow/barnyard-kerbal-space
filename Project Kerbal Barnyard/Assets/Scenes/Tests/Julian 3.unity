@@ -1468,11 +1468,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f692cf35b46a87d4684320bb812d674d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8c3e3b972a8cee548acc56e7c96da4d6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11297,6 +11297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69a44434ec1d1e4786b476e8b3bdd57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1691541510}
   mainMenu: {fileID: 0}
   buildTheme: {fileID: 12454141}
   playThemeBuildUp: {fileID: 258992809}

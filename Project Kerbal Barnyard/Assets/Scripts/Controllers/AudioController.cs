@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
+    public PlayerController playerController;
     [Header("Tracks")]
     public AudioSource mainMenu;
     public AudioSource buildTheme;
@@ -27,12 +28,14 @@ public class AudioController : MonoBehaviour
     }
 
     public void PlayCountDownIntroHelper() {
+        playThemeBuildUp.Play();
         StartCoroutine(PlayCountDownIntro());
     }
     
     public IEnumerator PlayCountDownIntro() {
-        playThemeBuildUp.Play();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4.3f);
+        playTheme1.Play();
+        playerController.Launch(); // forces ship to launch after
     }
 
     public static IEnumerator StartFade(AudioSource music, float duration, float targetVol){

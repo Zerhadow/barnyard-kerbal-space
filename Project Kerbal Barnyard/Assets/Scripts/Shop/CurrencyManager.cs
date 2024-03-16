@@ -30,6 +30,8 @@ public class CurrencyManager : MonoBehaviour
         transform.SetParent(null);
         DontDestroyOnLoad(Instance);
 
+
+        SetMoneyAmount(startingAmount);
     }
     private void Start()
     {

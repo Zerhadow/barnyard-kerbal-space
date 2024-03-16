@@ -21,6 +21,10 @@ public class GamePlayState : State
         // Activate canva elems
         _controller.UI.overlayCanvas.SetActive(true);
         _controller.playerController.Launch();
+
+        //reset durability events
+        _controller.DurabilityEvents.ResetEventCounter();
+        _controller.playerController.SetGravityScale(_controller.playerController.startingGravity);
     }
 
     public override void Update()

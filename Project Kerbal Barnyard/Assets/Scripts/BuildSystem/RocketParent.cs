@@ -90,8 +90,19 @@ public class RocketParent : MonoBehaviour
     {
         foreach(var part in RocketParts)
         {
-            part.isBuildMode = isBuildMode;
+            //part.isBuildMode = isBuildMode;
         }
+    }
+    public int GetTotalDurability()
+    {
+        int durability = 0;
+
+        foreach (var part in RocketParts)
+        {
+            part.durability += durability;
+        }
+
+        return durability;
     }
     
     #endregion

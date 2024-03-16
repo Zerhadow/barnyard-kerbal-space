@@ -21,6 +21,9 @@ public class GamePlayState : State
         // Activate canva elems
         _controller.UI.overlayCanvas.SetActive(true);
         _controller.playerController.Launch();
+
+        //reset durability events
+        _controller.DurabilityEvents.ResetEventCounter();
     }
 
     public override void Update()

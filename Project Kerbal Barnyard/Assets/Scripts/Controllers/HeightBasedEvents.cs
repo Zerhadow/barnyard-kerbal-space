@@ -41,6 +41,7 @@ public class HeightBasedEvents : MonoBehaviour
             if(_controller.playerController.GetCurrentHeight() >= eventHeights[eventCounter])
             {
                 OnDurabilityEvent?.Invoke(eventCounter);
+                eventCounter++;
             }
         }
     }

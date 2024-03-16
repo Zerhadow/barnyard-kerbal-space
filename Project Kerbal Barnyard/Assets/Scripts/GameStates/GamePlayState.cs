@@ -24,6 +24,7 @@ public class GamePlayState : State
 
         //reset durability events
         _controller.DurabilityEvents.ResetEventCounter();
+        _controller.playerController.SetGravityScale(_controller.playerController.startingGravity);
     }
 
     public override void Update()

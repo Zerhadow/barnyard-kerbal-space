@@ -86,6 +86,17 @@ public class RocketParent : MonoBehaviour
         Debug.Log(RocketParts.Count);
         
     }
+    public int GetTotalDurability()
+    {
+        int durability = 0;
+
+        foreach (var part in RocketParts)
+        {
+            part.durability += durability;
+        }
+
+        return durability;
+    }
     
     #endregion
 

@@ -68,7 +68,7 @@ public class PartPanel : MonoBehaviour
             //unlock if can afford it
             if(CurrencyManager.money >= unlockCost)
             {
-                CurrencyManager.Instance.RemoveMoney(unlockCost);
+                CurrencyManager.RemoveMoney(unlockCost);
                 isUnlocked = true;
             }
         }

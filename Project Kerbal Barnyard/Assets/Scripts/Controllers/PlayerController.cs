@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private float forceMagnitude;
     public float gravityScale = 10f;
     private Rigidbody2D rigidBody2D;
+
+    //save starting gravity scale to reset it at start of each play state
+    public float startingGravity {  get; private set; }
     
     private float startingY;
 
@@ -21,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private void Awake() {
         rigidBody2D = parentObj.GetComponent<Rigidbody2D>();
         startingY = parentObj.transform.position.y;
+        startingGravity = gravityScale;
     }
     
     public void Launch() { // initial launch speed
@@ -38,6 +42,14 @@ public class PlayerController : MonoBehaviour
 
     public void SetGravityScale(int num) {
         rigidBody2D.gravityScale = num;
+    }
+    public void SetGravityScale(float num)
+    {
+        rigidBody2D.gravityScale = num;
+    }
+    public float GetGravityScale()
+    {
+        return rigidBody2D.gravityScale;
     }
 
     public float GetCurrentHeight() {

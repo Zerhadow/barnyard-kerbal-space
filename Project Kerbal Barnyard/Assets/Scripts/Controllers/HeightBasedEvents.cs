@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HeightBasedEvents : MonoBehaviour
 {
-    private GameController _controller;
+    protected GameController _controller;
 
     [Header("Base")]
     [Tooltip("The heights the player must reach to trigger the events.")]
@@ -24,11 +24,11 @@ public class HeightBasedEvents : MonoBehaviour
     }
     private void OnEnable()
     {
-        
+        OnDurabilityEvent += EventTriggered;
     }
     private void OnDisable()
     {
-        
+        OnDurabilityEvent -= EventTriggered;
     }
     private void Start()
     {
@@ -38,6 +38,8 @@ public class HeightBasedEvents : MonoBehaviour
     {
         if(eventHeights.Count > 0)
         {
+            if (eventCounter >= eventHeights.Count) return;
+
             if(_controller.playerController.GetCurrentHeight() >= eventHeights[eventCounter])
             {
                 OnDurabilityEvent?.Invoke(eventCounter);
@@ -51,6 +53,6 @@ public class HeightBasedEvents : MonoBehaviour
     }
     public virtual void EventTriggered(int eventID)
     {
-
+        Debug.Log("Event triggered");
     }
 }

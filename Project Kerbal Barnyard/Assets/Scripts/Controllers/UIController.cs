@@ -35,6 +35,9 @@ public class UIController : MonoBehaviour
     public TMP_Text numParts1;
     public TMP_Text maxWeight1;
 
+    [Header("Cursor Dependencies")]
+    public CursorManager cursorManager;
+
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
     }

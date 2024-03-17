@@ -60,5 +60,14 @@ public class CurrencyManager : MonoBehaviour
         OnCurrencyChanged?.Invoke(money);
     }
 
+    // will calculate the money earned from height and speed then add that to player disposal
+    public void CalculateMoneyEarned(float height, float speed) {
+        int amountEarned = (int) (height + speed / 10);
+
+        Debug.Log("Earned: " + amountEarned);
+
+        AddMoney(amountEarned);
+    }
+
     #endregion
 }

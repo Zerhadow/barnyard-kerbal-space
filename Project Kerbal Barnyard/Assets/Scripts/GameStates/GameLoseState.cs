@@ -7,6 +7,7 @@ public class GameLoseState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
+    private float maxHeight, maxSpd;
 
     public GameLoseState(GameFSM stateMachine, GameController controller)
     {
@@ -24,8 +25,10 @@ public class GameLoseState : State
         _controller.UI.overlayCanvas.SetActive(false);
 
         float currPlayerPoss = _controller.playerController.GetCurrentHeight();
-        _controller.UI.maxHeight.text += " " + currPlayerPoss.ToString("F2");
-        _controller.UI.maxSpd.text += " " + _controller.playerController.shipInfo.fNet;
+        maxHeight = currPlayerPoss;
+        _controller.UI.maxHeight.text += " " + maxHeight.ToString("F2");
+        maxSpd = _controller.playerController.shipInfo.fNet;
+        _controller.UI.maxSpd.text += " " + maxSpd;
         _controller.UI.numParts.text += " " + _controller.playerController.shipInfo.RocketParts.Count;
         _controller.UI.maxWeight.text += " " + _controller.playerController.shipInfo.totalLoadMass + " banjos";
     
@@ -35,12 +38,6 @@ public class GameLoseState : State
     public override void Update()
     {
         base.Update();
-
-        // either click on screen or button
-        if(Input.GetMouseButtonDown(0)) {
-            // go back to build state
-            _stateMachine.ChangeState(_stateMachine.BuildState);
-        }
     }
 
     public override void Exit() {
@@ -60,5 +57,7 @@ public class GameLoseState : State
 
         // make sure no music is playing before next try
         _controller.audioController.musicSource.Stop();
+
+        _controller.currencyManager.CalculateMoneyEarned(maxHeight, maxSpd);
     }
 }

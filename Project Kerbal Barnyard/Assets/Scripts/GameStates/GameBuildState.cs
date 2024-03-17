@@ -44,11 +44,6 @@ public class GameBuildState : State
     public override void Update()
     {
         base.Update();
-
-        //check for tap input
-        if(Input.GetMouseButtonDown(0)) {
-            // _stateMachine.ChangeState(_stateMachine.LobbyState);
-        }
     }
 
     public override void Exit() {

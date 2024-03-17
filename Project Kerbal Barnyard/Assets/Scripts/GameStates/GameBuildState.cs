@@ -38,7 +38,7 @@ public class GameBuildState : State
         _controller.buildController.partParent.ToggleBuildMode(true);
 
         // play music
-        _controller.audioController.buildTheme.Play();
+        _controller.audioController.PlayMusic("Build Music");
     }
 
     public override void Update()
@@ -72,7 +72,7 @@ public class GameBuildState : State
         _controller.buildController.gameObject.SetActive(false);
 
         // stop music
-        _controller.audioController.buildTheme.Stop();
+        _controller.audioController.musicSource.Stop();
 
     }
 }

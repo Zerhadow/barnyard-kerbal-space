@@ -21,14 +21,12 @@ public class AudioController : MonoBehaviour
     // public AudioSource confirm;
     // public AudioSource deny;
 
-    public string startSong;
+    public bool inMainMenu;
 
     private void Awake() {
-        if(startSong != null) {
-            if (startSong == "Main Menu") {
-                PlayMusic("Main Menu");
-                // StartCoroutine(StartFade(mainMenu, 2f, 1f));
-            }
+        if (inMainMenu) {
+            PlayMusic("Main Menu");
+            // StartCoroutine(StartFade(mainMenu, 2f, 1f));
         }
     }
 

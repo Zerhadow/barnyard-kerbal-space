@@ -33,16 +33,19 @@ public class GameSetupState : State
 
         // Activate canva elems
         // _controller.playerController.player.SetActive(false);
+
+        // open canvas and play intro
+        _controller.UI.videoCanvas.SetActive(true);
     }
 
     public override void Update()
     {
         base.Update();
 
-        //check for tap input
-        if(Input.GetMouseButtonDown(0)) {
-            _stateMachine.ChangeState(_stateMachine.BuildState);
-        }
+        // //check for tap input
+        // if(Input.GetMouseButtonDown(0)) {
+        //     _stateMachine.ChangeState(_stateMachine.BuildState);
+        // }
     }
 
     public override void Exit() {

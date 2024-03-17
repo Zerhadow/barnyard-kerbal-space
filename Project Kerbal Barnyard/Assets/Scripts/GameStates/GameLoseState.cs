@@ -29,7 +29,7 @@ public class GameLoseState : State
         _controller.UI.numParts.text += " " + _controller.playerController.shipInfo.RocketParts.Count;
         _controller.UI.maxWeight.text += " " + _controller.playerController.shipInfo.totalLoadMass + " banjos";
     
-        _controller.audioController.resultSound.Play();
+        _controller.audioController.PlayMusic("Result Sound Music");
     }
 
     public override void Update()
@@ -59,7 +59,6 @@ public class GameLoseState : State
         _controller.playerController.ResetVeloctity();
 
         // make sure no music is playing before next try
-        _controller.audioController.playTheme1.Stop();
-        _controller.audioController.playTheme2.Stop();
+        _controller.audioController.musicSource.Stop();
     }
 }

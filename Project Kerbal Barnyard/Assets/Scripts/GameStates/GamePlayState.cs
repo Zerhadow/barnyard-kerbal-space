@@ -65,7 +65,6 @@ public class GamePlayState : State
         //_controller.UI.playParentObj.SetActive(true);
         _controller.playerController.SetGravityScale(0);
 
-        _controller.audioController.playTheme1.Stop();
-        _controller.audioController.playTheme2.Stop();
+        _controller.audioController.musicSource.Stop();
     }
 }

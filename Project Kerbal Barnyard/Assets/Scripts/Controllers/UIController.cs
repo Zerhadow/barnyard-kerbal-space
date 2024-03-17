@@ -35,11 +35,21 @@ public class UIController : MonoBehaviour
     public TMP_Text numParts1;
     public TMP_Text maxWeight1;
 
+    [Header("Cursor Dependencies")]
+    public CursorManager cursorManager;
+
+    [Header("Tutorial")]
+    public TutorialPanel tutorialPanel;
+
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
     }
 
     public void LaunchBtn() {
         _stateMachine.ChangeState(_stateMachine.PlayState);
+    }
+
+    public void RetryBtn() {
+        _stateMachine.ChangeState(_stateMachine.BuildState);
     }
 }

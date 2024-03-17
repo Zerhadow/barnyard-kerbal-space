@@ -37,7 +37,7 @@ public class GameWinState : State
         // either click on screen or button
         if(Input.GetMouseButtonDown(0)) {
             // go to credit scene
-            SceneManager.LoadScene("Main Menu");
+            // SceneManager.LoadScene("Main Menu");
         }
     }
 
@@ -53,5 +53,6 @@ public class GameWinState : State
         _controller.UI.maxWeight.text = "Weight:";
 
         _controller.playerController.shipInfo.ResetInfo();
+        _controller.playerController.ResetVeloctity();
     }
 }

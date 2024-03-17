@@ -20,7 +20,15 @@ public class GamePlayState : State
 
         // Activate canva elems
         _controller.UI.overlayCanvas.SetActive(true);
-        _controller.playerController.Launch();
+
+        //reset durability events
+        _controller.DurabilityEvents.ResetEventCounter();
+        _controller.playerController.SetGravityScale(0);
+
+        // countdown
+        _controller.audioController.PlayCountDownIntroHelper();
+
+        // launch now happens in audio controller to sync up with music
     }
 
     public override void Update()
@@ -44,6 +52,11 @@ public class GamePlayState : State
         if(currPlayerPoss >= _controller.playerController.winHeight) {
             _stateMachine.ChangeState(_stateMachine.WinState);
         }
+
+        // change tracks when player hits certain height
+        // _controller.audioController.playTheme1.Stop();
+        // _controller.audioController.playTheme2.Play();
+
     }
 
     public override void Exit() {
@@ -51,5 +64,7 @@ public class GamePlayState : State
 
         //_controller.UI.playParentObj.SetActive(true);
         _controller.playerController.SetGravityScale(0);
+
+        _controller.audioController.musicSource.Stop();
     }
 }

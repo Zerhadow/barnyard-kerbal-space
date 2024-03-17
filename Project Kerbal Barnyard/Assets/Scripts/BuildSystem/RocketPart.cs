@@ -17,39 +17,74 @@ public class RocketPart : MonoBehaviour
     [Header("Grid Interaction")]
     [Tooltip("Determines if the part can be placed/added to the ship.")]
     public bool isValidPlacement = true;
-    public bool isAttachedToRocket = false;
+    public bool isAttachedToCharacter = false;
     public bool isNextToPart = false;
+    public bool isBuildMode = true;
     [Space]
     [Tooltip("List of adjacent coordinates to check for other rocket parts.")]
     public List<Vector2Int> borderOffsets = new List<Vector2Int>();
 
+    [Header("FX")]
+    [SerializeField] private GameObject _vfxObject;
+
     private BuildController _bController;
     //private List<RocketPartSection> sections;
 
-    public static Action OnPartMoved = delegate { };
+    public static Action OnPartChanged = delegate { };
+    public static Action OnPartAttachmentReset = delegate { };
 
     #region Monobehavior
     private void Awake()
     {
         _bController = FindObjectOfType<BuildController>();
         _rocketPartDebug = GetComponent<RocketPartDebug>();
+
+        if(partType == PartType.Character)
+        {
+            if(isAttachedToCharacter == false) isAttachedToCharacter = true;
+        }
     }
     private void Start()
     {
         isValidPlacement = true;
-        Debug.Log("[RocketPart] Start");
+        //Debug.Log("[RocketPart] Start");
+        OnPartChanged?.Invoke();
+
+        DisableVFX();
     }
     private void OnEnable()
     {
-        OnPartMoved += CheckIfNextToPart;
+        OnPartChanged += CheckIfNextToPart;
+        OnPartAttachmentReset += ResetAttachment;
+
+        PlayerController.OnRocketLaunched += EnableVFX;
+        BuildController.OnBuildModeStarted += DisableVFX;
     }
     private void OnDisable()
     {
-        OnPartMoved -= CheckIfNextToPart;
+        OnPartChanged -= CheckIfNextToPart;
+        OnPartAttachmentReset -= ResetAttachment;
+
+        PlayerController.OnRocketLaunched -= EnableVFX;
+        BuildController.OnBuildModeStarted -= DisableVFX;
     }
     #endregion
 
     #region Custom Functions
+    public void EnableVFX()
+    {
+        if(_vfxObject != null)
+        {
+            _vfxObject.SetActive(true);
+        }
+    }
+    public void DisableVFX()
+    {
+        if (_vfxObject != null)
+        {
+            _vfxObject.SetActive(false);
+        }
+    }
     public void EnableGridBackground(bool enable)
     {
         _rocketPartDebug.gridImage.gameObject.SetActive(enable);
@@ -70,6 +105,56 @@ public class RocketPart : MonoBehaviour
         }
         isNextToPart = isAdjacent;
     }
+    public void ResetAttachment()
+    {
+        if(partType != PartType.Character) isAttachedToCharacter = false;
+    }
+    public void SetAttachedToCharacter()
+    {
+        if(isAttachedToCharacter == false)
+        {
+            isAttachedToCharacter = true;
+
+            foreach(RocketPart part in GetAdjacentParts())
+            {
+                part.SetAttachedToCharacter();
+            }
+        }
+    }
+    #region Not working pls ignore (for now)
+    /*public void CheckIfAttachedToCharacter()
+    {
+        if(partType != PartType.Character && isAttachedToRocket == false)
+        {
+            List<RocketPart> adjacentParts = GetAdjacentParts();
+            bool isAttached = false;
+
+            foreach(var part in adjacentParts)
+            {
+                if(part.partType == PartType.Character || part.isAttachedToRocket == true)
+                {
+                    isAttached = true; 
+                    break;
+                }
+            }
+
+            isAttachedToRocket = isAttached;
+
+            foreach(var part in adjacentParts)
+            {
+                if (isAttachedToRocket)
+                    CheckIfAttachedToCharacter();
+                else
+                    CheckIfDetachedFromCharacter();
+            }
+                
+        }
+    }
+    public void CheckIfDetachedFromCharacter()
+    {
+
+    }*/
+    #endregion
     public List<RocketPart> GetAdjacentParts()
     {
         List<RocketPart> parts = new List<RocketPart>();

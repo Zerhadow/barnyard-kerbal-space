@@ -27,23 +27,30 @@ public class GameBuildState : State
         _controller.UI.powerupPanel.SetTargetPosition(_controller.UI.powerupPanel.startOpen);
         //_controller.playerController.player.SetActive(true);
 
+        //enable tutorial on first build
+        _controller.UI.tutorialPanel.TryTurorial();
+
+        //disbale vfx for parts
+        BuildController.OnBuildModeStarted?.Invoke();
+
         //enable grid
         _controller.buildController.EnableGridMask(true);
-        _controller.buildController.partParent.EnablePartGridBackgrounds(true);
+        _controller.buildController.partParent.ToggleBuildMode(true);
+
+        // play music
+        _controller.audioController.PlayMusic("Build Music");
     }
 
     public override void Update()
     {
         base.Update();
-
-        //check for tap input
-        if(Input.GetMouseButtonDown(0)) {
-            // _stateMachine.ChangeState(_stateMachine.LobbyState);
-        }
     }
 
     public override void Exit() {
         base.Exit();
+
+        //initialize rocket
+        _controller.buildController.partParent.InitializeRocket();
 
         // deactivate canva elems
         _controller.UI.launchCanvas.SetActive(false);
@@ -51,13 +58,16 @@ public class GameBuildState : State
 
         //disable grid
         _controller.buildController.EnableGridMask(false);
-        _controller.buildController.partParent.EnablePartGridBackgrounds(false);
+        _controller.buildController.partParent.ToggleBuildMode(false);
 
         //follow camera
         _controller.cameraController.EnableDisableCameraFollow(true);
 
         //disable build controller
         _controller.buildController.gameObject.SetActive(false);
+
+        // stop music
+        _controller.audioController.musicSource.Stop();
 
     }
 }

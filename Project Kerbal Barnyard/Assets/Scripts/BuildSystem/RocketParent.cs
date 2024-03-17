@@ -25,14 +25,46 @@ public class RocketParent : MonoBehaviour
         RocketParts = new List<RocketPart>();
         originalPos = transform.position;
     }
-
+    private void OnEnable()
+    {
+        RocketPart.OnPartChanged += CheckAttachedParts;
+    }
+    private void OnDisable()
+    {
+        RocketPart.OnPartChanged -= CheckAttachedParts;
+    }
 
     #region Rocket Part 
-    /// <summary>
-    /// Will return false if RocketParts already contains the part.
-    /// </summary>
-    /// <param name="part"></param>
-    /// <returns></returns>
+    public void CheckAttachedParts()
+    {
+        Debug.Log("CheckAttachedParts()");
+
+        /// start with character part
+        /// change all adjacent to attached
+        /// recursive loop it
+        /// 
+
+        //set all to false to start
+        RocketPart.OnPartAttachmentReset?.Invoke();
+
+        //store the character part
+        RocketPart characterPart = null;
+        foreach (var part in RocketParts)
+        {
+            if(part.partType == PartType.Character)
+                characterPart = part;
+        }
+
+        //recursive loop to update all attached parts
+        if(characterPart != null) 
+        {
+            //only check if character exists
+            foreach (var part in characterPart.GetAdjacentParts())
+            {
+                part.SetAttachedToCharacter();
+            }
+        }
+    }
     public void TryAddPartToRocket(RocketPart part)
     {
         RocketParts.Add(part);
@@ -54,6 +86,24 @@ public class RocketParent : MonoBehaviour
         Debug.Log(RocketParts.Count);
         
     }
+    public void ToggleBuildMode(bool isBuildMode)
+    {
+        foreach(var part in RocketParts)
+        {
+            part.isBuildMode = isBuildMode;
+        }
+    }
+    public int GetTotalDurability()
+    {
+        int durability = 0;
+
+        foreach (var part in RocketParts)
+        {
+            part.durability += durability;
+        }
+
+        return durability;
+    }
     
     #endregion
 
@@ -65,41 +115,25 @@ public class RocketParent : MonoBehaviour
             part.EnableGridBackground(enable);
         }
     }
-    public void ResetRocketTransform()
-    {
-
-    }
     public void InitializeRocket()
     {
-
         if (RocketParts.Count > 0)
         {
-            /// loop through each and check if next to character
-            /// start with character part
-
-            RocketPart characterPart = null;
-
+            //add detached parts to list
+            List<RocketPart> partsToRemove = new List<RocketPart>();
             foreach (RocketPart part in RocketParts)
             {
-                if(part.partType == PartType.Character)
-                    characterPart = part;
-            }
-
-            foreach (RocketPart part in characterPart.GetAdjacentParts())
-            {
-                part.isAttachedToRocket = true;
-            }
-
-            for (int i = 0; i < RocketParts.Count; i++)
-            {
-                RocketPart iPart = RocketParts[i];
-
-                foreach (RocketPart part in RocketParts)
+                if (part.isAttachedToCharacter == false)
                 {
-
+                    partsToRemove.Add(part);
                 }
             }
-            
+
+            //remove detached parts
+            foreach (RocketPart part in partsToRemove)
+            {
+                RemovePartFromRocket(part);
+            }
         }
     }
     public bool CheckIfRocketHasCharacter()
@@ -129,11 +163,8 @@ public class RocketParent : MonoBehaviour
     private float CalculatefGain() {
         foreach (RocketPart part in RocketParts)
         {
-            if (part.partType != PartType.Character)
-            {
-                totalLoadMass += part.weight;
-                totalThrust += part.thrust;
-            }
+            totalLoadMass += part.weight;
+            totalThrust += part.thrust;
         }
 
         float fBoosters = totalLoadMass * totalThrust;

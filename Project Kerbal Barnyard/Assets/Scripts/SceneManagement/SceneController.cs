@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
 {
     public GameObject mainMenuObj;
     public GameObject optionsMenuObj;
+    public string startSong;
     
     public static void LoadScene(string sceneName)
     {

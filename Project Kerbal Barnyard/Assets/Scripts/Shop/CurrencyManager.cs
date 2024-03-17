@@ -7,9 +7,9 @@ public class CurrencyManager : MonoBehaviour
 {
     public static CurrencyManager Instance;
 
-    //[Header("Stored Info")]
-    [Tooltip("The amount of money the player has.")]
-    [field: SerializeField]
+    [Header("Starting")]
+    [SerializeField] private int _startingAmount = 100;
+
     public static int money = 0;
 
     public static Action<int> OnCurrencyChanged = delegate { };
@@ -30,16 +30,22 @@ public class CurrencyManager : MonoBehaviour
         transform.SetParent(null);
         DontDestroyOnLoad(Instance);
 
+
+        SetMoneyAmount(_startingAmount);
+    }
+    private void Start()
+    {
+        SetMoneyAmount(_startingAmount);
     }
 
     #region Currency Functions
-    public void AddMoney(int amount)
+    public static void AddMoney(int amount)
     {
         money += amount;
 
         OnCurrencyChanged?.Invoke(money);
     }
-    public void RemoveMoney(int amount)
+    public static void RemoveMoney(int amount)
     {
         money -= amount;
         if(money < 0) money = 0;
@@ -52,6 +58,15 @@ public class CurrencyManager : MonoBehaviour
         if(money < 0) money = 0;
 
         OnCurrencyChanged?.Invoke(money);
+    }
+
+    // will calculate the money earned from height and speed then add that to player disposal
+    public void CalculateMoneyEarned(float height, float speed) {
+        int amountEarned = (int) (height + speed / 10);
+
+        Debug.Log("Earned: " + amountEarned);
+
+        AddMoney(amountEarned);
     }
 
     #endregion

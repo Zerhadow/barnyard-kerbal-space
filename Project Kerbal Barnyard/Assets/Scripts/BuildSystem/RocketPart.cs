@@ -58,7 +58,7 @@ public class RocketPart : MonoBehaviour
         OnPartAttachmentReset += ResetAttachment;
 
         PlayerController.OnRocketLaunched += EnableVFX;
-        BuildController.OnBuildModeStarted += DisableVFX;
+        PlayerController.OnFlightOver += DisableVFX;
     }
     private void OnDisable()
     {
@@ -66,7 +66,7 @@ public class RocketPart : MonoBehaviour
         OnPartAttachmentReset -= ResetAttachment;
 
         PlayerController.OnRocketLaunched -= EnableVFX;
-        BuildController.OnBuildModeStarted -= DisableVFX;
+        PlayerController.OnFlightOver -= DisableVFX;
     }
     #endregion
 

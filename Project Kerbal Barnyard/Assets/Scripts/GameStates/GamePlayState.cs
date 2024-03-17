@@ -66,5 +66,8 @@ public class GamePlayState : State
         _controller.playerController.SetGravityScale(0);
 
         _controller.audioController.musicSource.Stop();
+
+        //trigger flight over event
+        PlayerController.OnFlightOver?.Invoke();
     }
 }

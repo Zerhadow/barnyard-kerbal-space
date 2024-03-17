@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float winHeight;
 
     public static Action OnRocketLaunched = delegate { };
+    public static Action OnFlightOver = delegate { };
 
     private void Awake() {
         rigidBody2D = parentObj.GetComponent<Rigidbody2D>();

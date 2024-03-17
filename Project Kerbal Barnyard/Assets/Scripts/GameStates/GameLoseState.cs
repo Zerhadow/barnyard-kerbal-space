@@ -33,6 +33,11 @@ public class GameLoseState : State
         _controller.UI.maxWeight.text += " " + _controller.playerController.shipInfo.totalLoadMass + " banjos";
     
         _controller.audioController.PlayMusic("Result Sound Music");
+        
+        _controller.videoController.PlayVideo("intro");
+
+        // get character name
+        string name = "lose" + _controller.playerController.GetCharacterName();
     }
 
     public override void Update()

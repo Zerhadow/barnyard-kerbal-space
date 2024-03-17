@@ -2145,7 +2145,7 @@ GameObject:
   - component: {fileID: 200487591}
   - component: {fileID: 200487592}
   m_Layer: 0
-  m_Name: introCutSceneFinal
+  m_Name: Video Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2196,7 +2196,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -17300,7 +17300,7 @@ GameObject:
   - component: {fileID: 1414191580}
   - component: {fileID: 1414191581}
   m_Layer: 0
-  m_Name: Video Player
+  m_Name: Video Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17314,49 +17314,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414191579}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 493.4732, y: 618.43506, z: -5.1319985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2000571525}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!328 &1414191581
-VideoPlayer:
+--- !u!114 &1414191581
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414191579}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 0}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 2
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_TimeUpdateMode: 2
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 1
-  m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
-  m_Looping: 0
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
-  m_VideoShaders: []
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d375182ff03e5fa4d9499907ea63479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoSource: {fileID: 200487592}
+  intro: {fileID: 32900000, guid: b25760ad2db9ba74e96424f40ef9edec, type: 3}
+  loseCat: {fileID: 32900000, guid: b16245d5980ba864ab51e903297d32e3, type: 3}
+  loseChicken: {fileID: 32900000, guid: 482705fb89c0c9845b3a3044df8a6789, type: 3}
+  loseCow: {fileID: 32900000, guid: 4e4f2ec245ea9d44181c9a52e14e92d0, type: 3}
+  winCat: {fileID: 32900000, guid: 611153a8dbec61c4a8a23aa95d84851f, type: 3}
+  winChicken: {fileID: 32900000, guid: a06a232cd21611346ac34cb06f36a992, type: 3}
+  winCow: {fileID: 32900000, guid: 80e60ace2669e0d4eb727f814a26c982, type: 3}
 --- !u!1 &1420330800
 GameObject:
   m_ObjectHideFlags: 0
@@ -25143,6 +25127,7 @@ MonoBehaviour:
   _durabilityEventController: {fileID: 1272401844}
   _currencyManager: {fileID: 1203333450}
   _countdownTimer: {fileID: 793907206}
+  _videoController: {fileID: 1414191581}
 --- !u!114 &2000571527
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -78,4 +78,8 @@ public class PlayerController : MonoBehaviour
         newPos.y = currHeight;
         parentObj.transform.position = newPos;
     }
+
+    public string GetCharacterName() {
+        return shipInfo.charType;
+    }
 }

@@ -36,6 +36,7 @@ public class GameSetupState : State
 
         // open canvas and play intro
         _controller.UI.videoCanvas.SetActive(true);
+        _controller.videoController.PlayVideo("intro");
     }
 
     public override void Update()

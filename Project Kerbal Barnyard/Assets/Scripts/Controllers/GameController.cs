@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private DurabilityEvents _durabilityEventController;
     [SerializeField] private CurrencyManager _currencyManager;
     [SerializeField] private CountdownTimer _countdownTimer;
+    [SerializeField] private VideoController _videoController;
     public UIController UI => _ui;
     public AudioController audioController => _audioController;
     public PlayerController playerController => _playerController;
@@ -23,4 +24,5 @@ public class GameController : MonoBehaviour
     public DurabilityEvents durabilityEvents => _durabilityEventController;
     public CurrencyManager currencyManager => _currencyManager;
     public CountdownTimer countdownTimer => _countdownTimer;
+    public VideoController videoController => _videoController;
 }

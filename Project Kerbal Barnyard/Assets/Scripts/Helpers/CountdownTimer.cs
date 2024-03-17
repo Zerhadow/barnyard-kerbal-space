@@ -6,6 +6,8 @@ using UnityEngine;
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] private float _countdownTime = 3.0f;
+    [Space]
+    [SerializeField] private PopupText _popupText;
 
     private bool _isCountingDown = false;
     private float _countdownProgress;
@@ -36,6 +38,11 @@ public class CountdownTimer : MonoBehaviour
                 _savedSecond = second;
                 OnSecondInterval?.Invoke(second);
 
+                if(_popupText != null)
+                {
+                    _popupText.Popup(second.ToString());
+                }
+
                 Debug.Log("Second: " + second);
             }
 
@@ -44,6 +51,11 @@ public class CountdownTimer : MonoBehaviour
             {
                 OnCountdownOver?.Invoke();
                 _isCountingDown = false;
+
+                if (_popupText != null)
+                {
+                    _popupText.EnableText(false);
+                }
 
                 Debug.Log("Countdown Over");
             }

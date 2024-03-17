@@ -36,7 +36,12 @@ public class PopupText : MonoBehaviour
 
             bool increment = _endingScale > _startingScale ? true : false;
 
-            if(increment)
+            if(Mathf.Abs(_endingScale - _sizeProgress) <= 0.1f)
+            {
+                EnableText(false);
+            }
+
+            /*if (increment)
             {
                 if (_sizeProgress >= _endingScale)
                 {
@@ -49,7 +54,7 @@ public class PopupText : MonoBehaviour
                 {
                     EnableText(false);
                 }
-            }
+            }*/
             
         }
     }

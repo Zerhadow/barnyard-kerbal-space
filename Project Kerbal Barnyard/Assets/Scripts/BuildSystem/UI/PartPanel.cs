@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PartPanel : MonoBehaviour
 {
@@ -15,9 +16,12 @@ public class PartPanel : MonoBehaviour
     public bool isUnlocked = false;
 
     [Header("Dependencies")]
+    [SerializeField] private Button _spawnButton;
     [SerializeField] private TextMeshProUGUI _stockText;
     [SerializeField] private TextMeshProUGUI _costText;
-    [SerializeField] private GameObject _costImage;
+    [Space]
+    [SerializeField] private GameObject _unlockImage;
+    [SerializeField] private GameObject _buyText;
     [SerializeField] private GameObject _lockedImage;
 
     private int _savedStock;
@@ -43,30 +47,43 @@ public class PartPanel : MonoBehaviour
         #endregion
 
         #region UnlockedDisplay
-        if(_lockedImage != null)
+        if(_spawnButton != null)
+        {
+            if (isUnlocked == true && _spawnButton.interactable == false)
+                _spawnButton.interactable = true;
+            if (isUnlocked == false && _spawnButton.interactable == true)
+                _spawnButton.interactable = false;
+        }
+        if (_lockedImage != null)
         {
             if(isUnlocked == true && _lockedImage.activeInHierarchy == true)
                 _lockedImage.SetActive(false);
             if(isUnlocked == false && _lockedImage.activeInHierarchy == false)
                 _lockedImage.SetActive(true);
         }
-        if(_costImage != null)
+        if(_unlockImage != null)
         {
-            if(isUnlocked == true && _costImage.activeInHierarchy == true)
-                _costImage.SetActive(false);
-            if(isUnlocked == false && _costImage.activeInHierarchy == false)
-                _costImage.SetActive(true);
+            if(isUnlocked == true && _unlockImage.activeInHierarchy == true)
+            {
+                _unlockImage.SetActive(false);
+                _buyText.SetActive(true);
+            }
+            if (isUnlocked == false && _unlockImage.activeInHierarchy == false)
+            {
+                _unlockImage.SetActive(true);
+                _buyText.SetActive(false);
+            }
         }
         #endregion
     }
 
     #region Public Functions
-    public void TrySpawnPart()
+    public void TryUnlockOrBuy()
     {
-        if(isUnlocked == false)
+        if (isUnlocked == false)
         {
             //unlock if can afford it
-            if(CurrencyManager.money >= unlockCost)
+            if (CurrencyManager.money >= unlockCost)
             {
                 CurrencyManager.RemoveMoney(unlockCost);
                 isUnlocked = true;
@@ -74,7 +91,19 @@ public class PartPanel : MonoBehaviour
         }
         else
         {
-            if(partPrefab != null)
+            //buy more stock if can afford it
+            if(CurrencyManager.money >= unlockCost)
+            {
+                CurrencyManager.RemoveMoney(unlockCost);
+                stock++;
+            }
+        }
+    }
+    public void TrySpawnPart()
+    {
+        if(isUnlocked == true)
+        {
+            if (partPrefab != null)
             {
                 //spawn part if in stock
                 if (stock >= 1)
@@ -96,7 +125,6 @@ public class PartPanel : MonoBehaviour
             {
                 Debug.LogError("Missing part prefab");
             }
-            
         }
     }
     

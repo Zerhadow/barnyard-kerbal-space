@@ -19808,6 +19808,7 @@ MonoBehaviour:
   charWeight: 10
   totalLoadMass: 0
   fNet: 0
+  charType: 
 --- !u!50 &1596561755
 Rigidbody2D:
   serializedVersion: 4

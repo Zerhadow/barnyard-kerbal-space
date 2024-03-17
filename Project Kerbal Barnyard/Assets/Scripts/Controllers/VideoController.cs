@@ -30,26 +30,38 @@ public class VideoController : MonoBehaviour
             case "loseCat":
                 // Play the loseCat video
                 Debug.Log("Playing loseCat video");
+                videoSource.clip = loseCat;
+                videoSource.Play();
                 break;
             case "loseChicken":
                 // Play the loseChicken video
                 Debug.Log("Playing loseChicken video");
+                videoSource.clip = loseChicken;
+                videoSource.Play();
                 break;
             case "loseCow":
                 // Play the loseCow video
                 Debug.Log("Playing loseCow video");
+                videoSource.clip = loseCow;
+                videoSource.Play();
                 break;
             case "winCat":
                 // Play the winCat video
                 Debug.Log("Playing winCat video");
+                videoSource.clip = winCat;
+                videoSource.Play();
                 break;
             case "winChicken":
                 // Play the winChicken video
                 Debug.Log("Playing winChicken video");
+                videoSource.clip = winChicken;
+                videoSource.Play();
                 break;
             case "winCow":
                 // Play the winCow video
                 Debug.Log("Playing winCow video");
+                videoSource.clip = winCow;
+                videoSource.Play();
                 break;
             default:
                 // Handle default case (if the provided video clip name does not match any case)

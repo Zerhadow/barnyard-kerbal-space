@@ -80,6 +80,17 @@ public class PlayerController : MonoBehaviour
     }
 
     public string GetCharacterName() {
-        return shipInfo.charType;
+        Debug.Log("Char Name " + shipInfo.charType);
+
+        if(shipInfo.charType.Contains("RP_1x1 Cat")) {
+            return "Cat";
+        } else if(shipInfo.charType.Contains("RP_1x1 Chicken")) {
+            return "Chicken";
+        } else if(shipInfo.charType.Contains("RP_1x1 Cow")) {
+            return "Cow";
+        } else {
+            Debug.LogError("character name unknown");
+            return null;
+        }
     }
 }

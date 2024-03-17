@@ -38,6 +38,9 @@ public class GameLoseState : State
 
         // get character name
         string name = "lose" + _controller.playerController.GetCharacterName();
+        _controller.UI.videoCanvas.SetActive(true);
+        _controller.videoController.PlayVideo(name);
+        _controller.playerController.parentObj.SetActive(false);
     }
 
     public override void Update()
@@ -64,5 +67,8 @@ public class GameLoseState : State
         _controller.audioController.musicSource.Stop();
 
         _controller.currencyManager.CalculateMoneyEarned(maxHeight, maxSpd);
+
+        _controller.UI.videoCanvas.SetActive(false);
+        _controller.playerController.parentObj.SetActive(true);
     }
 }

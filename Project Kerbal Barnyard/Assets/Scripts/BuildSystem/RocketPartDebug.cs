@@ -10,6 +10,7 @@ public class RocketPartDebug : MonoBehaviour
     [SerializeField] private Color _validColor;
     [SerializeField] private Color _invalidColor;
     [SerializeField] private Color _adjacentColor;
+    [SerializeField] private Color _gridColor;
     [Space]
     [SerializeField] private Sprite _buildSprite;
     [SerializeField] private Sprite _playSprite;
@@ -43,8 +44,8 @@ public class RocketPartDebug : MonoBehaviour
             }
             else
             {
-                if(gridImage != null && gridImage.color != Color.white)
-                    gridImage.color = Color.white;
+                if(gridImage != null && gridImage.color != _gridColor)
+                    gridImage.color = _gridColor;
                 if(gridImage != null && gridImage.sprite != _playSprite)
                     gridImage.sprite = _playSprite;
             }

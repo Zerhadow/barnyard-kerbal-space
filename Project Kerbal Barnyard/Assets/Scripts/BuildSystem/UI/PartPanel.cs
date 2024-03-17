@@ -106,7 +106,7 @@ public class PartPanel : MonoBehaviour
     private void UpdateText()
     {
         if(_stockText != null) _stockText.text = stock.ToString("00");
-        if(_costText != null) _costText.text = unlockCost.ToString("000");
+        if(_costText != null) _costText.text = "$" + unlockCost.ToString("000");
     }
     #endregion
 }

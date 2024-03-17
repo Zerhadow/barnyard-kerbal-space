@@ -39,6 +39,9 @@ public class GameBuildState : State
 
         // play music
         _controller.audioController.PlayMusic("Build Music");
+
+        //make sure currency is updating
+        CurrencyManager.OnCurrencyChanged?.Invoke(CurrencyManager.money);
     }
 
     public override void Update()

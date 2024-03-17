@@ -51,6 +51,10 @@ public class GamePlayState : State
             _stateMachine.ChangeState(_stateMachine.LoseState);
         }
 
+        if(currPlayerPoss >= 1250f) {
+            _controller.audioController.PlayVariant();
+        }
+
         if(currPlayerPoss >= _controller.playerController.winHeight) {
             _stateMachine.ChangeState(_stateMachine.WinState);
         }

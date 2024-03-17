@@ -5,6 +5,7 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
+    private GameController _controller;
     private GameFSM _stateMachine;
     [Header("Canvas Dependencies")]
     //public GameObject canvas;
@@ -17,6 +18,7 @@ public class UIController : MonoBehaviour
     public GameObject launchCanvas;
     public GameObject partsShopCanvas;
     public PowerupPanel powerupPanel;
+    public PopupText launchPopupText;
 
     [Header("Play Dependencies")]
     //public GameObject playParentObj;
@@ -45,10 +47,26 @@ public class UIController : MonoBehaviour
 
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
+        _controller = GetComponentInParent<GameController>();
     }
 
     public void LaunchBtn() {
-        _stateMachine.ChangeState(_stateMachine.PlayState);
+        if(_controller != null)
+        {
+            if (_controller.buildController.partParent.CheckIfRocketHasCharacter())
+            {
+                //launch if has character
+                _stateMachine.ChangeState(_stateMachine.PlayState);
+            }
+            else
+            {
+                //trying popup text to show cant launch yet
+                if(launchPopupText != null)
+                {
+                    launchPopupText.Popup("Missing a character!");
+                }
+            }
+        }
     }
 
     public void RetryBtn() {

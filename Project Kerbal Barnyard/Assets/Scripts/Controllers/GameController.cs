@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private SceneController _sceneController;
     [SerializeField] private DurabilityEvents _durabilityEventController;
+    [SerializeField] private CurrencyManager _currencyManager;
     public UIController UI => _ui;
     public AudioController audioController => _audioController;
     public PlayerController playerController => _playerController;
@@ -19,4 +20,5 @@ public class GameController : MonoBehaviour
     public CameraController cameraController => _cameraController;
     public SceneController sceneController => _sceneController;
     public DurabilityEvents DurabilityEvents => _durabilityEventController;
+    public CurrencyManager currencyManager => _currencyManager;
 }

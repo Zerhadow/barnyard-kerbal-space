@@ -35,12 +35,6 @@ public class GameLoseState : State
     public override void Update()
     {
         base.Update();
-
-        // either click on screen or button
-        if(Input.GetMouseButtonDown(0)) {
-            // go back to build state
-            _stateMachine.ChangeState(_stateMachine.BuildState);
-        }
     }
 
     public override void Exit() {

@@ -22,13 +22,15 @@ public class GamePlayState : State
         _controller.UI.overlayCanvas.SetActive(true);
 
         //reset durability events
-        _controller.DurabilityEvents.ResetEventCounter();
+        _controller.durabilityEvents.ResetEventCounter();
         _controller.playerController.SetGravityScale(0);
 
         // countdown
         _controller.audioController.PlayCountDownIntroHelper();
 
         // launch now happens in audio controller to sync up with music
+        // starting countdown timer here
+        _controller.countdownTimer.StartCountdown();
     }
 
     public override void Update()
@@ -66,5 +68,8 @@ public class GamePlayState : State
         _controller.playerController.SetGravityScale(0);
 
         _controller.audioController.musicSource.Stop();
+
+        //trigger flight over event
+        PlayerController.OnFlightOver?.Invoke();
     }
 }

@@ -48,4 +48,8 @@ public class UIController : MonoBehaviour
     public void LaunchBtn() {
         _stateMachine.ChangeState(_stateMachine.PlayState);
     }
+
+    public void RetryBtn() {
+        _stateMachine.ChangeState(_stateMachine.BuildState);
+    }
 }

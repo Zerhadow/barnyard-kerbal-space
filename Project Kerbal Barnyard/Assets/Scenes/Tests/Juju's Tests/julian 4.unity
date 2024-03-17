@@ -6408,6 +6408,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 191595710107043430, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 307543513}
+    - target: {fileID: 191595710107043430, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RetryBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 191595710107043430, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 191595710107043430, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1116156776861856623, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -16064,6 +16080,30 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: -356.23438
       objectReference: {fileID: 0}
+    - target: {fileID: 6397927632632561081, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397927632632561081, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 739848913}
+    - target: {fileID: 6397927632632561081, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397927632632561081, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397927632632561081, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397927632632561081, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8513884914637835780, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
       propertyPath: m_text
       value: Back to menu
@@ -17304,6 +17344,7 @@ MonoBehaviour:
   _cameraController: {fileID: 780918942}
   _sceneController: {fileID: 739848913}
   _durabilityEventController: {fileID: 1272401844}
+  _currencyManager: {fileID: 1203333450}
 --- !u!114 &2000571527
 MonoBehaviour:
   m_ObjectHideFlags: 0

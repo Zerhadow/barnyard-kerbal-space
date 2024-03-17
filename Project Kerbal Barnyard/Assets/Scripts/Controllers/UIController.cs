@@ -40,6 +40,8 @@ public class UIController : MonoBehaviour
 
     [Header("Tutorial")]
     public TutorialPanel tutorialPanel;
+    [Header("Video Dependencies")]
+    public GameObject videoCanvas;
 
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
@@ -51,5 +53,6 @@ public class UIController : MonoBehaviour
 
     public void RetryBtn() {
         _stateMachine.ChangeState(_stateMachine.BuildState);
+        videoCanvas.SetActive(false);
     }
 }

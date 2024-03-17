@@ -16,6 +16,8 @@ public class AudioController : MonoBehaviour
     public AudioClip playTheme1;
     public AudioClip playTheme2;
     public AudioClip resultSound;
+    [Header("PlayState Dependencies")]
+    private bool playVariant = true;
 
     // [Header("SFX")]
     // public AudioSource confirm;
@@ -82,6 +84,13 @@ public class AudioController : MonoBehaviour
     public void PlayCountDownIntroHelper() {
         PlayMusic("Build Up Music");
         StartCoroutine(PlayCountDownIntro());
+    }
+
+    public void PlayVariant() {
+        if(playVariant) {
+            PlayMusic("Play Music 2");
+            playVariant = false;
+        }
     }
     
     public IEnumerator PlayCountDownIntro() {

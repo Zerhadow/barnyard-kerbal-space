@@ -24,6 +24,9 @@ public class RocketPart : MonoBehaviour
     [Tooltip("List of adjacent coordinates to check for other rocket parts.")]
     public List<Vector2Int> borderOffsets = new List<Vector2Int>();
 
+    [Header("FX")]
+    [SerializeField] private GameObject _vfxObject;
+
     private BuildController _bController;
     //private List<RocketPartSection> sections;
 
@@ -46,20 +49,42 @@ public class RocketPart : MonoBehaviour
         isValidPlacement = true;
         //Debug.Log("[RocketPart] Start");
         OnPartChanged?.Invoke();
+
+        DisableVFX();
     }
     private void OnEnable()
     {
         OnPartChanged += CheckIfNextToPart;
         OnPartAttachmentReset += ResetAttachment;
+
+        PlayerController.OnRocketLaunched += EnableVFX;
+        BuildController.OnBuildModeStarted += DisableVFX;
     }
     private void OnDisable()
     {
         OnPartChanged -= CheckIfNextToPart;
         OnPartAttachmentReset -= ResetAttachment;
+
+        PlayerController.OnRocketLaunched -= EnableVFX;
+        BuildController.OnBuildModeStarted -= DisableVFX;
     }
     #endregion
 
     #region Custom Functions
+    public void EnableVFX()
+    {
+        if(_vfxObject != null)
+        {
+            _vfxObject.SetActive(true);
+        }
+    }
+    public void DisableVFX()
+    {
+        if (_vfxObject != null)
+        {
+            _vfxObject.SetActive(false);
+        }
+    }
     public void EnableGridBackground(bool enable)
     {
         _rocketPartDebug.gridImage.gameObject.SetActive(enable);

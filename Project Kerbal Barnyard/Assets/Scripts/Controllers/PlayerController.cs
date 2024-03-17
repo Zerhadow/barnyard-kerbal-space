@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [Header("Win Conditions")]
     public float winHeight;
 
+    public static Action OnRocketLaunched = delegate { };
 
     private void Awake() {
         rigidBody2D = parentObj.GetComponent<Rigidbody2D>();
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
         forceMagnitude = shipInfo.CalculateVelocity();
 
         rigidBody2D.AddForce(Vector2.up * forceMagnitude);
+
+        OnRocketLaunched?.Invoke();
     }
 
     public bool Falling() {

@@ -38,6 +38,9 @@ public class UIController : MonoBehaviour
     [Header("Cursor Dependencies")]
     public CursorManager cursorManager;
 
+    [Header("Tutorial")]
+    public TutorialPanel tutorialPanel;
+
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
     }

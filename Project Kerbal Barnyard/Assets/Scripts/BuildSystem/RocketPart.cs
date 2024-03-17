@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RocketPart : MonoBehaviour
 {
+    private BuildController _bController;
     private RocketPartDebug _rocketPartDebug;
 
     [Header("Stats")]
@@ -16,7 +17,8 @@ public class RocketPart : MonoBehaviour
 
     [Header("Grid Interaction")]
     [Tooltip("Determines if the part can be placed/added to the ship.")]
-    public bool isValidPlacement = true;
+    public bool isNotOverlapping = true;
+    public bool isAboveMinimum = true;
     public bool isAttachedToCharacter = false;
     public bool isNextToPart = false;
     public bool isBuildMode = true;
@@ -26,9 +28,6 @@ public class RocketPart : MonoBehaviour
 
     [Header("FX")]
     [SerializeField] private GameObject _vfxObject;
-
-    private BuildController _bController;
-    //private List<RocketPartSection> sections;
 
     public static Action OnPartChanged = delegate { };
     public static Action OnPartAttachmentReset = delegate { };
@@ -46,15 +45,17 @@ public class RocketPart : MonoBehaviour
     }
     private void Start()
     {
-        isValidPlacement = true;
+        isNotOverlapping = true;
         //Debug.Log("[RocketPart] Start");
         OnPartChanged?.Invoke();
 
         DisableVFX();
+        CheckIfAboveMinPosition(this, _bController.SimplifiedGrid.GetXY(transform.position));
     }
     private void OnEnable()
     {
         OnPartChanged += CheckIfNextToPart;
+        BuildController.OnGridPositionChanged += CheckIfAboveMinPosition;
         OnPartAttachmentReset += ResetAttachment;
 
         PlayerController.OnRocketLaunched += EnableVFX;
@@ -63,6 +64,7 @@ public class RocketPart : MonoBehaviour
     private void OnDisable()
     {
         OnPartChanged -= CheckIfNextToPart;
+        BuildController.OnGridPositionChanged -= CheckIfAboveMinPosition;
         OnPartAttachmentReset -= ResetAttachment;
 
         PlayerController.OnRocketLaunched -= EnableVFX;
@@ -104,6 +106,23 @@ public class RocketPart : MonoBehaviour
             }
         }
         isNextToPart = isAdjacent;
+    }
+    public void CheckIfAboveMinPosition(RocketPart selectedPart, Vector2Int gridXYPosition)
+    {
+        if (selectedPart != this) return;
+
+        bool aboveMinimum = true;
+        foreach(var offset in borderOffsets)
+        {
+            Vector2Int adjustedXY = gridXYPosition + offset;
+
+            if(adjustedXY.y + 1 < _bController.minHeightAllowed)
+            {
+                aboveMinimum = false;
+            }
+        }
+
+        isAboveMinimum = aboveMinimum;
     }
     public void ResetAttachment()
     {
@@ -181,11 +200,11 @@ public class RocketPart : MonoBehaviour
     #region Triggers
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isValidPlacement = false;
+        isNotOverlapping = false;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isValidPlacement = true;
+        isNotOverlapping = true;
     }
     #endregion
 

@@ -19,6 +19,7 @@ public class BuildController : MonoBehaviour
     public int height = 10;
     public float cellSize;
     public Vector3 startPosition;
+    public int minHeightAllowed = 0;
 
     public SimplifiedGrid SimplifiedGrid;
 
@@ -30,9 +31,11 @@ public class BuildController : MonoBehaviour
     public bool debugMode = false;
 
     public static Action<RocketPart> OnSelectedPartChanged = delegate { };
+    public static Action<RocketPart, Vector2Int> OnGridPositionChanged = delegate { };
     public static Action OnBuildModeStarted = delegate { };
 
     private Camera _mainCamera;
+    private Vector2Int _savedVectorInt;
 
     private void Awake()
     {
@@ -62,6 +65,18 @@ public class BuildController : MonoBehaviour
         Vector2 tileCenter = tilePosition + new Vector2(cellSize * 0.5f, cellSize * 0.5f);
         #endregion
 
+        #region Tile changed action
+        if(_savedVectorInt != gridXYPosition)
+        {
+            _savedVectorInt = gridXYPosition;
+            if(_selectedPart != null)
+            {
+                OnGridPositionChanged?.Invoke(_selectedPart, gridXYPosition);
+                _selectedPart.transform.position = tileCenter;
+            }
+        }
+        #endregion
+
         #region Debug
         if (debugMode)
         {
@@ -85,11 +100,12 @@ public class BuildController : MonoBehaviour
         }
         #endregion
 
-        //always move selected part with mouse
+        //moved to Tile changed Action (line 75)
+        /*//always move selected part with mouse
         if (_selectedPart != null)
         {
             _selectedPart.transform.position = tileCenter;
-        }
+        }*/
     }
 
     #region Grid Actions
@@ -174,7 +190,7 @@ public class BuildController : MonoBehaviour
 
         if(_selectedPart != null )
         {
-            if (_selectedPart.isValidPlacement == true)
+            if (_selectedPart.isNotOverlapping == true && _selectedPart.isAboveMinimum == true)
             {
                 //can be dropped
                 _selectedPart = null;

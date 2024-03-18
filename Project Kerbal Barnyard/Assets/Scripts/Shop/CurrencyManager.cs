@@ -15,6 +15,7 @@ public class CurrencyManager : MonoBehaviour
     public bool DebugEnabled => _debug;
 
     public static int money = 0;
+    private int speedDecreasing = 10;
 
     /// <summary>
     /// Check currency manager to change the multiplier.
@@ -71,7 +72,8 @@ public class CurrencyManager : MonoBehaviour
 
     // will calculate the money earned from height and speed then add that to player disposal
     public void CalculateMoneyEarned(float height, float speed) {
-        int amountEarned = (int) (height + speed / 10);
+        int amountEarned = (int) (height + speed / speedDecreasing);
+        speedDecreasing += (int)(height / 10);
 
         Debug.Log("Earned: " + amountEarned);
 

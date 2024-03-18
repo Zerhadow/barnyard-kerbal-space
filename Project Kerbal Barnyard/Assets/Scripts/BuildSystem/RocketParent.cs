@@ -181,6 +181,21 @@ public class RocketParent : MonoBehaviour
 
         return fBoosters;
     }
+
+    private float CalculateMISC() {
+        foreach (RocketPart part in RocketParts)
+        {
+            if(part.partType == PartType.Misc) {
+                Debug.Log("part name: " + part.name);
+                if(part.name.Contains("RP_1x2 Skateboard")) {
+
+                }
+                return 1f;
+            }
+        }
+
+        return 0;
+    }
     
     public float CalculateVelocity() { // F = ma - mg
         SetCharacterWeight(); // updates charWeight
@@ -193,6 +208,8 @@ public class RocketParent : MonoBehaviour
 
         fNet = fBoosters - fGrav;
         Debug.Log("fNet: " + fNet);
+
+        CalculateMISC();
 
         return fNet;
     }

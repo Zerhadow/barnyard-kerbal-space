@@ -164,20 +164,27 @@ public class RocketParent : MonoBehaviour
     }
 
     private float CalculatefGain() {
+        float TThrust = 0f, TWeight = 0f;
+
         foreach (RocketPart part in RocketParts)
         {
+            if(part.partType == PartType.Thruster) {
+                TThrust += part.thrust;
+                TWeight += part.weight;
+            }
+
             totalLoadMass += part.weight;
             totalThrust += part.thrust;
         }
 
-        float fBoosters = totalLoadMass * totalThrust;
+        float fBoosters = TWeight * TThrust;
 
         return fBoosters;
     }
     
     public float CalculateVelocity() { // F = ma - mg
         SetCharacterWeight(); // updates charWeight
-        float fGrav = charWeight * 9.81f; // force of char
+        float fGrav = totalLoadMass * 9.81f; // force of char
         float fBoosters = CalculatefGain();
 
         if(fBoosters == 0) { // player didnt add anything else

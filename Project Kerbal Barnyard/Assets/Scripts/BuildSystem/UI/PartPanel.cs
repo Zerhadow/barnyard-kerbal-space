@@ -19,6 +19,7 @@ public class PartPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     [Header("Dependencies")]
     [SerializeField] private Button _spawnButton;
+    [SerializeField] private Button _buyButton;
     [SerializeField] private TextMeshProUGUI _stockText;
     [SerializeField] private TextMeshProUGUI _costText;
     [Space]
@@ -58,6 +59,11 @@ public class PartPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 _spawnButton.interactable = true;
             if (isUnlocked == false && _spawnButton.interactable == true)
                 _spawnButton.interactable = false;
+        }
+        if(_buyButton != null)
+        {
+            if(partPrefab.partType == PartType.Character && _buyButton.gameObject.activeInHierarchy == true)
+                _buyButton.gameObject.SetActive(false);
         }
         if (_lockedImage != null)
         {

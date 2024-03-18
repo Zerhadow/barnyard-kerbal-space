@@ -19,8 +19,8 @@ public class AudioController : MonoBehaviour
     [Header("PlayState Dependencies")]
     private bool playVariant = true;
 
-    // [Header("SFX")]
-    // public AudioSource confirm;
+    [Header("SFX")]
+    public AudioClip construction;
     // public AudioSource deny;
 
     public bool inMainMenu;
@@ -28,7 +28,6 @@ public class AudioController : MonoBehaviour
     private void Awake() {
         if (inMainMenu) {
             PlayMusic("Main Menu");
-            // StartCoroutine(StartFade(mainMenu, 2f, 1f));
         }
     }
 
@@ -39,7 +38,8 @@ public class AudioController : MonoBehaviour
                 // Handle main menu music
                 Debug.Log("Main Menu music selected.");
                 musicSource.clip = mainMenu;
-                musicSource.Play();
+                StartCoroutine(StartFade(musicSource, 2f, 1f));
+                // musicSource.Play();
                 break;
             case "Build Music":
                 // Handle build theme music
@@ -99,7 +99,17 @@ public class AudioController : MonoBehaviour
         playerController.Launch(); // forces ship to launch after
     }
 
+    public void PlaySFX(string soundBite) {
+        switch(soundBite) {
+            case "construction":
+            Debug.Log("Constructions");
+            SFXSource.PlayOneShot(construction);
+            break;
+        }
+    }
+
     public static IEnumerator StartFade(AudioSource music, float duration, float targetVol){
+        music.Play();
         float currentTime = 0;
         float start = music.volume;
 

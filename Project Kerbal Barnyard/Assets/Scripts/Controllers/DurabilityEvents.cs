@@ -40,6 +40,6 @@ public class DurabilityEvents : HeightBasedEvents
     {
         Debug.Log("Failed durability check. Doubling GravityScale");
         //rocket speed is halved
-        _controller.playerController.SetGravityScale(_controller.playerController.GetGravityScale() * 4f);
+        _controller.playerController.SetGravityScale(_controller.playerController.GetGravityScale() * 2f);
     }
 }

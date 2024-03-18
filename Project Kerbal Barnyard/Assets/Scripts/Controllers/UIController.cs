@@ -53,18 +53,33 @@ public class UIController : MonoBehaviour
     public void LaunchBtn() {
         if(_controller != null)
         {
-            if (_controller.buildController.partParent.CheckIfRocketHasCharacter())
+            bool hasCharacter = _controller.buildController.partParent.CheckIfRocketHasCharacter();
+            bool hasBody = _controller.buildController.partParent.CheckIfRocketHasBody();
+
+            if (hasCharacter && hasBody)
             {
                 //launch if has character
                 _stateMachine.ChangeState(_stateMachine.PlayState);
             }
             else
             {
-                //trying popup text to show cant launch yet
-                if(launchPopupText != null)
+                if(hasBody == false)
                 {
-                    launchPopupText.Popup("Missing a character!");
+                    //trying popup text to show cant launch yet
+                    if (launchPopupText != null)
+                    {
+                        launchPopupText.Popup("Missing a body part!");
+                    }
                 }
+                if (hasCharacter)
+                {
+                    //trying popup text to show cant launch yet
+                    if (launchPopupText != null)
+                    {
+                        launchPopupText.Popup("Missing a character!");
+                    }
+                }
+                
             }
         }
     }

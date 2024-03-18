@@ -63,7 +63,7 @@ public class UIController : MonoBehaviour
             }
             else
             {
-                if(hasBody == false)
+                if(hasBody == false && hasCharacter == true)
                 {
                     //trying popup text to show cant launch yet
                     if (launchPopupText != null)
@@ -71,7 +71,7 @@ public class UIController : MonoBehaviour
                         launchPopupText.Popup("Missing a body part!");
                     }
                 }
-                if (hasCharacter)
+                else if(hasCharacter == false && hasBody == true)
                 {
                     //trying popup text to show cant launch yet
                     if (launchPopupText != null)
@@ -79,7 +79,14 @@ public class UIController : MonoBehaviour
                         launchPopupText.Popup("Missing a character!");
                     }
                 }
-                
+                else
+                {
+                    //trying popup text to show cant launch yet
+                    if (launchPopupText != null)
+                    {
+                        launchPopupText.Popup("Missing parts!");
+                    }
+                }
             }
         }
     }

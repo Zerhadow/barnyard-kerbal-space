@@ -9729,6 +9729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d375182ff03e5fa4d9499907ea63479c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controller: {fileID: 0}
   videoSource: {fileID: 200487592}
   intro: {fileID: 32900000, guid: b25760ad2db9ba74e96424f40ef9edec, type: 3}
   loseCat: {fileID: 32900000, guid: b16245d5980ba864ab51e903297d32e3, type: 3}
@@ -9737,6 +9738,7 @@ MonoBehaviour:
   winCat: {fileID: 32900000, guid: 611153a8dbec61c4a8a23aa95d84851f, type: 3}
   winChicken: {fileID: 32900000, guid: a06a232cd21611346ac34cb06f36a992, type: 3}
   winCow: {fileID: 32900000, guid: 80e60ace2669e0d4eb727f814a26c982, type: 3}
+  credits: {fileID: 0}
 --- !u!1 &1420330800
 GameObject:
   m_ObjectHideFlags: 0
@@ -13907,6 +13909,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2804503124305565834, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
+      propertyPath: unlockCost
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 3930498791169367853, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13927,6 +13933,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4048458820956122411, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
+      propertyPath: unlockCost
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4686149570734105721, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13946,6 +13956,10 @@ PrefabInstance:
     - target: {fileID: 4686149570734105721, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734233266083764166, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
+      propertyPath: unlockCost
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4755870967905250250, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
       propertyPath: m_AnchorMax.y

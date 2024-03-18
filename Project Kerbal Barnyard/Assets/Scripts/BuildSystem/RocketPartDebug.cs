@@ -30,17 +30,19 @@ public class RocketPartDebug : MonoBehaviour
                 if(gridImage != null && gridImage.sprite != _buildSprite)
                     gridImage.sprite = _buildSprite;
 
-                if (rocketPart.isValidPlacement == true)
+                if (rocketPart.isNotOverlapping == true && rocketPart.isAboveMinimum == true)
                 {
                     if (rocketPart.isAttachedToCharacter == true && gridImage.color != _adjacentColor)
                         gridImage.color = _adjacentColor;
                     if (rocketPart.isAttachedToCharacter == false && gridImage.color != _validColor)
                         gridImage.color = _validColor;
                 }
+                else
+                {
+                    if (gridImage.color != _invalidColor) gridImage.color = _invalidColor;
+                }
 
-                //if(rocketPart.isValidPlacement == true && _partImage.color != _validColor) _partImage.color = _validColor;
-                if (rocketPart.isValidPlacement == false && gridImage.color != _invalidColor)
-                    gridImage.color = _invalidColor;
+                //if (rocketPart.isNotOverlapping == false && gridImage.color != _invalidColor) gridImage.color = _invalidColor;
             }
             else
             {

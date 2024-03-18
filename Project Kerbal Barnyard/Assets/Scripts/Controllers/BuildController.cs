@@ -19,6 +19,7 @@ public class BuildController : MonoBehaviour
     public int height = 10;
     public float cellSize;
     public Vector3 startPosition;
+    public int minHeightAllowed = 0;
 
     public SimplifiedGrid SimplifiedGrid;
 
@@ -30,9 +31,11 @@ public class BuildController : MonoBehaviour
     public bool debugMode = false;
 
     public static Action<RocketPart> OnSelectedPartChanged = delegate { };
+    public static Action<RocketPart, Vector2Int> OnGridPositionChanged = delegate { };
     public static Action OnBuildModeStarted = delegate { };
 
     private Camera _mainCamera;
+    private Vector2Int _savedVectorInt;
 
     private void Awake()
     {
@@ -50,7 +53,7 @@ public class BuildController : MonoBehaviour
         _gameController.UI.partsShopCanvas.SetActive(false); // parts shop UI
 
         //trigger actions
-        OnSelectedPartChanged?.Invoke(_selectedPart);
+        OnSelectedPartChanged?.Invoke(selectedPart);
     }
     private void Update()
     {
@@ -60,6 +63,18 @@ public class BuildController : MonoBehaviour
         Vector2Int gridXYPosition = SimplifiedGrid.GetXY(rawWorldPosition);
         Vector2 tilePosition = SimplifiedGrid.GetWorldPosition(gridXYPosition);
         Vector2 tileCenter = tilePosition + new Vector2(cellSize * 0.5f, cellSize * 0.5f);
+        #endregion
+
+        #region Tile changed action
+        if(_savedVectorInt != gridXYPosition)
+        {
+            _savedVectorInt = gridXYPosition;
+            if(selectedPart != null)
+            {
+                OnGridPositionChanged?.Invoke(selectedPart, gridXYPosition);
+                selectedPart.transform.position = tileCenter;
+            }
+        }
         #endregion
 
         #region Debug
@@ -85,11 +100,12 @@ public class BuildController : MonoBehaviour
         }
         #endregion
 
-        //always move selected part with mouse
+        //moved to Tile changed Action (line 75)
+        /*//always move selected part with mouse
         if (_selectedPart != null)
         {
             _selectedPart.transform.position = tileCenter;
-        }
+        }*/
     }
 
     #region Grid Actions
@@ -107,8 +123,8 @@ public class BuildController : MonoBehaviour
 
     #region Click Actions
     //[SerializeField] private Transform _selectedPart;
-    public RocketPart _selectedPart { get; private set; }
-    [SerializeField] private Vector2 _previousPosition;
+    public RocketPart selectedPart { get; private set; }
+    private Vector2 _previousPosition;
 
     public void MouseDownAction(Vector2Int xy, Vector2 tileCenter)
     {
@@ -131,7 +147,7 @@ public class BuildController : MonoBehaviour
         /// if no piece, pickup piece
         ///
 
-        if(_selectedPart == null)
+        if(selectedPart == null)
         {
             //raycast check if selecting a tile
             RaycastHit2D hit = Utility.GetMouseHit2D();
@@ -140,14 +156,14 @@ public class BuildController : MonoBehaviour
                 if (hit.collider.TryGetComponent(out RocketPart rocketPart))
                 {
                     _previousPosition = rocketPart.transform.position;
-                    _selectedPart = rocketPart;
-                    OnSelectedPartChanged?.Invoke(_selectedPart);
+                    selectedPart = rocketPart;
+                    OnSelectedPartChanged?.Invoke(selectedPart);
                 }
             }
             else
             {
-                _selectedPart = null;
-                OnSelectedPartChanged?.Invoke(_selectedPart);
+                selectedPart = null;
+                OnSelectedPartChanged?.Invoke(selectedPart);
                 _previousPosition = Vector2.zero;
             }
         }
@@ -172,24 +188,24 @@ public class BuildController : MonoBehaviour
         /// 
 
 
-        if(_selectedPart != null )
+        if(selectedPart != null )
         {
-            if (_selectedPart.isValidPlacement == true)
+            if (selectedPart.isNotOverlapping == true && selectedPart.isAboveMinimum == true)
             {
                 //can be dropped
-                _selectedPart = null;
-                OnSelectedPartChanged?.Invoke(_selectedPart);
+                selectedPart = null;
+                OnSelectedPartChanged?.Invoke(selectedPart);
             }
             else
             {
                 //shouldn't be dropped
                 if (_previousPosition != Vector2.zero)
-                    _selectedPart.transform.position = _previousPosition;
+                    selectedPart.transform.position = _previousPosition;
                 else
-                    RemovePart(_selectedPart); //destroy maybe
+                    RemovePart(selectedPart); //destroy maybe
 
-                _selectedPart = null;
-                OnSelectedPartChanged?.Invoke(_selectedPart);
+                selectedPart = null;
+                OnSelectedPartChanged?.Invoke(selectedPart);
             }
 
             _previousPosition = Vector2.zero;
@@ -199,9 +215,9 @@ public class BuildController : MonoBehaviour
     }
     public void RightClickAction(Vector2Int xy, Vector2 tileCenter)
     {
-        if(_selectedPart != null )
+        if(selectedPart != null )
         {
-            RemovePart(_selectedPart);
+            RemovePart(selectedPart);
         }
 
         MouseUpAction(xy, tileCenter);
@@ -245,15 +261,15 @@ public class BuildController : MonoBehaviour
     {
         yield return new WaitForNextFrameUnit();
 
-        if (_selectedPart == null)
+        if (selectedPart == null)
         {
             RocketPart rocketPart = Instantiate(partPrefab, partParent.transform);
             rocketPart.transform.position = new Vector3(0, -435, 0);
             rocketPart.partPanel = partPanel;
-            _selectedPart = rocketPart;
-            OnSelectedPartChanged?.Invoke(_selectedPart);
+            selectedPart = rocketPart;
+            OnSelectedPartChanged?.Invoke(selectedPart);
 
-            partParent.TryAddPartToRocket(_selectedPart);
+            partParent.TryAddPartToRocket(selectedPart);
         }
     }
     #endregion

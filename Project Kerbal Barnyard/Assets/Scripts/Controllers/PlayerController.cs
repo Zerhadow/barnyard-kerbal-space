@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float winHeight;
 
     public static Action OnRocketLaunched = delegate { };
+    public static Action OnFlightOver = delegate { };
 
     private void Awake() {
         rigidBody2D = parentObj.GetComponent<Rigidbody2D>();
@@ -76,5 +77,20 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = transform.position;
         newPos.y = currHeight;
         parentObj.transform.position = newPos;
+    }
+
+    public string GetCharacterName() {
+        Debug.Log("Char Name " + shipInfo.charType);
+
+        if(shipInfo.charType.Contains("RP_1x1 Cat")) {
+            return "Cat";
+        } else if(shipInfo.charType.Contains("RP_1x1 Chicken")) {
+            return "Chicken";
+        } else if(shipInfo.charType.Contains("RP_1x1 Cow")) {
+            return "Cow";
+        } else {
+            Debug.LogError("character name unknown");
+            return null;
+        }
     }
 }

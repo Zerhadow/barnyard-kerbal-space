@@ -227,6 +227,11 @@ public class BuildController : MonoBehaviour
     #endregion
 
     #region Rocket Part Actions
+    public void ResetRocket()
+    {
+        //remove rocket parts
+        partParent.RemoveAllParts();
+    }
     private void RemovePart(RocketPart rocketPart)
     {
         /// TODO Decide how to handle removing rocket parts

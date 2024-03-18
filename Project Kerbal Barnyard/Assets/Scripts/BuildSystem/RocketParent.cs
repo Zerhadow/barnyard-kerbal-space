@@ -111,6 +111,20 @@ public class RocketParent : MonoBehaviour
     #endregion
 
     #region Rocket stuff
+    public void RemoveAllParts()
+    {
+        List<RocketPart> partsToRemove = new List<RocketPart>();
+
+        foreach (var part in RocketParts)
+        {
+            partsToRemove.Add(part);
+        }
+
+        foreach (var part in partsToRemove)
+        {
+            RemovePartFromRocket(part);
+        }
+    }
     public void EnablePartGridBackgrounds(bool enable)
     {
         foreach (var part in RocketParts)

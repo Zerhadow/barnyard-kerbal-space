@@ -20,6 +20,12 @@ public class RocketParent : MonoBehaviour
     public Action OnRocketModified = delegate { };
     public string charType;
 
+    [Header("Powerups")]
+    public int powerupWeight;
+    public int powerupThrust;
+    public int powerupDurability;
+
+
     private void Awake()
     {
         //TODO If we add a save system will need to get list from save system
@@ -100,6 +106,9 @@ public class RocketParent : MonoBehaviour
     {
         int durability = 0;
 
+        //get powerup durability
+        durability += powerupDurability;
+
         foreach (var part in RocketParts)
         {
             part.durability += durability;
@@ -179,6 +188,10 @@ public class RocketParent : MonoBehaviour
 
     private float CalculatefGain() {
         float TThrust = 0f, TWeight = 0f;
+
+        //adding powerup stats
+        TThrust += powerupThrust;
+        TWeight += powerupWeight;
 
         foreach (RocketPart part in RocketParts)
         {

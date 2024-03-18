@@ -44,6 +44,7 @@ public class AudioController : MonoBehaviour
                 // Handle build theme music
                 Debug.Log("Build Theme music selected.");
                 musicSource.clip = buildTheme;
+                musicSource.Play();
                 break;
             case "Build Up Music":
                 // Handle play theme build-up music
@@ -60,8 +61,7 @@ public class AudioController : MonoBehaviour
             case "Play Music 2":
                 // Handle play theme 2 music
                 Debug.Log("Play Theme 2 music selected.");
-                musicSource.clip = playTheme2;
-                musicSource.Play();
+                StartCoroutine(FadeOut(musicSource, 2.2f, 1f));
                 break;
             case "Result Sound Music":
                 // Handle result sound
@@ -119,16 +119,26 @@ public class AudioController : MonoBehaviour
         yield break;
     }
 
-    public static IEnumerator FadeOut(AudioSource music, float duration, float targetVol){
+    public IEnumerator FadeOut(AudioSource music, float duration, float duration2){
         float currentTime = 0;
         float start = music.volume;
 
         while(currentTime < duration){
             currentTime += Time.deltaTime;
-            music.volume = Mathf.Lerp(start, targetVol, currentTime/duration);
+            music.volume = Mathf.Lerp(start, 0, currentTime/duration);
             yield return null;
         }
-        yield break;
-        music.Stop();
+
+        musicSource.clip = playTheme2;
+        currentTime = 0;
+        start = music.volume;
+        music.Play();
+
+        while(currentTime < duration2){
+            currentTime += Time.deltaTime;
+            music.volume = Mathf.Lerp(start, 1f, currentTime/duration2);
+            yield return null;
+        }
+        
     }
 }

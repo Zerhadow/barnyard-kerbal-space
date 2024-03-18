@@ -19,8 +19,8 @@ public class AudioController : MonoBehaviour
     [Header("PlayState Dependencies")]
     private bool playVariant = true;
 
-    // [Header("SFX")]
-    // public AudioSource confirm;
+    [Header("SFX")]
+    public AudioClip construction;
     // public AudioSource deny;
 
     public bool inMainMenu;
@@ -28,7 +28,6 @@ public class AudioController : MonoBehaviour
     private void Awake() {
         if (inMainMenu) {
             PlayMusic("Main Menu");
-            // StartCoroutine(StartFade(mainMenu, 2f, 1f));
         }
     }
 
@@ -39,7 +38,7 @@ public class AudioController : MonoBehaviour
                 // Handle main menu music
                 Debug.Log("Main Menu music selected.");
                 musicSource.clip = mainMenu;
-                musicSource.Play();
+                StartCoroutine(StartFade(musicSource, 2f, 1f));
                 break;
             case "Build Music":
                 // Handle build theme music
@@ -62,8 +61,7 @@ public class AudioController : MonoBehaviour
             case "Play Music 2":
                 // Handle play theme 2 music
                 Debug.Log("Play Theme 2 music selected.");
-                musicSource.clip = playTheme2;
-                musicSource.Play();
+                StartCoroutine(FadeOut(musicSource, 2.2f, 1f));
                 break;
             case "Result Sound Music":
                 // Handle result sound
@@ -99,7 +97,17 @@ public class AudioController : MonoBehaviour
         playerController.Launch(); // forces ship to launch after
     }
 
+    public void PlaySFX(string soundBite) {
+        switch(soundBite) {
+            case "construction":
+            Debug.Log("Constructions");
+            SFXSource.PlayOneShot(construction);
+            break;
+        }
+    }
+
     public static IEnumerator StartFade(AudioSource music, float duration, float targetVol){
+        music.Play();
         float currentTime = 0;
         float start = music.volume;
 
@@ -109,5 +117,28 @@ public class AudioController : MonoBehaviour
             yield return null;
         }
         yield break;
+    }
+
+    public IEnumerator FadeOut(AudioSource music, float duration, float duration2){
+        float currentTime = 0;
+        float start = music.volume;
+
+        while(currentTime < duration){
+            currentTime += Time.deltaTime;
+            music.volume = Mathf.Lerp(start, 0, currentTime/duration);
+            yield return null;
+        }
+
+        musicSource.clip = playTheme2;
+        currentTime = 0;
+        start = music.volume;
+        music.Play();
+
+        while(currentTime < duration2){
+            currentTime += Time.deltaTime;
+            music.volume = Mathf.Lerp(start, 1f, currentTime/duration2);
+            yield return null;
+        }
+        
     }
 }

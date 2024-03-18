@@ -18,6 +18,7 @@ public class RocketParent : MonoBehaviour
     
     private Vector3 originalPos;
     public Action OnRocketModified = delegate { };
+    public string charType;
 
     private void Awake()
     {
@@ -51,8 +52,10 @@ public class RocketParent : MonoBehaviour
         RocketPart characterPart = null;
         foreach (var part in RocketParts)
         {
-            if(part.partType == PartType.Character)
+            if(part.partType == PartType.Character) {
                 characterPart = part;
+                charType = part.name;
+            }
         }
 
         //recursive loop to update all attached parts

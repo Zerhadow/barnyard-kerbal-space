@@ -28,6 +28,12 @@ public class GameWinState : State
         _controller.UI.maxSpd1.text += " " + _controller.playerController.shipInfo.fNet;
         _controller.UI.numParts1.text += " " + _controller.playerController.shipInfo.RocketParts.Count;
         _controller.UI.maxWeight1.text += " " + _controller.playerController.shipInfo.totalLoadMass + " banjos";
+    
+        // get character name
+        string name = "win" + _controller.playerController.GetCharacterName();
+        _controller.UI.videoCanvas.SetActive(true);
+        _controller.videoController.PlayVideo(name);
+        _controller.playerController.parentObj.SetActive(false);
     }
 
     public override void Update()
@@ -54,5 +60,7 @@ public class GameWinState : State
 
         _controller.playerController.shipInfo.ResetInfo();
         _controller.playerController.ResetVeloctity();
+
+        _controller.UI.videoCanvas.SetActive(false);
     }
 }

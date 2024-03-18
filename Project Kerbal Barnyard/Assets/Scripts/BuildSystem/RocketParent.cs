@@ -80,7 +80,7 @@ public class RocketParent : MonoBehaviour
 
         //restock
         part.partPanel.stock++;
-
+        
         //destroy
         Destroy(part.gameObject);
 
@@ -164,20 +164,41 @@ public class RocketParent : MonoBehaviour
     }
 
     private float CalculatefGain() {
+        float TThrust = 0f, TWeight = 0f;
+
         foreach (RocketPart part in RocketParts)
         {
+            if(part.partType == PartType.Thruster) {
+                TThrust += part.thrust;
+                TWeight += part.weight;
+            }
+
             totalLoadMass += part.weight;
             totalThrust += part.thrust;
         }
 
-        float fBoosters = totalLoadMass * totalThrust;
+        float fBoosters = TWeight * TThrust;
 
         return fBoosters;
+    }
+
+    private float CalculateMISC() {
+        foreach (RocketPart part in RocketParts)
+        {
+            if(part.partType == PartType.Misc) {
+                Debug.Log("part name: " + part.name);
+                if(part.name.Contains("RP_1x2 Skateboard")) {
+                    return part.thrust * part.weight;
+                }
+            }
+        }
+
+        return 0;
     }
     
     public float CalculateVelocity() { // F = ma - mg
         SetCharacterWeight(); // updates charWeight
-        float fGrav = charWeight * 9.81f; // force of char
+        float fGrav = totalLoadMass * 9.81f; // force of char
         float fBoosters = CalculatefGain();
 
         if(fBoosters == 0) { // player didnt add anything else
@@ -187,7 +208,13 @@ public class RocketParent : MonoBehaviour
         fNet = fBoosters - fGrav;
         Debug.Log("fNet: " + fNet);
 
-        return fNet;
+        float miscNet = CalculateMISC();
+
+        if(miscNet != null) {
+            return fNet + miscNet;
+        } else {
+            return fNet;
+        }
     }
 
     public void ResetInfo() {

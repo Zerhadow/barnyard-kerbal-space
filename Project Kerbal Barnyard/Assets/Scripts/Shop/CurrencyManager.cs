@@ -10,7 +10,16 @@ public class CurrencyManager : MonoBehaviour
     [Header("Starting")]
     [SerializeField] private int _startingAmount = 100;
 
+    [Header("Debug")]
+    [SerializeField] private bool _debug = false;
+    public bool DebugEnabled => _debug;
+
     public static int money = 0;
+
+    /// <summary>
+    /// Check currency manager to change the multiplier.
+    /// </summary>
+    public static float StockMultiplier = 0.1f;
 
     public static Action<int> OnCurrencyChanged = delegate { };
 

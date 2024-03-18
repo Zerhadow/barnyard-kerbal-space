@@ -16,6 +16,7 @@ public class AudioController : MonoBehaviour
     public AudioClip playTheme1;
     public AudioClip playTheme2;
     public AudioClip resultSound;
+    public AudioClip winSound;
     [Header("PlayState Dependencies")]
     private bool playVariant = true;
 
@@ -67,6 +68,11 @@ public class AudioController : MonoBehaviour
                 // Handle result sound
                 Debug.Log("Result Sound selected.");
                 musicSource.PlayOneShot(resultSound);
+                break;
+            case "Win Theme":
+                // Handle result sound
+                Debug.Log("Result Sound selected.");
+                musicSource.PlayOneShot(winSound);
                 break;
             default:
                 // Handle default case (when musicName does not match any of the above cases)

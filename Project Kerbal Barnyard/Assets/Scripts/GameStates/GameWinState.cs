@@ -34,6 +34,8 @@ public class GameWinState : State
         _controller.UI.videoCanvas.SetActive(true);
         _controller.videoController.PlayVideo(name);
         _controller.playerController.parentObj.SetActive(false);
+
+        _controller.audioController.PlayMusic("Win Theme");
     }
 
     public override void Update()

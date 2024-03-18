@@ -174,6 +174,18 @@ public class RocketParent : MonoBehaviour
         }
         return hasCharacter;
     }
+    public bool CheckIfRocketHasBody()
+    {
+        bool hasBody = false;
+        foreach(RocketPart part in RocketParts)
+        {
+            if(part.partType == PartType.Body)
+            {
+                hasBody = true;
+            }
+        }
+        return hasBody;
+    }
     #endregion
 
     private void SetCharacterWeight() {

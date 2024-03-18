@@ -138,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 4158dee10f160d64eae1b5691dd6e482, type: 3}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: thrust
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8888820366719780863, guid: 5b30a48af8f632d4d9ab94e0ffddf5b4, type: 3}
       propertyPath: weight

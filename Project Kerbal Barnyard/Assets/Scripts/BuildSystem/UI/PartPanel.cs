@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PartPanel : MonoBehaviour
+public class PartPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private BuildController _buildController;
 
@@ -26,6 +28,9 @@ public class PartPanel : MonoBehaviour
 
     private int _savedStock;
     private int _savedCost;
+
+    public static Action<PartPanel> OnPanelHovered = delegate { };
+    public static Action<PartPanel> OnPanelExit = delegate { };
 
     private void Awake()
     {
@@ -135,6 +140,16 @@ public class PartPanel : MonoBehaviour
     {
         if(_stockText != null) _stockText.text = stock.ToString("00");
         if(_costText != null) _costText.text = "$" + unlockCost.ToString("000");
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        OnPanelHovered?.Invoke(this);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        OnPanelExit?.Invoke(this);
     }
     #endregion
 }

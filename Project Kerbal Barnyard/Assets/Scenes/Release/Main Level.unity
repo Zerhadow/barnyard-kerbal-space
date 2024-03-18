@@ -10837,6 +10837,9 @@ MonoBehaviour:
   totalLoadMass: 0
   fNet: 0
   charType: 
+  powerupWeight: 0
+  powerupThrust: 0
+  powerupDurability: 0
 --- !u!50 &1596561755
 Rigidbody2D:
   serializedVersion: 4

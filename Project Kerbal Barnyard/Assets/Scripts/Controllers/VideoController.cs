@@ -5,6 +5,7 @@ using UnityEngine.Video;
 
 public class VideoController : MonoBehaviour
 {
+    public AudioController _controller;
     [Header("Video Source")]
     public VideoPlayer videoSource;
     [Header("Video Clips")]
@@ -15,6 +16,7 @@ public class VideoController : MonoBehaviour
     public VideoClip winCat;
     public VideoClip winChicken;
     public VideoClip winCow;
+    public VideoClip credits;
     
     public void PlayVideo(string clip)
     {
@@ -68,5 +70,11 @@ public class VideoController : MonoBehaviour
                 Debug.LogWarning("Unknown video clip: " + clip);
                 break;
         }
+    }
+
+    public void PlayCredits() {
+        _controller.musicSource.Pause();
+        videoSource.clip = credits;
+        videoSource.Play();
     }
 }

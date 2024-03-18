@@ -14,7 +14,7 @@ public class HeightBasedEvents : MonoBehaviour
     /// <summary>
     /// Passes the event ID (order of the events).
     /// </summary>
-    public Action<int> OnDurabilityEvent;
+    public static Action<int> OnDurabilityEvent;
 
     public int eventCounter { get; private set; } = 0;
 

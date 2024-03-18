@@ -80,6 +80,9 @@ public class PartInfo : MonoBehaviour
         {
             _statPanel.gameObject.SetActive(true);
         }
+
+        //populate text
+        PopulateText(rocketPart);
     }
     public void HideStats(PartPanel panel)
     {
@@ -95,5 +98,14 @@ public class PartInfo : MonoBehaviour
         {
             _statPanel.gameObject.SetActive(false);
         }
+    }
+    public void PopulateText(RocketPart part)
+    {
+        if(_weightText != null)
+            _weightText.text = part.weight.ToString();
+        if(_thrustText != null)
+            _thrustText.text = part.thrust.ToString();
+        if(_durabilityText != null)
+            _durabilityText.text = part.durability.ToString();
     }
 }

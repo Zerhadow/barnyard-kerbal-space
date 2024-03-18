@@ -17,8 +17,6 @@ public class PartInfo : MonoBehaviour
     public PartPanel partPanel;
     public RocketPart rocketPart;
 
-    private bool _followPanel = false;
-
     private void Awake()
     {
         _buildController = FindObjectOfType<BuildController>();

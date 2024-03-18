@@ -14132,7 +14132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4734233266083764166, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
       propertyPath: unlockCost
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4755870967905250250, guid: 1554cc5e5ef2a7047b30032b90b23eed, type: 3}
       propertyPath: m_AnchorMax.y

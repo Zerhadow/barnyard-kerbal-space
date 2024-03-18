@@ -5898,6 +5898,22 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: -301.39404
       objectReference: {fileID: 0}
+    - target: {fileID: 3321248298326129985, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 639.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321248298326129985, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 144.0875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321248298326129985, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 617.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321248298326129985, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 229.09985
+      objectReference: {fileID: 0}
     - target: {fileID: 5358759788507738186, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
       propertyPath: m_margin.z
       value: -315.1687
@@ -5913,6 +5929,22 @@ PrefabInstance:
     - target: {fileID: 6784292077394376771, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
       propertyPath: m_text
       value: '"Don''t chicken out! Hatch a new plan and fly higher."'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784292077394376771, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_fontSize
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784292077394376771, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_margin.w
+      value: -1.407959
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784292077394376771, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_margin.z
+      value: -0.5855713
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784292077394376771, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 6860170913330093763, guid: 02ef7f2302e45374a9f2fec72fa3d09a, type: 3}
       propertyPath: m_OverridePixelPerfect
@@ -9729,6 +9761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d375182ff03e5fa4d9499907ea63479c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controller: {fileID: 0}
   videoSource: {fileID: 200487592}
   intro: {fileID: 32900000, guid: b25760ad2db9ba74e96424f40ef9edec, type: 3}
   loseCat: {fileID: 32900000, guid: b16245d5980ba864ab51e903297d32e3, type: 3}
@@ -9737,6 +9770,7 @@ MonoBehaviour:
   winCat: {fileID: 32900000, guid: 611153a8dbec61c4a8a23aa95d84851f, type: 3}
   winChicken: {fileID: 32900000, guid: a06a232cd21611346ac34cb06f36a992, type: 3}
   winCow: {fileID: 32900000, guid: 80e60ace2669e0d4eb727f814a26c982, type: 3}
+  credits: {fileID: 0}
 --- !u!1 &1420330800
 GameObject:
   m_ObjectHideFlags: 0
@@ -12341,6 +12375,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4443139600687701024, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 626.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443139600687701024, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 101.9716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443139600687701024, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 624
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443139600687701024, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 212.01422
+      objectReference: {fileID: 0}
     - target: {fileID: 4477241075798906693, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
       propertyPath: m_margin.z
       value: -356.23438
@@ -12348,6 +12398,30 @@ PrefabInstance:
     - target: {fileID: 4640403163555534119, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
       propertyPath: m_text
       value: '"You''ve truly set the barn high!"'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640403163555534119, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_fontSize
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640403163555534119, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_margin.w
+      value: -1.3250732
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640403163555534119, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_margin.z
+      value: -1.215332
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640403163555534119, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640403163555534119, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741140792310854701, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6397927632632561081, guid: 36404e75cec03d74ea4058b9ef970127, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode

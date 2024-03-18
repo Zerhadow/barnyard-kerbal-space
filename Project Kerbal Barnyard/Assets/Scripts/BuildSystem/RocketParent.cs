@@ -188,9 +188,8 @@ public class RocketParent : MonoBehaviour
             if(part.partType == PartType.Misc) {
                 Debug.Log("part name: " + part.name);
                 if(part.name.Contains("RP_1x2 Skateboard")) {
-
+                    return part.thrust * part.weight;
                 }
-                return 1f;
             }
         }
 
@@ -209,9 +208,13 @@ public class RocketParent : MonoBehaviour
         fNet = fBoosters - fGrav;
         Debug.Log("fNet: " + fNet);
 
-        CalculateMISC();
+        float miscNet = CalculateMISC();
 
-        return fNet;
+        if(miscNet != null) {
+            return fNet + miscNet;
+        } else {
+            return fNet;
+        }
     }
 
     public void ResetInfo() {

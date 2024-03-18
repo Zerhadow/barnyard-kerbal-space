@@ -1081,6 +1081,10 @@ PrefabInstance:
       propertyPath: partPrefab
       value: 
       objectReference: {fileID: 3052980406334256328, guid: 5c2c64901839e3b4f9c32b937f35af63, type: 3}
+    - target: {fileID: 3146000321172690918, guid: 177e6df254a7f73439929139818000fe, type: 3}
+      propertyPath: unlockCost
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7716138002440808572, guid: 177e6df254a7f73439929139818000fe, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -15855,7 +15859,7 @@ PrefabInstance:
       objectReference: {fileID: 3052980406334256328, guid: d7429c106ff6db24d9be6504a86faa5f, type: 3}
     - target: {fileID: 3146000321172690918, guid: 177e6df254a7f73439929139818000fe, type: 3}
       propertyPath: unlockCost
-      value: 500
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 7716138002440808572, guid: 177e6df254a7f73439929139818000fe, type: 3}
       propertyPath: m_Sprite

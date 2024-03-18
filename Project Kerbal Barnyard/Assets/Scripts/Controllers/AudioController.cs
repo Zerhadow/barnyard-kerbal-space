@@ -39,13 +39,11 @@ public class AudioController : MonoBehaviour
                 Debug.Log("Main Menu music selected.");
                 musicSource.clip = mainMenu;
                 StartCoroutine(StartFade(musicSource, 2f, 1f));
-                // musicSource.Play();
                 break;
             case "Build Music":
                 // Handle build theme music
                 Debug.Log("Build Theme music selected.");
                 musicSource.clip = buildTheme;
-                musicSource.Play();
                 break;
             case "Build Up Music":
                 // Handle play theme build-up music
@@ -119,5 +117,18 @@ public class AudioController : MonoBehaviour
             yield return null;
         }
         yield break;
+    }
+
+    public static IEnumerator FadeOut(AudioSource music, float duration, float targetVol){
+        float currentTime = 0;
+        float start = music.volume;
+
+        while(currentTime < duration){
+            currentTime += Time.deltaTime;
+            music.volume = Mathf.Lerp(start, targetVol, currentTime/duration);
+            yield return null;
+        }
+        yield break;
+        music.Stop();
     }
 }

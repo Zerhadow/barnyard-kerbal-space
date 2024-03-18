@@ -295,6 +295,7 @@ MonoBehaviour:
   playTheme1: {fileID: 8300000, guid: 9c65eb71fb31ec745b58df4868f29f1b, type: 3}
   playTheme2: {fileID: 8300000, guid: fd6736f345cb9ef45b907968de78e7c0, type: 3}
   resultSound: {fileID: 8300000, guid: 6cd79e3926c771543a6d437cfdc545d0, type: 3}
+  construction: {fileID: 0}
   inMainMenu: 1
 --- !u!4 &229272909
 Transform:
@@ -1426,7 +1427,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -6755070177085216042, guid: 961967dae17fe284696fd2474daa81e0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0

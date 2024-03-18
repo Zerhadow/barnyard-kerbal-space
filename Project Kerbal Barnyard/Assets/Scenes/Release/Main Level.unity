@@ -21308,6 +21308,7 @@ MonoBehaviour:
   playTheme1: {fileID: 8300000, guid: 9c65eb71fb31ec745b58df4868f29f1b, type: 3}
   playTheme2: {fileID: 8300000, guid: fd6736f345cb9ef45b907968de78e7c0, type: 3}
   resultSound: {fileID: 8300000, guid: 6cd79e3926c771543a6d437cfdc545d0, type: 3}
+  construction: {fileID: 0}
   inMainMenu: 0
 --- !u!1 &1763520721
 GameObject:

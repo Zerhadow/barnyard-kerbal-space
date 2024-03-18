@@ -761,6 +761,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currencyText: {fileID: 3455641307207973543}
+  _addMoney: {fileID: 2357155303671350928}
+  _removeMoney: {fileID: 1022542638992311151}
 --- !u!1 &6097303098081280143
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,10 @@ public class CurrencyManager : MonoBehaviour
     [Header("Starting")]
     [SerializeField] private int _startingAmount = 100;
 
+    [Header("Debug")]
+    [SerializeField] private bool _debug = false;
+    public bool DebugEnabled => _debug;
+
     public static int money = 0;
 
     public static Action<int> OnCurrencyChanged = delegate { };

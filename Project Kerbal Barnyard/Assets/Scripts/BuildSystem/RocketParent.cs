@@ -80,7 +80,7 @@ public class RocketParent : MonoBehaviour
 
         //restock
         part.partPanel.stock++;
-
+        
         //destroy
         Destroy(part.gameObject);
 

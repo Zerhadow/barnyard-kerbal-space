@@ -107,6 +107,8 @@ public class PartPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             {
                 CurrencyManager.RemoveMoney(unlockCost);
                 stock++;
+                int newCost = (int)(unlockCost * CurrencyManager.StockMultiplier);
+                unlockCost += newCost;
             }
         }
     }

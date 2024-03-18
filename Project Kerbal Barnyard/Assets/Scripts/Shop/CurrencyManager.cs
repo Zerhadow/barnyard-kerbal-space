@@ -16,6 +16,11 @@ public class CurrencyManager : MonoBehaviour
 
     public static int money = 0;
 
+    /// <summary>
+    /// Check currency manager to change the multiplier.
+    /// </summary>
+    public static float StockMultiplier = 0.1f;
+
     public static Action<int> OnCurrencyChanged = delegate { };
 
     private void Awake()

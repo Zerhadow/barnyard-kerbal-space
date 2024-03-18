@@ -33,6 +33,8 @@ public class PartPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public static Action<PartPanel> OnPanelHovered = delegate { };
     public static Action<PartPanel> OnPanelExit = delegate { };
 
+    public static Action<PartPanel> OnFailedPurchace = delegate { };
+
     private void Awake()
     {
         _buildController = FindObjectOfType<BuildController>();
@@ -99,6 +101,10 @@ public class PartPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 CurrencyManager.RemoveMoney(unlockCost);
                 isUnlocked = true;
             }
+            else
+            {
+                OnFailedPurchace?.Invoke(this);
+            }
         }
         else
         {
@@ -109,6 +115,10 @@ public class PartPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 stock++;
                 int newCost = (int)(unlockCost * CurrencyManager.StockMultiplier);
                 unlockCost += newCost;
+            }
+            else
+            {
+                OnFailedPurchace?.Invoke(this);
             }
         }
     }
